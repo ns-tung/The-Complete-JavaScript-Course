@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:ital@0;1&display=swap");
+
+/*
+  <uniquifier>: Use a unique and descriptive class name
+  <weight>: Use a value from 100 to 900
+  <slant>: Use a value from -10 to 0
+*/
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.navbar-brand-image {
+  min-height: 2.7499rem;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: "JetBrains Mono", sans-serif;
+}
+
+pre[class*="language-"] {
+  border-radius: var(--tblr-border-radius);
+}
+
+div.code-toolbar > .toolbar {
+  right: 0.35em;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > a,
+div.code-toolbar > .toolbar > .toolbar-item > button,
+div.code-toolbar > .toolbar > .toolbar-item > span {
+  padding: 0.3em 0.8em 0.5em;
+  border-radius: 0.2em;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > a:focus,
+div.code-toolbar > .toolbar > .toolbar-item > a:hover,
+div.code-toolbar > .toolbar > .toolbar-item > button:focus,
+div.code-toolbar > .toolbar > .toolbar-item > button:hover,
+div.code-toolbar > .toolbar > .toolbar-item > span:focus,
+div.code-toolbar > .toolbar > .toolbar-item > span:hover {
+  color: #fff;
+}
+
+.token.constant,
+.token.deleted,
+.token.property,
+.token.symbol,
+.token.tag {
+  --tblr-tag-height: initial;
+  border: initial;
+  display: initial;
+  align-items: initial;
+  height: initial;
+  border-radius: initial;
+  padding: initial;
+  background: initial;
+  box-shadow: initial;
+  gap: initial;
+}
+
+.footer .img-netlify {
+  height: 40px;
+}
