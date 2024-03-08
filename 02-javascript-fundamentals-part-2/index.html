@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Complete JavaScript Course | Tung Nguyen</title>
+    <title>JavaScript Fundamentals – Part 2 | Tung Nguyen</title>
     <meta name="copyright" content="Tung Nguyen | github.com/ns-tung" />
     <meta name="author" content="Tung Nguyen | github.com/ns-tung" />
     <meta
@@ -12,31 +12,29 @@
     />
     <meta
       property="og:title"
-      content="The Complete JavaScript Course | Tung Nguyen"
+      content="JavaScript Fundamentals – Part 2 | Tung Nguyen"
     />
     <meta
       property="og:description"
-      content="The Complete JavaScript Course: The modern JavaScript course is for those who want to become A Master of JavaScript with projects, challenges, and theory."
+      content="JavaScript Fundamentals – Part 2"
     />
     <meta
       property="og:url"
-      content="https://the-complete-javascript-course.netlify.app"
+      content="https://the-complete-javascript-course.netlify.app/02-javascript-fundamentals-part-2"
     />
     <meta
       property="og:image"
-      content="https://the-complete-javascript-course.netlify.app/assets/images/the-complete-javascript-course.png"
+      content="https://the-complete-javascript-course.netlify.app/assets/images/javascript-fundamentals-part-2.png"
     />
-    <meta
-      property="og:image:alt"
-      content="The Complete JavaScript Course: The modern JavaScript course is for those who want to become A Master of JavaScript with projects, challenges, and theory."
-    />
+    <meta property="og:image:alt" content="JavaScript Fundamentals – Part 2" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="/assets/images/js-logo.svg" type="image/svg+xml" />
+    <link rel="icon" href="../assets/images/js-logo.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.css"
     />
-    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="../assets/vendor/prismjs/prism.css" />
+    <link rel="stylesheet" href="../assets/styles.css" />
   </head>
 
   <body class="page">
@@ -81,37 +79,24 @@
     <div class="page-wrapper">
       <div class="page-body">
         <div class="container">
-          <a
-            target="_blank"
-            href="https://github.com/ns-tung/The-Complete-JavaScript-Course"
-            title="View github repository"
-          >
-            <div class="card overflow-hidden mt-0 mt-sm-4 mb-4">
-              <img
-                src="/assets/images/the-complete-javascript-course.png"
-                alt="The Complete JavaScript Course"
-              />
-            </div>
-          </a>
-          <div class="h2 mb-2">Course content</div>
-          <div class="card">
-            <div class="card-body">
-              <nav class="d-flex flex-column">
-                <a
-                  class="p-0 mb-3 mb-sm-2 text-body link-primary link-underline-hover"
-                  href="/01-javascript-fundamentals-part-1"
-                >
-                  <b>01.</b> JavaScript Fundamentals – Part 1
-                </a>
-                <a
-                  class="p-0 mb-3 mb-sm-2 text-body link-primary link-underline-hover"
-                  href="/02-javascript-fundamentals-part-2"
-                >
-                  <b>02.</b> JavaScript Fundamentals – Part 2
-                </a>
-              </nav>
-            </div>
+          <div class="page-header mt-0 mb-2 my-sm-3">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a class="link cursor-pointer" href="/"> Go back </a>
+              </li>
+              <li class="breadcrumb-item active">
+                <span>02. JavaScript Fundamentals – Part 2</span>
+              </li>
+            </ol>
           </div>
+          <div class="card overflow-hidden">
+            <img
+              src="/assets/images/javascript-fundamentals-part-2.png"
+              alt="JavaScript Fundamentals – Part 2"
+            />
+          </div>
+          <div class="hr-text hr-text-left mb-3">Script</div>
+          <pre class="line-numbers" data-src="scripts.js"></pre>
         </div>
       </div>
     </div>
@@ -160,5 +145,8 @@
         </div>
       </div>
     </footer>
+
+    <script src="../assets/vendor/prismjs/prism.js" defer></script>
+    <script src="scripts.js" defer></script>
   </body>
 </html>

@@ -1,22 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:ital@0;1&display=swap");
 
-/*
-  <uniquifier>: Use a unique and descriptive class name
-  <weight>: Use a value from 100 to 900
-  <slant>: Use a value from -10 to 0
-*/
-
 body {
   font-family: "Inter", sans-serif;
 }
 
-.navbar-brand-image {
-  min-height: 2.7499rem;
+.navbar .container {
+  padding-top: 8px;
+  padding-bottom: 9px;
+}
+
+.navbar-brand a .avatar + .d-block > .fs-3 {
+  line-height: 1.375rem;
+}
+
+.navbar-brand a .avatar + .d-block > .fs-4 {
+  margin-top: 2px;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
-  font-family: "JetBrains Mono", sans-serif;
+  font-family: "JetBrains Mono", monospace;
+  white-space: pre-wrap !important;
 }
 
 pre[class*="language-"] {
@@ -62,4 +66,9 @@ div.code-toolbar > .toolbar > .toolbar-item > span:hover {
 
 .footer .img-netlify {
   height: 40px;
+}
+
+.footer svg {
+  margin-bottom: 2px;
+  fill: var(--tblr-red);
 }
