@@ -1,3 +1,4 @@
+/*
 let js = "amazing";
 console.log(40 + 8 + 23 - 10);
 
@@ -46,3 +47,31 @@ let population = "100"; // in millions
 console.log(country);
 console.log(continent);
 console.log(population);
+*/
+
+// DATA TYPES
+
+// 7 primitive data types: number, string, boolean, undefined, null, symbol (es2015), bigint (es2020)
+
+// Dynamic typing: you do not need to define the data type when creating a variable.
+// The value (of the variable) has a type, not the variable. A variable only stores values that have a type.
+
+let javascriptIsFun = true;
+console.log(javascriptIsFun);
+
+// console.log(typeof true);
+console.log(typeof javascriptIsFun);
+// console.log(typeof 34);
+// console.log(typeof "Tung");
+
+javascriptIsFun = "Yes!";
+console.log(typeof javascriptIsFun);
+
+let year;
+console.log(year);
+console.log(typeof year);
+
+year = 1990;
+console.log(typeof year);
+
+console.log(typeof null); // -> object (should return null), this is regarded as a buck or an error in JavaScript.
