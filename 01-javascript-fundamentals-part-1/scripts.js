@@ -47,7 +47,6 @@ let population = "100"; // in millions
 console.log(country);
 console.log(continent);
 console.log(population);
-*/
 
 // DATA TYPES
 
@@ -75,3 +74,23 @@ year = 1990;
 console.log(typeof year);
 
 console.log(typeof null); // -> object (should return null), this is regarded as a buck or an error in JavaScript.
+*/
+
+// LET, CONSTANT & VAR
+
+// use let only when you are really sure that the variable needs to change
+let age = 30;
+age = 34;
+
+// always use const for declaring variables as much as possible
+const birthYear = 1990;
+// birthYear = 1992; illegal, do not allowed reassign value
+// const job; illegal, does not have a value
+
+// never user var for declare a variable
+var job = "programmer";
+job = "freelancer";
+
+// should not do this:
+lastName = "Nguyen";
+console.log(lastName);
