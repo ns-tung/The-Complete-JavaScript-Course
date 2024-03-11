@@ -74,7 +74,6 @@ year = 1990;
 console.log(typeof year);
 
 console.log(typeof null); // -> object (should return null), this is regarded as a buck or an error in JavaScript.
-*/
 
 // LET, CONSTANT & VAR
 
@@ -94,3 +93,32 @@ job = "freelancer";
 // should not do this:
 lastName = "Nguyen";
 console.log(lastName);
+*/
+
+// BASIC OPERATORS
+
+const now = 2034;
+const ageTung = now - 1990;
+const ageJonas = now - 1991;
+console.log(ageTung, ageJonas);
+
+// 2 ** 3 means: 2 to the power of 3 => 2^3 = 2 * 2 * 2
+console.log(ageTung * 2, ageTung / 10, 2 ** 3);
+
+const firstName = "Tung";
+const lastName = "Nguyen";
+console.log(firstName + " " + lastName);
+
+let x = 10 + 5; // 15
+x += 10; // x = x + 10
+x *= 4; // x = x * 4
+x++; // x = x +1
+x--;
+x--;
+console.log(x);
+
+// Comparison operators: >, <, >=, <=
+console.log(ageTung > ageJonas);
+console.log(ageJonas >= 20);
+
+console.log(now - 1990 > now - 1991);
