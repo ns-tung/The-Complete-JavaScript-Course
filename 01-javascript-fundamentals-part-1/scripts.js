@@ -93,7 +93,6 @@ job = "freelancer";
 // should not do this:
 lastName = "Nguyen";
 console.log(lastName);
-*/
 
 // BASIC OPERATORS
 
@@ -122,3 +121,20 @@ console.log(ageTung > ageJonas);
 console.log(ageJonas >= 20);
 
 console.log(now - 1990 > now - 1991);
+*/
+
+// OPERATOR PRECEDENCE
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table
+
+const now = 2034;
+const ageTung = now - 1990;
+const ageJonas = now - 1991;
+
+console.log(now - 1990 > now - 1991);
+
+let x, y;
+x = y = 25 - 10 - 5;
+console.log(x, y);
+
+const averageAge = (ageTung + ageJonas) / 2;
+console.log(ageTung, ageJonas, averageAge);
