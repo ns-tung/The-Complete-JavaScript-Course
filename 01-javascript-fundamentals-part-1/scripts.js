@@ -37,17 +37,6 @@ let myCurrentJob = "Freelancer";
 let job1 = "Technician";
 let job2 = "Freelancer";
 
-// Practice Assignments:
-// 1. Declare variables called country, continent and population and assign their values according to your own country(population in millions).
-// 2. Log their values to the console.
-
-let country = "Viet Nam";
-let continent = "Asia";
-let population = "100"; // in millions
-console.log(country);
-console.log(continent);
-console.log(population);
-
 // DATA TYPES
 
 // 7 primitive data types: number, string, boolean, undefined, null, symbol (es2015), bigint (es2020)
