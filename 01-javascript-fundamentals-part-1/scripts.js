@@ -5,7 +5,7 @@ console.log(40 + 8 + 23 - 10);
 console.log("Tung Nguyen");
 console.log(34);
 
-// VALUES AND VARIABLES
+// VALUES AND VARIABLES ==================================================
 
 let firstName = "Tung";
 let lastName = "Nguyen";
@@ -37,7 +37,7 @@ let myCurrentJob = "Freelancer";
 let job1 = "Technician";
 let job2 = "Freelancer";
 
-// DATA TYPES
+// DATA TYPES ==================================================
 
 // 7 primitive data types: number, string, boolean, undefined, null, symbol (es2015), bigint (es2020)
 
@@ -64,7 +64,7 @@ console.log(typeof year);
 
 console.log(typeof null); // -> object (should return null), this is regarded as a buck or an error in JavaScript.
 
-// LET, CONSTANT & VAR
+// LET, CONSTANT & VAR ==================================================
 
 // use let only when you are really sure that the variable needs to change
 let age = 30;
@@ -83,7 +83,7 @@ job = "freelancer";
 lastName = "Nguyen";
 console.log(lastName);
 
-// BASIC OPERATORS
+// BASIC OPERATORS ==================================================
 
 const now = 2034;
 const ageTung = now - 1990;
@@ -111,7 +111,8 @@ console.log(ageJonas >= 20);
 
 console.log(now - 1990 > now - 1991);
 
-// OPERATOR PRECEDENCE
+// OPERATOR PRECEDENCE ==================================================
+
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table
 
 const now = 2034;
@@ -127,7 +128,7 @@ console.log(x, y);
 const averageAge = (ageTung + ageJonas) / 2;
 console.log(ageTung, ageJonas, averageAge);
 
-// STRINGS AND TEMPLATE LITERALS
+// STRINGS AND TEMPLATE LITERALS ==================================================
 
 const firstName = "Tung";
 const job = "developer";
@@ -149,9 +150,8 @@ lines");
 console.log(`String
 multiple
 lines`);
-*/
 
-// TAKING DECISIONS: IF / ELSE STATEMENTS
+// TAKING DECISIONS: IF / ELSE STATEMENTS ==================================================
 
 const age = 16;
 
@@ -172,3 +172,29 @@ if (birthYear <= 2000) {
   century = 21;
 }
 console.log(century);
+*/
+
+// TYPE CONVERSION AND COERCION ==================================================
+
+// Type conversion: Javascript can only can covert to three types: number, string, boolean
+
+const inputYear = "1990";
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+console.log(Number("Tung"));
+console.log(typeof NaN); // number -> a legacy bug
+
+console.log(String(34), 34);
+
+// Type coercion happens when an operator deals with two values of different types.
+
+console.log("I'm " + 34 + " years old"); // I'm 34 years old
+console.log("34" - "10" - 4); // 20
+console.log("34" + "10" + 4); // "34104"
+console.log("34" * "2"); // 68
+console.log("34" / "2"); // 17
+
+let n = "1" + 1; // "11"
+n = n - 1;
+console.log(n); // 10
