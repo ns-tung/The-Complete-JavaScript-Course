@@ -34,7 +34,7 @@
 
 let language;
 language = "Vietnamese";
-const country = "Viet Nam";
+const country = "Vietnam";
 const continent = "Asia";
 const isIsland = false;
 // isIsland = true;
@@ -59,7 +59,7 @@ console.log(population > populationFinland);
 let averagePopulation = 33;
 console.log(population < averagePopulation);
 
-const description = country + " is in " + continent + ", and its " + population + " millions people speak " + language;
+const description = country + " is in " + continent + ", and its " + population + " million people speak " + language;
 console.log(description);
 
 /*
@@ -67,5 +67,19 @@ console.log(description);
     Recreate the description variable from the last assignment, this time using the template literal syntax.
 */
 
-const descriptionNew = `${country} is in ${continent}, and its ${population} millions people speak ${language}`;
+const descriptionNew = `${country} is in ${continent}, and its ${population} million people speak ${language}`;
 console.log(descriptionNew);
+
+/* 
+  TAKING DECISIONS: IF / ELSE STATEMENTS
+
+    If your country's population is greater than 33 million, log a string like this to the console: "Portugal's population is 22 million below average" (the 22 is the average of 33 minus the country's population).
+
+    After checking the result, change the population temporarily to 13 and then to 130. See the different results, and set the population back to original.
+*/
+
+if (population > 33) {
+  console.log(`${country}'s population is above average.`);
+} else {
+  console.log(`${country}'s population is ${33 - population} million below average.`);
+}

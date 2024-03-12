@@ -126,7 +126,6 @@ console.log(x, y);
 
 const averageAge = (ageTung + ageJonas) / 2;
 console.log(ageTung, ageJonas, averageAge);
-*/
 
 // STRINGS AND TEMPLATE LITERALS
 
@@ -150,3 +149,26 @@ lines");
 console.log(`String
 multiple
 lines`);
+*/
+
+// TAKING DECISIONS: IF / ELSE STATEMENTS
+
+const age = 16;
+
+if (age >= 18) {
+  console.log(`You can start driving license 🚗`);
+} else {
+  const yearsLeft = 18 - age;
+  console.log(`You are too young. Wait another ${yearsLeft} years 😀`);
+}
+
+// A if / else statement is called a control structure.
+
+const birthYear = 1990;
+let century;
+if (birthYear <= 2000) {
+  century = 20;
+} else {
+  century = 21;
+}
+console.log(century);
