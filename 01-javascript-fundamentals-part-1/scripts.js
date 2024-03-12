@@ -110,7 +110,6 @@ console.log(ageTung > ageJonas);
 console.log(ageJonas >= 20);
 
 console.log(now - 1990 > now - 1991);
-*/
 
 // OPERATOR PRECEDENCE
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table
@@ -127,3 +126,27 @@ console.log(x, y);
 
 const averageAge = (ageTung + ageJonas) / 2;
 console.log(ageTung, ageJonas, averageAge);
+*/
+
+// STRINGS AND TEMPLATE LITERALS
+
+const firstName = "Tung";
+const job = "developer";
+const birthYear = 1990;
+const year = 2034;
+
+const tung = "I'm " + firstName + ", a " + (year - birthYear) + " years old " + job + ".";
+console.log(tung);
+
+const tungNew = `I'm ${firstName}, a ${year - birthYear} years old ${job}.`;
+console.log(tungNew);
+
+console.log(`Just a regular string ...`);
+
+console.log("String \n\
+multiple \n\
+lines");
+
+console.log(`String
+multiple
+lines`);
