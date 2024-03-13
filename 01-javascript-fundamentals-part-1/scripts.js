@@ -254,7 +254,6 @@ if (favorite === 34) {
 }
 
 if (favorite !== 34) console.log("Why not 34?");
-*/
 
 // BOOLEAN LOGIC: AND, OR, NOT ==================================================
 
@@ -263,7 +262,7 @@ if (favorite !== 34) console.log("Why not 34?");
 // |  AND  | TRUE  | FALSE |
 // | ----- | ----- | ----- |
 // | TRUE  | true  | false |
-// | FALSE | false | false | 
+// | FALSE | false | false |
 
 // OR: will are true when ONE of them is true
 
@@ -273,3 +272,28 @@ if (favorite !== 34) console.log("Why not 34?");
 // | FALSE | true  | false |
 
 // NOT: will invert true/false value.
+*/
+
+// LOGICAL OPERATORS ==================================================
+
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+// if (hasDriversLicense && hasGoodVision) {
+//   console.log("You are able to drive!");
+// } else {
+//   console.log("Someone else should drive ...");
+// }
+
+const isTired = false; // C
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log("You are able to drive!");
+} else {
+  console.log("Someone else should drive ...");
+}
