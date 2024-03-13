@@ -231,10 +231,9 @@ if (height) { // And here, javascript does Boolean type coercion -> false => thi
 } else {
   console.log("Height is UNDEFINED!");
 }
-*/
 
 // EQUALITY OPERATORS: == VS. ===
-
+// ==================================================
 // General rule: avoid using the loose equality operator "==" as much as you can, and use the strict equality operator "===" instead.
 const age = "18";
 if (age === 18) console.log("You just became an adult 😀 (strict)");
@@ -255,3 +254,22 @@ if (favorite === 34) {
 }
 
 if (favorite !== 34) console.log("Why not 34?");
+*/
+
+// BOOLEAN LOGIC: AND, OR, NOT ==================================================
+
+// AND: will are true when ALL of them are true
+
+// |  AND  | TRUE  | FALSE |
+// | ----- | ----- | ----- |
+// | TRUE  | true  | false |
+// | FALSE | false | false | 
+
+// OR: will are true when ONE of them is true
+
+// |  OR   | TRUE  | FALSE |
+// | ----- | ----- | ----- |
+// | TRUE  | true  | true  |
+// | FALSE | true  | false |
+
+// NOT: will invert true/false value.
