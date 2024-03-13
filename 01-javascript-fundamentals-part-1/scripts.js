@@ -197,17 +197,14 @@ console.log("34" / "2"); // 17
 let n = "1" + 1; // "11"
 n = n - 1;
 console.log(n); // 10
-*/
 
 // TRUTHY AND FALSY VALUES ==================================================
 
-/*
-  Falsy values are values that are not exactly false, but will become false when we try to convert them into a boolean. Five falsy values: 0, '', undefined, null, NaN
+  // Falsy values are values that are not exactly false, but will become false when we try to convert them into a boolean. Five falsy values: 0, '', undefined, null, NaN
 
-  Everything else will be called truthy values.
+  // Everything else will be called truthy values.
 
-  Both truthy and falsy values are called types of coercion.
-*/
+  // Both truthy and falsy values are called types of coercion.
 
 console.log(Boolean(0)); // false
 console.log(Boolean("")); // false
@@ -234,3 +231,27 @@ if (height) { // And here, javascript does Boolean type coercion -> false => thi
 } else {
   console.log("Height is UNDEFINED!");
 }
+*/
+
+// EQUALITY OPERATORS: == VS. ===
+
+// General rule: avoid using the loose equality operator "==" as much as you can, and use the strict equality operator "===" instead.
+const age = "18";
+if (age === 18) console.log("You just became an adult 😀 (strict)");
+if (age == 18) console.log("You just became an adult 😀 (loose)");
+
+const favorite = Number(prompt("Input your favorite number!"));
+console.log(favorite);
+console.log(typeof favorite);
+
+if (favorite === 34) {
+  console.log("Cool, 34 is amazing number!");
+} else if (favorite === 6) {
+  console.log("6 is also a cool number!");
+} else if (favorite === 8) {
+  console.log("8 is also a cool number!");
+} else {
+  console.log("Number is not 34 or 6 or 8");
+}
+
+if (favorite !== 34) console.log("Why not 34?");
