@@ -172,7 +172,6 @@ if (birthYear <= 2000) {
   century = 21;
 }
 console.log(century);
-*/
 
 // TYPE CONVERSION AND COERCION ==================================================
 
@@ -198,3 +197,40 @@ console.log("34" / "2"); // 17
 let n = "1" + 1; // "11"
 n = n - 1;
 console.log(n); // 10
+*/
+
+// TRUTHY AND FALSY VALUES ==================================================
+
+/*
+  Falsy values are values that are not exactly false, but will become false when we try to convert them into a boolean. Five falsy values: 0, '', undefined, null, NaN
+
+  Everything else will be called truthy values.
+
+  Both truthy and falsy values are called types of coercion.
+*/
+
+console.log(Boolean(0)); // false
+console.log(Boolean("")); // false
+console.log(Boolean(NaN)); // false
+console.log(Boolean(null)); // false
+console.log(Boolean(undefined)); // false
+
+console.log(Boolean({})); // true
+console.log(Boolean(10)); // true
+console.log(Boolean("Tung")); // true
+
+const money = 100;
+if (money) { // => Boolean(money) -> false
+  console.log("Do not spend it all 😉");
+} else {
+  console.log("You should get a job 😀");
+}
+
+// Attention 👇
+
+let height = 0; // This is a DEFINED variable, and it equals zero 👇
+if (height) { // And here, javascript does Boolean type coercion -> false => this makes the unexpected result -> "Height is UNDEFINED!"
+  console.log("YAY! Height is DEFINED!");
+} else {
+  console.log("Height is UNDEFINED!");
+}
