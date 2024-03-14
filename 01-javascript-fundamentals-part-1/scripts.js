@@ -372,3 +372,21 @@ if (day === "monday") {
 // Read more:
 //  https://www.freecodecamp.org/news/statement-vs-expression-whats-the-difference-in-programming/
 //  https://www.joshwcomeau.com/javascript/statements-vs-expressions/
+
+// THE CONDITIONAL (TERNARY) OPERATOR ==================================================
+
+const age = 34;
+age >= 18 ? console.log("I like to drink wine 🍷") : console.log("I like to drink water 💧");
+
+const drink = age >= 18 ? "wine 🍷" : "water 💧";
+console.log(drink);
+
+let _drink;
+if (age >= 18) {
+  _drink = "wine 🍷";
+} else {
+  _drink = "water 💧";
+}
+console.log(_drink);
+
+console.log(`I like to drink ${age >= 18 ? "wine🍷" : "water 💧"}`);
