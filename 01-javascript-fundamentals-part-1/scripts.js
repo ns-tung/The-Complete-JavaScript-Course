@@ -296,7 +296,6 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 } else {
   console.log("Someone else should drive ...");
 }
-*/
 
 // THE SWITCH STATEMENT ==================================================
 
@@ -339,3 +338,37 @@ if (day === "monday") {
 } else {
   console.log("Not a valid day!");
 }
+*/
+
+// STATEMENTS AND EXPRESSIONS ==================================================
+
+// An expression is a bit of JavaScript code that produces a value. And expressions can contain expressions. 
+
+// 1 -> 1
+// "hello" -> "hello"
+// 5 * 10 -> 50
+// (5 + 1) * 2 -> 12
+// num > 100 -> either true or false
+// isHappy ? "🙂" : "🙁" -> an emoji
+// [1, 2, 3].pop() -> the number 3
+
+// A JavaScript program is a sequence of statements. Each statement is an instruction for the computer to do something.
+
+// let hi = 5;
+// if (hi > 10) {
+//  More statements here
+// }
+// throw new Error('Something exploded!');
+
+// Statements often have "slots" for expressions. We can put any expression we like into those slots.
+
+// let hi = 1;
+// let hi = "hello";
+// let hi = 5 * 10;
+// let hi = num > 100;
+// let hi = isHappy ? "🙂" : "🙁";
+// let hi = [1, 2, 3].pop();
+
+// Read more:
+//  https://www.freecodecamp.org/news/statement-vs-expression-whats-the-difference-in-programming/
+//  https://www.joshwcomeau.com/javascript/statements-vs-expressions/
