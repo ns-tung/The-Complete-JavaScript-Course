@@ -98,9 +98,10 @@
           <div class="row">
             <div class="col-12">
               <div class="hr-text hr-text-left mb-3">
-                What I typed while learning
+                <!-- What I typed while learning -->
+                Theories
               </div>
-              <pre class="line-numbers" data-src="scripts.js"></pre>
+              <pre class="line-numbers" data-src="theories.js"></pre>
             </div>
             <div class="col-lg-6">
               <div class="hr-text hr-text-left mb-3">Practice Assignments</div>
@@ -161,6 +162,16 @@
     </footer>
 
     <script src="../assets/vendor/prismjs/prism.js" defer></script>
-    <script src="scripts.js" defer></script>
+    <script>
+      window.onload = function () {
+        const links = document.querySelectorAll("a.token.url-link[href]");
+        links.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.open(link.href, "_blank");
+          });
+        });
+      };
+    </script>
   </body>
 </html>

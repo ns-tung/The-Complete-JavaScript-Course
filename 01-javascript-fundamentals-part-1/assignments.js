@@ -4,12 +4,12 @@
     2. Log their values to the console.
 */
 
-// let country = "Viet Nam";
-// let continent = "Asia";
-// let population = 100; // in millions
-// console.log(country);
-// console.log(continent);
-// console.log(population);
+let country = "Viet Nam";
+let continent = "Asia";
+let population = 100; // in millions
+console.log(country);
+console.log(continent);
+console.log(population);
 
 /*
   DATA TYPES ==================================================
@@ -17,13 +17,13 @@
     2. Log the types of isIsland, population, country and language to the console.
 */
 
-// let isIsland = false;
-// let language;
+let isIsland = false;
+let language;
 
-// console.log(typeof isIsland);
-// console.log(typeof population);
-// console.log(typeof country);
-// console.log(typeof language);
+console.log(typeof isIsland);
+console.log(typeof population);
+console.log(typeof country);
+console.log(typeof language);
 
 /*
   LET, CONSTANT & VAR ==================================================
@@ -37,14 +37,19 @@ language = "Vietnamese";
 const country = "Vietnam";
 const continent = "Asia";
 const isIsland = false;
-// isIsland = true;
+isIsland = true;
 
 /*
   BASIC OPERATORS ==================================================
+    
     1. If your country split in half, and each half would contain half the population, then how many people would live in each half?
+
     2. Increase the population of your country by 1 and log the result to the console.
+
     3. Finland has a population of 6 million. Does your country have more people than Finland?
+
     4. The average population of a country is 33 million people. Does you country have less people than the average country?
+
     5. Based on the variables you created, create a new variable description which contains a string with this format: 'Portugal is in Europe, and its 11 million people speak portuguese'.
 */
 
@@ -71,7 +76,7 @@ const descriptionNew = `${country} is in ${continent}, and its ${population} mil
 console.log(descriptionNew);
 
 /* 
-  TAKING DECISIONS: IF / ELSE STATEMENTS ==================================================
+  TAKING DECISIONS: IF/ELSE STATEMENTS ==================================================
 
     If your country's population is greater than 33 million, log a string like this to the console: "Portugal's population is 22 million below average" (the 22 is the average of 33 minus the country's population).
 
@@ -105,7 +110,7 @@ console.log('123' < 57); // -> false
 console.log(5 + 6 + '4' + 9 - 4 - 2); // -> 1143
 
 /*
-  EQUALITY OPERATORS: == VS. ===
+  EQUALITY OPERATORS: "==" VS. "===" //////////////////////////////////////////////////
 
     1. Declare a variable numNeighbors based on a prompt input like this:
 
@@ -126,17 +131,17 @@ console.log(5 + 6 + '4' + 9 - 4 - 2); // -> 1143
     8. Reflect on why we should use the === operator and type conversion in this situation.
 */
 
-// const numNeighbors = prompt('How many neighbor countries does your country have?');
-// 👇
-// const numNeighbors = Number(prompt('How many neighbor countries does your country have?'));
+const numNeighbors = prompt('How many neighbor countries does your country have?');
+👇
+const numNeighbors = Number(prompt('How many neighbor countries does your country have?'));
 
-// if (numNeighbors === 1) {
-//   console.log("Only 1 border!");
-// } else if (numNeighbors > 1) {
-//   console.log("More than 1 border.");
-// } else {
-//   console.log("No borders.");
-// }
+if (numNeighbors === 1) {
+  console.log("Only 1 border!");
+} else if (numNeighbors > 1) {
+  console.log("More than 1 border.");
+} else {
+  console.log("No borders.");
+}
 
 /*
   LOGICAL OPERATORS ==================================================

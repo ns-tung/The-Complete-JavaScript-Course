@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap");
 
+/* Selection */
+pre code ::-moz-selection {
+  text-shadow: none;
+  background-color: rgba(var(--tblr-white-rgb), 0.1);
+}
+pre code ::selection {
+  text-shadow: none;
+  background-color: rgba(var(--tblr-white-rgb), 0.1);
+}
+
 body {
   font-family: "IBM Plex Sans", sans-serif;
   /* font-size: 1rem; */
@@ -63,6 +73,14 @@ div.code-toolbar > .toolbar > .toolbar-item > span:hover {
   background: initial;
   box-shadow: initial;
   gap: initial;
+}
+
+.token a.token.url-link[href] {
+  color: var(--tblr-info);
+}
+
+.token a.token.url-link[href]:hover {
+  color: var(--tblr-vimeo);
 }
 
 .footer .img-netlify {
