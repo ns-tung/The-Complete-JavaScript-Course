@@ -17,6 +17,7 @@ const describePortugal = describeCountry("Portugal", "10", "Lisbon");
 console.log(describeVietnam + "\n\n" + describeFinland + "\n\n" + describePortugal);
 
 /* FUNCTION DECLARATIONS VS. EXPRESSIONS ==================================================
+
     1. The world population is 7900 million people. Create a function declaration called percentageOfWorld1 which receives a population value, and returns the percentage of the world population that the given population represents. For example, China has 1441 million people, so it's about 18.2% of the world population.
 
     2. To calculate the percentage, divide the given population value by 7900 and then multiply by 100.
@@ -43,3 +44,15 @@ const percentageOfFinland2 = percentageOfWorld2(6);
 const percentageOfVietnam2 = percentageOfWorld2(100);
 const percentageOfPortugal2 = percentageOfWorld2(10);
 console.log(percentageOfVietnam2 + "\n" + percentageOfFinland2 + "\n" + percentageOfPortugal2);
+
+/* ARROW FUNCTIONS ==================================================
+
+    Recreate the last assignment, but this time create an arrow function called percentageOfWorld3.
+*/
+
+const percentageOfWorld3 = populations => populations / 7900 * 100;
+
+const percentageOfFinland3 = percentageOfWorld3(6);
+const percentageOfVietnam3 = percentageOfWorld3(100);
+const percentageOfPortugal3 = percentageOfWorld3(10);
+console.log(percentageOfVietnam3 + "\n" + percentageOfFinland3 + "\n" + percentageOfPortugal3);

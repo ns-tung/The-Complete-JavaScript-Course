@@ -72,3 +72,22 @@ const calcExp = function (birthYear) {
 }
 const ageExp = calcExp(1990);
 console.log(ageExp);
+
+/* Arrow Functions ==================================================
+    
+    💠 An arrow function expression is a compact alternative to a traditional function expression, with some semantic differences and deliberate limitations in usage.
+*/
+
+const calcArr = birthYear => 2034 - birthYear;
+
+const ageArr = calcExp(1990);
+console.log(ageArr);
+
+const yearsUntilRetirement = (birthYear, firstName) => {
+  const age = 2034 - birthYear;
+  const retirement = 65 - age;
+  return `${firstName} reties in ${retirement} years.`;
+}
+
+console.log(yearsUntilRetirement(1990, "Tung"));
+console.log(yearsUntilRetirement(1991, "Jonas"));
