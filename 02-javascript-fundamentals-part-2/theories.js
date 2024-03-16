@@ -21,8 +21,8 @@ let hasDriversLicense = false;
 if (passTest) hasDriversLicense = true;
 if (hasDriversLicense) console.log("You can drive 😀");
 
-const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
-const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
+// const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
+// const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
 
 /* FUNCTIONS ==================================================
 
@@ -73,7 +73,7 @@ const calcExp = function (birthYear) {
 const ageExp = calcExp(1990);
 console.log(ageExp);
 
-/* Arrow Functions ==================================================
+/* ARROW FUNCTIONS ==================================================
     
     💠 An arrow function expression is a compact alternative to a traditional function expression, with some semantic differences and deliberate limitations in usage.
 */
@@ -91,3 +91,20 @@ const yearsUntilRetirement = (birthYear, firstName) => {
 
 console.log(yearsUntilRetirement(1990, "Tung"));
 console.log(yearsUntilRetirement(1991, "Jonas"));
+
+/* FUNCTIONS CALLING OTHER FUNCTIONS ==================================================
+
+*/
+
+function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+
+function fruitPiecesProcessor(apples, oranges) {
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
+  const juice = `Juice with ${applePieces} pieces of apple and ${orangePieces} pieces of orange.`;
+  return juice;
+}
+
+console.log(fruitPiecesProcessor(2, 3));
