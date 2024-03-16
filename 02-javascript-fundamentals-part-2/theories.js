@@ -21,8 +21,8 @@ let hasDriversLicense = false;
 if (passTest) hasDriversLicense = true;
 if (hasDriversLicense) console.log("You can drive 😀");
 
-const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
-const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
+// const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
+// const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
 
 /* FUNCTIONS ==================================================
 
@@ -159,3 +159,53 @@ console.log(age1, age2, age3); // 44 52 14
 
 const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])]
 console.log(ages); // ▶ (3) [44, 52, 14]
+
+/* BASIC ARRAY OPERATIONS (METHODS) ==================================================
+    
+    💠 Add element(s)
+        👉 push() – add element(s) to the end of the array.
+        👉 unshift() – add element(s) to the start of the array.
+    
+    💠 Remove element(s)
+        👉 pop() – remove the last element of the array.
+        👉 shift() – remove the first element of the array.
+
+    💠 push(), unshift() will return the length of the new array.
+
+    💠 pop(), shift() will return the removed element.
+
+    💠 indexOf() – return the index of the element in the array.
+
+    💠 includes() – return true if the element is in the array and false if it's not.
+*/
+
+
+const myFriends = ['Michael', 'Steven', 'Peter'];
+const friendsLength = myFriends.push('Jay');
+console.log(myFriends);  // ▶ (4) ['Michael', 'Steven', 'Peter', 'Jay']
+console.log(friendsLength); // 4
+
+myFriends.unshift('John');
+console.log(myFriends); // ▶ (5) ['John', 'Michael', 'Steven', 'Peter', 'Jay']
+
+myFriends.pop();
+const popped = myFriends.pop();
+console.log(popped); // Peter
+console.log(myFriends); // ▶ (3) ['John', 'Michael', 'Steven']
+
+myFriends.shift();
+console.log(myFriends); // ▶ (2) ['Michael', 'Steven']
+
+console.log(myFriends.indexOf('Steven')); // 1
+console.log(myFriends.indexOf('Bob')); // -1
+
+myFriends.push(34);
+console.log(myFriends); // ▶ (3) ['Michael', 'Steven', 34]
+console.log(myFriends.includes('Steven')); // true
+console.log(myFriends.includes('Bob')); // false
+console.log(myFriends.includes(34)); // true
+console.log(myFriends.includes('34')); // false
+
+if (myFriends.includes('Steven')) {
+  console.log('I have a friend called Steven');
+}
