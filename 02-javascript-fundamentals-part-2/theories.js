@@ -21,8 +21,8 @@ let hasDriversLicense = false;
 if (passTest) hasDriversLicense = true;
 if (hasDriversLicense) console.log("You can drive 😀");
 
-// const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
-// const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
+const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
+const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
 
 /* FUNCTIONS ==================================================
 
@@ -131,3 +131,31 @@ const yearsForRetirement = function (birthYear, firstName) {
 
 console.log(yearsForRetirement(1990, "Tung"));
 console.log(yearsForRetirement(1960, "Mike"));
+
+/* INTRODUCTION TO ARRAYS ==================================================
+
+    💠 The Array object, as with arrays in other programming languages, enables the store of a collection of multiple items under a single variable name, and has members for performing common array operations.
+*/
+
+const friends = ['Michael', 'Steven', 'Peter'];
+console.log(friends); // ▶ (3) ['Michael', 'Steven', 'Peter']
+console.log(friends.length); // 3
+console.log(friends[friends.length - 1]); // Peter
+
+const years = new Array(1990, 1982, 1991, 2008, 2020);
+console.log(years); // ▶ (5) [1990, 1982, 1991, 2008, 2020]
+
+friends[2] = 'Jay';
+console.log(friends); // ▶ (3) ['Michael', 'Steven', 'Jay']
+
+const tung = [firstName, 'Nguyen', calcAge(1990), 'coder', friends];
+console.log(tung); // ▶ (5) ['Tung', 'Nguyen', 44, 'coder', Array(3)]
+
+// Practice
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[1]);
+const age3 = calcAge(years[years.length - 1]);
+console.log(age1, age2, age3); // 44 52 14
+
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])]
+console.log(ages); // ▶ (3) [44, 52, 14]
