@@ -95,3 +95,16 @@ const percentages = [
   percentageOfWorld1(populations[3])
 ];
 console.log(percentages);
+
+/* INTRODUCTION TO OBJECTS ==================================================
+
+    Create an object called myCountry for a country of your choice, containing properties country, capital, language, population and neighbors (an array like we used in previous assignments).
+*/
+
+const myCountry = {
+  country: 'Vietnam',
+  capital: 'Hanoi',
+  language: 'Vietnamese',
+  population: 100,
+  neighbors: ['China', 'Laos', 'Cambodia'],
+}

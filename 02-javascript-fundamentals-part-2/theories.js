@@ -209,3 +209,26 @@ console.log(myFriends.includes('34')); // false
 if (myFriends.includes('Steven')) {
   console.log('I have a friend called Steven');
 }
+
+/* Introduction to Objects ==================================================
+    
+    💠 Array used for structured data.
+
+    💠 Object used for unstructured data.
+*/
+
+const tungArr = [
+  firstName,
+  'Nguyen',
+  calcAge(1990),
+  'coder',
+  friends
+];
+
+const tungObj = {
+  firstName,
+  lastName: 'Nguyen',
+  age: calcAge(1990),
+  job: 'coder',
+  friends
+}
