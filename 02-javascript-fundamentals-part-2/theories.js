@@ -21,8 +21,8 @@ let hasDriversLicense = false;
 if (passTest) hasDriversLicense = true;
 if (hasDriversLicense) console.log("You can drive 😀");
 
-// const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
-// const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
+const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
+const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
 
 /* FUNCTIONS ==================================================
 
@@ -232,3 +232,30 @@ const tungObj = {
   job: 'coder',
   friends
 }
+
+/* Dot vs.Bracket Notation ==================================================
+    
+    💠 Used to access an object's properties.
+*/
+
+console.log(tungObj);
+console.log(tungObj.firstName);
+console.log(tungObj['lastName']);
+
+const nameKey = 'Name';
+console.log(tungObj['first' + nameKey]);
+console.log(tungObj[`last${nameKey}`]);
+
+const interestedIn = prompt('What do you want to know about me? Choose between firstName, lastName, age, job, and friends?');
+
+if (tungObj[interestedIn]) {
+  console.log(tungObj[interestedIn]);
+} else {
+  console.log('Wrong request! Choose between firstName, lastName, age, job, and friends?');
+}
+
+tungObj.location = 'HCM';
+tungObj['twitter'] = '@tung-ns';
+console.log(tungObj);
+
+console.log(`${tungObj.firstName} has ${tungObj.friends.length} friends, and his best friend is called ${tungObj.friends[0]}.`);
