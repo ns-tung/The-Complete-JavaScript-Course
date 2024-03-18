@@ -116,9 +116,38 @@ const myCountry = {
     Increase the country's population by two million using dot notation, and then decrease it by two million using bracket notation.
 */
 
-console.log(`${myCountry.country} has ${myCountry.population} million finnish-speaking people, ${myCountry.neighbors.length} neighbouring countries and a capital called ${myCountry.capital}.`);
+console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbors.length} neighbouring countries, and a capital called ${myCountry.capital}.`);
 
 myCountry.population += 2;
 console.log(myCountry.population);
 myCountry['population'] -= 2;
 console.log(myCountry.population);
+
+/* OBJECT METHODS ==================================================
+
+    1. Add a method called describe to the myCountry object. This method will log a string to the console, similar to the string logged in the previous assignment, but this time using the 'this' keyword.
+
+    2. Call the describe method.
+
+    3. Add a method called checkIsland to the myCountry object. This method will set a new property on the object, called isIsland. isIsland will be true if there are no neighbouring countries, and false if there are. Use the ternary operator to set the property.
+*/
+
+const vietnam = {
+  country: 'Vietnam',
+  capital: 'Hanoi',
+  language: 'Vietnamese',
+  population: 100,
+  neighbors: ['China', 'Laos', 'Cambodia'],
+  describe: function () {
+    console.log(`${this['country']} has ${this['population']} million ${this['language']}-speaking people, ${this['neighbors'].length} neighbouring countries, and a capital called ${this['capital']}.`);
+  },
+  checkIsland: function () {
+    // this['isIsland'] = this['neighbors'].length === 0?true:false;
+    // this['isIsland'] = this['neighbors'].length === 0;
+    this['isIsland'] = !Boolean(this['neighbors'].length);
+  }
+}
+
+vietnam['describe']();
+vietnam['checkIsland']();
+console.log(vietnam);

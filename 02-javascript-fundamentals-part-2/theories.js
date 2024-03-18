@@ -259,3 +259,29 @@ tungObj['twitter'] = '@tung-ns';
 console.log(tungObj);
 
 console.log(`${tungObj.firstName} has ${tungObj.friends.length} friends, and his best friend is called ${tungObj.friends[0]}.`);
+
+/* OBJECT METHODS ==================================================
+
+    💠 The array is actually a special object.
+*/
+
+const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Schmedtman',
+  birthYear: 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Steven', 'Peter'],
+  hasDriversLicense: true,
+  calcAge: function () {
+    return this['age'] = 2034 - this['birthYear'];
+  },
+  getSummary: function () {
+    return `${this['firstName']} is a ${this['calcAge']()}-year old ${this['job']}, and he has ${this['hasDriversLicense'] ? 'a' : 'no'} driver's license.`
+  }
+}
+
+console.log(jonas.calcAge());
+console.log(jonas['calcAge']());
+console.log(jonas.age);
+console.log(jonas.getSummary());
+console.log(jonas['getSummary']());
