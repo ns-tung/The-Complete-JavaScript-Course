@@ -21,8 +21,8 @@ let hasDriversLicense = false;
 if (passTest) hasDriversLicense = true;
 if (hasDriversLicense) console.log("You can drive 😀");
 
-const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
-const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
+// const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
+// const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
 
 /* FUNCTIONS ==================================================
 
@@ -246,13 +246,13 @@ const nameKey = 'Name';
 console.log(tungObj['first' + nameKey]);
 console.log(tungObj[`last${nameKey}`]);
 
-const interestedIn = prompt('What do you want to know about me? Choose between firstName, lastName, age, job, and friends?');
+// const interestedIn = prompt('What do you want to know about me? Choose between firstName, lastName, age, job, and friends?');
 
-if (tungObj[interestedIn]) {
-  console.log(tungObj[interestedIn]);
-} else {
-  console.log('Wrong request! Choose between firstName, lastName, age, job, and friends?');
-}
+// if (tungObj[interestedIn]) {
+//   console.log(tungObj[interestedIn]);
+// } else {
+//   console.log('Wrong request! Choose between firstName, lastName, age, job, and friends?');
+// }
 
 tungObj.location = 'HCM';
 tungObj['twitter'] = '@tung-ns';
@@ -333,4 +333,20 @@ console.log('--- BREAK WITH NUMBER ---');
 for (let i = 0; i < jonasArray.length; i++) {
   if (typeof jonasArray[i] === 'number') break;
   console.log(jonasArray[i], '-> ' + typeof jonasArray[i]);
+}
+
+/* LOOPING BACKWARDS AND LOOPS IN LOOPS ==================================================
+
+*/
+
+jonasArray.push(true);
+for (let i = jonasArray.length - 1; i >= 0; i--) {
+  console.log(i, jonasArray[i]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`--- Starting exercise ${exercise}`);
+  for (let i = 1; i < 6; i++) {
+    console.log(`Exercise ${exercise}: Lifting weights repetition ${i} 🏋️‍♂️`)
+  }
 }
