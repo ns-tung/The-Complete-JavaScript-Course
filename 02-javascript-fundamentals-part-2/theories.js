@@ -21,8 +21,8 @@ let hasDriversLicense = false;
 if (passTest) hasDriversLicense = true;
 if (hasDriversLicense) console.log("You can drive 😀");
 
-// const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
-// const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
+const interface = "Audio"; // 🚫 SyntaxError: Unexpected strict mode reserved word
+const private = 34; // 🚫 SyntaxError: Unexpected strict mode reserved word
 
 /* FUNCTIONS ==================================================
 
@@ -246,13 +246,13 @@ const nameKey = 'Name';
 console.log(tungObj['first' + nameKey]);
 console.log(tungObj[`last${nameKey}`]);
 
-// const interestedIn = prompt('What do you want to know about me? Choose between firstName, lastName, age, job, and friends?');
+const interestedIn = prompt('What do you want to know about me? Choose between firstName, lastName, age, job, and friends?');
 
-// if (tungObj[interestedIn]) {
-//   console.log(tungObj[interestedIn]);
-// } else {
-//   console.log('Wrong request! Choose between firstName, lastName, age, job, and friends?');
-// }
+if (tungObj[interestedIn]) {
+  console.log(tungObj[interestedIn]);
+} else {
+  console.log('Wrong request! Choose between firstName, lastName, age, job, and friends?');
+}
 
 tungObj.location = 'HCM';
 tungObj['twitter'] = '@tung-ns';
@@ -348,5 +348,25 @@ for (let exercise = 1; exercise < 4; exercise++) {
   console.log(`--- Starting exercise ${exercise}`);
   for (let i = 1; i < 6; i++) {
     console.log(`Exercise ${exercise}: Lifting weights repetition ${i} 🏋️‍♂️`)
+  }
+}
+
+/* THE WHILE LOOP ==================================================
+
+*/
+
+let rep = 1;
+while (rep <= 10) {
+  console.log(`Lifting weights repetition ${rep} 🏋️‍♂️.`);
+  rep++;
+}
+
+// Roll a dice until it equals 6, then stop.
+let dice = Math.trunc(Math.random() * 6) + 1;
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}.`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) {
+    console.log('--- Loop is about to end ...')
   }
 }
