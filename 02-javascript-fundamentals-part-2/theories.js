@@ -294,3 +294,43 @@ console.log(jonas['getSummary']());
 for (let rep = 1; rep <= 30; rep++) {
   console.log(`Lifting weights repetition ${rep} 🏋️‍♂️.`);
 }
+/* LOOPING ARRAYS, BREAKING AND CONTINUING ==================================================
+
+*/
+
+const jonasArray = [
+  'Jonas', 'Schmedtman', 2034 - 1990, 'teacher', ['Michael', 'Steven', 'Peter']
+]
+
+const types = [];
+
+for (let i = 0; i < jonasArray.length; i++) {
+
+  // Reading form jonasArray
+  console.log(jonasArray[i]);
+
+  // Filling types array
+  // types[i] = typeof jonasArray[i];
+  types.push(typeof jonasArray[i]);
+}
+console.log(types);
+
+const yearArray = [1990, 2008, 1982, 2020];
+const agesArray = [];
+
+for (let i = 0; i < yearArray.length; i++) {
+  agesArray.push(2034 - yearArray[i]);
+}
+console.log(agesArray);
+
+// Continue and Break
+console.log('--- ONLY STRING ---');
+for (let i = 0; i < jonasArray.length; i++) {
+  if (typeof jonasArray[i] !== 'string') continue;
+  console.log(jonasArray[i], '-> ' + typeof jonasArray[i]);
+}
+console.log('--- BREAK WITH NUMBER ---');
+for (let i = 0; i < jonasArray.length; i++) {
+  if (typeof jonasArray[i] === 'number') break;
+  console.log(jonasArray[i], '-> ' + typeof jonasArray[i]);
+}
