@@ -285,3 +285,12 @@ console.log(jonas['calcAge']());
 console.log(jonas.age);
 console.log(jonas.getSummary());
 console.log(jonas['getSummary']());
+
+/* ITERATION: THE FOR LOOP ==================================================
+
+    💠 For loop, keep running while the condition is TRUE
+*/
+
+for (let rep = 1; rep <= 30; rep++) {
+  console.log(`Lifting weights repetition ${rep} 🏋️‍♂️.`);
+}

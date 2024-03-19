@@ -164,11 +164,11 @@
     <script src="../assets/vendor/prismjs/prism.js" defer></script>
     <script>
       window.onload = function () {
-        const links = document.querySelectorAll("a.token.url-link[href]");
-        links.forEach((link) => {
-          link.addEventListener("click", (event) => {
+        const links = document.querySelectorAll('a.token.url-link[href]');
+        links.forEach(link => {
+          link.addEventListener('click', event => {
             event.preventDefault();
-            window.open(link.href, "_blank");
+            window.open(link.href, '_blank');
           });
         });
       };
