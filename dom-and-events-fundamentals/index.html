@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DOM and Events Fundamentals | Tung Nguyen</title>
+    <meta name="copyright" content="Tung Nguyen | github.com/ns-tung" />
+    <meta name="author" content="Tung Nguyen | github.com/ns-tung" />
+    <meta
+      property="og:site_name"
+      content="The Complete JavaScript Course | Tung Nguyen"
+    />
+    <meta
+      property="og:title"
+      content="DOM and Events Fundamentals | Tung Nguyen"
+    />
+    <meta property="og:description" content="DOM and Events Fundamentals" />
+    <meta property="og:url" content="/dom-and-events-fundamentals" />
+    <meta
+      property="og:image"
+      content="/dom-and-events-fundamentals/banner.png"
+    />
+    <meta property="og:image:alt" content="DOM and Events Fundamentals" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../assets/images/js-logo.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.min.css"
+    />
+    <!-- <link rel="stylesheet" href="../assets/vendor/prismjs/prism.css" /> -->
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+
+  <body class="page user-select-none">
+    <header class="header sticky-top">
+      <nav class="navbar">
+        <div class="container align-items-center">
+          <div class="navbar-brand p-0">
+            <a class="d-flex align-items-center lh-sm text-reset" href="/">
+              <span
+                class="avatar d-none d-sm-block me-sm-2"
+                style="background-image: url(/assets/images/js-logo.svg)"
+              ></span>
+              <div class="d-block">
+                <div class="fs-3">The Complete JavaScript Course</div>
+                <div class="fw-normal fs-4 text-secondary">
+                  From Zero to Expert!
+                </div>
+              </div>
+            </a>
+          </div>
+          <a
+            href="https://github.com/ns-tung"
+            class="d-flex align-items-center lh-1 text-reset"
+          >
+            <span
+              class="avatar d-none d-sm-block"
+              style="background-image: url(/assets/images/avatar.jpg)"
+            ></span>
+            <span
+              class="avatar avatar-lg d-block d-sm-none"
+              style="background-image: url(/assets/images/avatar.jpg)"
+            ></span>
+            <div class="d-none d-sm-block ps-2">
+              <div class="lh-lg fw-bold">Tung Nguyen</div>
+              <div class="mt-1 small text-secondary">A Lifelong Leaner</div>
+            </div>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-wrapper">
+      <div class="page-body">
+        <div class="container">
+          <div class="page-header mt-0 mb-2 my-sm-3">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a class="link cursor-pointer" href="/"> Go back </a>
+              </li>
+              <li class="breadcrumb-item active">
+                <div class="d-flex align-items-center">
+                  <i
+                    class="ti ti-circle-check-filled fs-3 me-1"
+                    style="color: var(--tblr-blue-darken)"
+                  ></i>
+                  <span>DOM and Events Fundamentals</span>
+                  <span class="text-secondary ms-1"
+                    >(Updating coming soon)</span
+                  >
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="card overflow-hidden">
+            <img
+              src="/dom-and-events-fundamentals/banner.png"
+              alt="DOM and Events Fundamentals"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row text-center align-items-center flex-row-reverse">
+          <div class="col-sm-auto ms-sm-auto">
+            <a href="https://www.netlify.com">
+              <img
+                class="img-netlify"
+                src="https://www.netlify.com/v3/img/components/netlify-color-bg.svg"
+                alt="Deploys by Netlify"
+              />
+            </a>
+          </div>
+          <div class="col-12 col-sm-auto mt-3 mt-sm-0">
+            <ul class="list-inline list-inline-dots mb-0">
+              <li class="list-inline-item">
+                2024 ©
+                <a
+                  href="https://tungns.dev"
+                  class="link-muted"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >tungns.dev</a
+                >
+              </li>
+              <li class="list-inline-item">
+                Made with
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
+                  />
+                </svg>
+                in Vietnam
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- <script src="../assets/vendor/prismjs/prism.js" defer></script> -->
+    <script>
+      window.onload = function () {
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        const links = document.querySelectorAll('a.token.url-link[href]');
+        links.forEach(link => {
+          link.addEventListener('click', event => {
+            event.preventDefault();
+            window.open(link.href, '_blank');
+          });
+        });
+      };
+    </script>
+  </body>
+</html>

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Fundamentals – Part 2 | Tung Nguyen</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Setting Up Git and Deployment | Tung Nguyen</title>
     <meta name="copyright" content="Tung Nguyen | github.com/ns-tung" />
     <meta name="author" content="Tung Nguyen | github.com/ns-tung" />
     <meta
@@ -12,32 +13,30 @@
     />
     <meta
       property="og:title"
-      content="JavaScript Fundamentals – Part 2 | Tung Nguyen"
+      content="Setting Up Git and Deployment | Tung Nguyen"
     />
-    <meta
-      property="og:description"
-      content="JavaScript Fundamentals – Part 2"
-    />
-    <meta
-      property="og:url"
-      content="https://the-complete-javascript-course.netlify.app/02-javascript-fundamentals-part-2"
-    />
+    <meta property="og:description" content="Setting Up Git and Deployment" />
+    <meta property="og:url" content="/setting-up-git-and-deployment" />
     <meta
       property="og:image"
-      content="https://the-complete-javascript-course.netlify.app/assets/images/javascript-fundamentals-part-2.png"
+      content="/setting-up-git-and-deployment/banner.png"
     />
-    <meta property="og:image:alt" content="JavaScript Fundamentals – Part 2" />
+    <meta property="og:image:alt" content="Setting Up Git and Deployment" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="../assets/images/js-logo.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.css"
     />
-    <link rel="stylesheet" href="../assets/vendor/prismjs/prism.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.min.css"
+    />
+    <!-- <link rel="stylesheet" href="../assets/vendor/prismjs/prism.css" /> -->
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
 
-  <body class="page">
+  <body class="page user-select-none">
     <header class="header sticky-top">
       <nav class="navbar">
         <div class="container align-items-center">
@@ -85,32 +84,22 @@
                 <a class="link cursor-pointer" href="/"> Go back </a>
               </li>
               <li class="breadcrumb-item active">
-                <span>02. JavaScript Fundamentals – Part 2</span>
+                <div class="d-flex align-items-center">
+                  <i
+                    class="ti ti-circle fs-3 me-1"
+                    style="color: var(--tblr-blue-darken)"
+                  ></i>
+                  <span>Setting Up Git and Deployment</span>
+                  <span class="text-secondary ms-1">(Incomplete)</span>
+                </div>
               </li>
             </ol>
           </div>
           <div class="card overflow-hidden">
             <img
-              src="/assets/images/javascript-fundamentals-part-2.png"
-              alt="JavaScript Fundamentals – Part 2"
+              src="/setting-up-git-and-deployment/banner.png"
+              alt="Setting Up Git and Deployment"
             />
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="hr-text hr-text-left mb-3">
-                <!-- What I typed while learning -->
-                Theories
-              </div>
-              <pre class="line-numbers" data-src="theories.js"></pre>
-            </div>
-            <div class="col-lg-6">
-              <div class="hr-text hr-text-left mb-3">Practice Assignments</div>
-              <pre class="line-numbers" data-src="assignments.js"></pre>
-            </div>
-            <div class="col-lg-6">
-              <div class="hr-text hr-text-left mb-3">Coding Exercises</div>
-              <pre class="line-numbers" data-src="exercises.js"></pre>
-            </div>
           </div>
         </div>
       </div>
@@ -161,9 +150,10 @@
       </div>
     </footer>
 
-    <script src="../assets/vendor/prismjs/prism.js" defer></script>
+    <!-- <script src="../assets/vendor/prismjs/prism.js" defer></script> -->
     <script>
       window.onload = function () {
+        document.addEventListener('contextmenu', e => e.preventDefault());
         const links = document.querySelectorAll('a.token.url-link[href]');
         links.forEach(link => {
           link.addEventListener('click', event => {

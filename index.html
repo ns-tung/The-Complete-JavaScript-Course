@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>The Complete JavaScript Course | Tung Nguyen</title>
     <meta name="copyright" content="Tung Nguyen | github.com/ns-tung" />
     <meta name="author" content="Tung Nguyen | github.com/ns-tung" />
@@ -16,16 +17,10 @@
     />
     <meta
       property="og:description"
-      content="The Complete JavaScript Course: The modern JavaScript course is for those who want to become A Master of JavaScript with projects, challenges, and theory."
+      content="This website showcases my progress through 'The Complete JavaScript Course'. Each title corresponds to a specific topic, and the mini-learning web apps within each section serve as a testament to my growing knowledge and mastery of JavaScript."
     />
-    <meta
-      property="og:url"
-      content="https://the-complete-javascript-course.netlify.app"
-    />
-    <meta
-      property="og:image"
-      content="https://the-complete-javascript-course.netlify.app/assets/images/the-complete-javascript-course.png"
-    />
+    <meta property="og:url" content="/" />
+    <meta property="og:image" content="/assets/images/banner.png" />
     <meta
       property="og:image:alt"
       content="The Complete JavaScript Course: The modern JavaScript course is for those who want to become A Master of JavaScript with projects, challenges, and theory."
@@ -36,10 +31,14 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.min.css"
+    />
     <link rel="stylesheet" href="/assets/styles.css" />
   </head>
 
-  <body class="page">
+  <body class="page user-select-none">
     <header class="header sticky-top">
       <nav class="navbar">
         <div class="container align-items-center">
@@ -81,35 +80,247 @@
     <div class="page-wrapper">
       <div class="page-body">
         <div class="container">
-          <a
-            target="_blank"
-            href="https://github.com/ns-tung/The-Complete-JavaScript-Course"
-            title="View github repository"
-          >
-            <div class="card overflow-hidden mt-0 mt-sm-4 mb-4">
-              <img
-                src="/assets/images/the-complete-javascript-course.png"
-                alt="The Complete JavaScript Course"
-              />
-            </div>
-          </a>
-          <div class="h2 mb-2">Course content</div>
+          <div>
+            <p class="fs-3">
+              This website showcases my progress through
+              <a
+                class="text-decoration-underline"
+                href="https://www.udemy.com/course/the-complete-javascript-course"
+                target="_blank"
+                title="The Complete JavaScript Course 2024: From Zero to Expert!"
+                >The Complete JavaScript Course</a
+              >. Each title below the
+              <a href="#content"><b>course content</b></a> corresponds to a
+              specific topic, and the mini-learning web apps within each section
+              serve as a testament to my growing knowledge and mastery of
+              JavaScript.
+            </p>
+            <a
+              target="_blank"
+              href="https://github.com/ns-tung/The-Complete-JavaScript-Course"
+              title="View github repository"
+            >
+              <div class="card overflow-hidden mt-0 mt-sm-4 mb-4">
+                <img
+                  src="/assets/images/banner.png"
+                  alt="The Complete JavaScript Course"
+                />
+              </div>
+            </a>
+            <p class="fs-3">
+              <b>
+                Beyond JavaScript theories, this website is a living record of
+                my learning journey</b
+              >. I've diligently documented my progress in code, providing a
+              detailed and insightful look into my understanding of JavaScript
+              concepts and my ability to apply them in real-world applications.
+            </p>
+            <p class="fs-3 strong">
+              Feel free to explore each project and join me on this exciting
+              journey of becoming an advanced, confident, modern JavaScript
+              developer!
+            </p>
+          </div>
+          <div id="content"></div>
+          <div class="hr-text hr-text-left fs-3">Course content</div>
           <div class="card">
-            <div class="card-body">
-              <nav class="d-flex flex-column">
+            <div class="card-body p-4">
+              <!-- <nav></nav> -->
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
                 <a
-                  class="p-0 mb-3 mb-sm-2 text-body link-primary link-underline-hover"
-                  href="/01-javascript-fundamentals-part-1"
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/javascript-fundamentals-part-1"
                 >
-                  <b>01.</b> JavaScript Fundamentals – Part 1
+                  JavaScript Fundamentals – Part 1
                 </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
                 <a
-                  class="p-0 mb-3 mb-sm-2 text-body link-primary link-underline-hover"
-                  href="/02-javascript-fundamentals-part-2"
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/javascript-fundamentals-part-2"
                 >
-                  <b>02.</b> JavaScript Fundamentals – Part 2
+                  JavaScript Fundamentals – Part 2
                 </a>
-              </nav>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/developer-skills-and-editor-setup"
+                >
+                  Developer Skills & Editor Setup
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/html-css-crash-course"
+                >
+                  HTML & CSS Crash Course
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/dom-and-events-fundamentals"
+                >
+                  DOM and Events Fundamentals
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/how-javascript-works-behind-the-scenes"
+                >
+                  How JavaScript Works Behind the Scenes
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/data-structures-modern-operators-and-strings"
+                >
+                  Data Structures, Modern Operators and Strings
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/a-closer-look-at-functions"
+                >
+                  A Closer Look at Functions
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/working-with-arrays"
+                >
+                  Working With Arrays
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <img
+                  class="img-fluid me-1"
+                  src="/assets/images/hourglass.gif"
+                  alt="hourglass"
+                  width="20"
+                />
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/numbers-dates-intl-and-timers"
+                >
+                  Numbers, Dates, Intl and Timers</a
+                >
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/advanced-dom-and-events"
+                >
+                  Advanced DOM and Events
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/object-oriented-programming-with-javascript"
+                >
+                  Object-Oriented Programming (OOP) With JavaScript
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/oop-geolocation-external-libraries-and-more"
+                >
+                  OOP, Geolocation, External Libraries, and More!
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/promises-async-await-and-ajax"
+                >
+                  Asynchronous JavaScript: Promises, Async/Await, and AJAX
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/modules-tooling-and-functional"
+                >
+                  Modern JavaScript Development: Modules, Tooling, and
+                  Functional
+                </a>
+              </div>
+              <div class="d-flex align-items-center">
+                <i
+                  class="ti ti-circle fs-2 me-1"
+                  style="color: var(--tblr-blue-darken)"
+                ></i>
+                <a
+                  class="fs-3 link-primary link-underline-hover"
+                  href="/setting-up-git-and-deployment"
+                >
+                  Setting Up Git and Deployment
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -160,5 +371,8 @@
         </div>
       </div>
     </footer>
+    <script>
+      document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
   </body>
 </html>
