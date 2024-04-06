@@ -45,7 +45,6 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.min.css"
     />
-    <!-- <link rel="stylesheet" href="../_assets/vendor/prismjs/prism.css" /> -->
     <link rel="stylesheet" href="../_assets/styles.css" />
   </head>
 
@@ -100,12 +99,9 @@
                 <div class="d-flex align-items-center">
                   <i
                     class="ti ti-circle-check-filled fs-3 me-1"
-                    style="color: var(--tblr-blue-darken)"
+                    style="color: var(--tblr-green-darken)"
                   ></i>
                   <span>HTML & CSS Crash Course</span>
-                  <span class="text-secondary ms-1"
-                    >(Updating coming soon)</span
-                  >
                 </div>
               </li>
             </ol>
@@ -115,6 +111,39 @@
               src="/html-css-crash-course/banner.png"
               alt="HTML & CSS Crash Course"
             />
+          </div>
+          <div class="hr-text hr-text-left fs-3">Section content</div>
+          <div class="card">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Basic HTML Structure and Elements</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3"> Attributes, Classes and IDs </span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Basic Styling with CSS</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Introduction to the CSS Box Model</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -165,18 +194,8 @@
       </div>
     </footer>
 
-    <!-- <script src="../_assets/vendor/prismjs/prism.js" defer></script> -->
     <script>
-      window.onload = function () {
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        const links = document.querySelectorAll('a.token.url-link[href]');
-        links.forEach(link => {
-          link.addEventListener('click', event => {
-            event.preventDefault();
-            window.open(link.href, '_blank');
-          });
-        });
-      };
+      document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
   </body>
 </html>
