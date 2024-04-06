@@ -64,3 +64,51 @@ const calcTempAmp = function (t1, t2) {
 };
 const amp = calcTempAmp([3, 5, 1], [9, 0, 5]);
 console.log(amp);
+
+/* DEBUGGING WITH THE CONSOLE AND BREAKPOINTS ==================================================
+
+*/
+
+const measureKelvin = function () {
+  const measurement = {
+    type: 'temp',
+    unit: 'celsius',
+    // value: prompt('Degree celsius:'),
+    value: Number(prompt('Degrees celsius:')), // 👉 C) FIX
+  };
+
+  console.table(measurement); // 👉 B) FIND
+  // console.log(measurement.value);
+  // console.warn(measurement.value);
+  // console.error(measurement.value);
+
+  const kelvin = measurement.value + 273;
+  return kelvin;
+};
+
+console.log(measureKelvin()); // 👉 A) IDENTIFY
+
+/* USING A DEBUGGER ==================================================
+
+*/
+
+const calcTempAmplitudeBug = function (t1, t2) {
+  const temps = t1.concat(t2);
+  console.log(temps);
+
+  let max = 0; // 🚫 bug from here
+  let min = 0; // 🚫 bug from here
+
+  for (let i = 0; i < temps.length; i++) {
+    const curTemp = temps[i];
+    if (typeof curTemp !== 'number') continue;
+    debugger; // 👉 use debugger for find bug
+    if (curTemp > max) max = curTemp;
+    if (curTemp < min) min = curTemp;
+  }
+  console.log(max, min);
+  return max - min;
+};
+
+const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 4, 5]);
+console.log(amplitudeBug); // 👉 IDENTIFY
