@@ -29,21 +29,17 @@
       content="https://javascript-tungns.netlify.app/working-with-arrays/banner.png"
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <link
-      rel="icon"
-      href="../_assets/images/js-logo.svg"
-      type="image/svg+xml"
-    />
+    <link rel="icon" href="/_assets/images/js-logo.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.css"
+      href="https://cdn.jsdelivr.net/npm/@tabler/core/dist/css/tabler.css"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.min.css"
     />
-    <!-- <link rel="stylesheet" href="../_assets/vendor/prismjs/prism.css" /> -->
-    <link rel="stylesheet" href="../_assets/styles.css" />
+    <!-- <link rel="stylesheet" href="/_assets/vendor/prismjs/prism.css" /> -->
+    <link rel="stylesheet" href="/_assets/styles.css" />
   </head>
 
   <body class="page user-select-none">
@@ -162,18 +158,7 @@
       </div>
     </footer>
 
-    <!-- <script src="../_assets/vendor/prismjs/prism.js" defer></script> -->
-    <script>
-      window.onload = function () {
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        const links = document.querySelectorAll('a.token.url-link[href]');
-        links.forEach(link => {
-          link.addEventListener('click', event => {
-            event.preventDefault();
-            window.open(link.href, '_blank');
-          });
-        });
-      };
-    </script>
+    <!-- <script src="/_assets/vendor/prismjs/prism.js" defer></script> -->
+    <script type="module" src="/_assets/scripts.js"></script>
   </body>
 </html>

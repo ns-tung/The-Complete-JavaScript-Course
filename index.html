@@ -44,7 +44,7 @@
     <link rel="icon" href="/_assets/images/js-logo.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.css"
+      href="https://cdn.jsdelivr.net/npm/@tabler/core/dist/css/tabler.css"
     />
     <link
       rel="stylesheet"
@@ -95,33 +95,47 @@
     <div class="page-wrapper">
       <div class="page-body">
         <div class="container">
-          <div>
-            <p class="fs-3">
-              This website showcases my progress through
-              <a
-                class="text-decoration-underline"
-                href="https://www.udemy.com/course/the-complete-javascript-course"
-                target="_blank"
-                title="The Complete JavaScript Course 2024: From Zero to Expert!"
-                >The Complete JavaScript Course</a
-              >. Each title below the
-              <a href="#content"><b>course content</b></a> corresponds to a
-              specific topic, and the mini-learning web apps within each section
-              serve as a testament to my growing knowledge and mastery of
-              JavaScript.
-            </p>
+          <div class="text-description fs-3">
+            This website showcases my progress through
             <a
+              class="text-decoration-underline"
+              href="https://www.udemy.com/course/the-complete-javascript-course"
               target="_blank"
-              href="https://github.com/ns-tung/The-Complete-JavaScript-Course"
-              title="View github repository"
+              role="tooltip"
+              title="The Complete JavaScript Course 2024: From Zero to Expert!"
+              >The Complete JavaScript Course</a
             >
-              <div class="card overflow-hidden mt-0 mt-sm-4 mb-4">
-                <img
-                  src="/_assets/images/banner-light.png"
-                  alt="The Complete JavaScript Course"
-                />
-              </div>
-            </a>
+            <div
+              class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
+              style="background: var(--tblr-gray-dark); display: none"
+            >
+              <p class="fs-3 text-white">
+                The Complete JavaScript Course 2024: From Zero to Expert!
+              </p>
+              <img
+                class="img-fluid rounded-2"
+                src="https://img-b.udemycdn.com/course/750x422/851712_fc61_6.jpg"
+              />
+            </div>
+            . Each title below the
+            <a href="#content"><b>course content</b></a> corresponds to a
+            specific topic, and the mini-learning web apps within each section
+            serve as a testament to my growing knowledge and mastery of
+            JavaScript.
+          </div>
+          <a
+            target="_blank"
+            href="https://github.com/ns-tung/The-Complete-JavaScript-Course"
+            title="View github repository"
+          >
+            <div class="card overflow-hidden mt-0 mt-sm-4 mb-4">
+              <img
+                src="/_assets/images/banner-light.png"
+                alt="The Complete JavaScript Course"
+              />
+            </div>
+          </a>
+          <div class="text-description">
             <p class="fs-3">
               <b>
                 Beyond JavaScript theories, this website is a living record of
@@ -130,6 +144,8 @@
               detailed and insightful look into my understanding of JavaScript
               concepts and my ability to apply them in real-world applications.
             </p>
+          </div>
+          <div class="text-description">
             <p class="fs-3 strong">
               Feel free to explore each project and join me on this exciting
               journey of becoming an advanced, confident, modern JavaScript
@@ -140,7 +156,6 @@
           <div class="hr-text hr-text-left fs-3">Course content</div>
           <div class="card">
             <div class="card-body p-4">
-              <!-- <nav></nav> -->
               <div class="d-flex align-items-center mb-3">
                 <i
                   class="ti ti-circle-check-filled fs-2 me-1"
@@ -192,13 +207,56 @@
               <div class="d-flex align-items-center mb-3">
                 <i
                   class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-blue-darken)"
+                  style="color: var(--tblr-green-darken)"
                 ></i>
                 <a
                   class="fs-3 link-primary link-underline-hover"
                   href="/dom-and-events-fundamentals"
                 >
                   DOM and Events Fundamentals
+                </a>
+                <a
+                  class="text-decoration-none mx-1"
+                  href="https://gmn-tungns.netlify.app"
+                  target="_blank"
+                  style="padding-bottom: 0.1rem"
+                >
+                  <img
+                    class="img-fluid me-1"
+                    src="/_assets/images/mona.gif"
+                    alt="hourglass"
+                    width="20"
+                    title="Guess My Number"
+                    role="tooltip"
+                  />
+                  <div
+                    class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
+                    style="background: var(--tblr-gray-dark); display: none"
+                  >
+                    <p class="fs-3 text-white">Guess My Number</p>
+                    <img
+                      class="img-fluid rounded-2"
+                      src="/dom-and-events-fundamentals/guess-my-number.png"
+                    />
+                  </div>
+                </a>
+                <a
+                  class="text-decoration-none"
+                  href="https://javascript-tungns.netlify.app"
+                  target="_blank"
+                  style="padding-top: 0.1rem"
+                >
+                  <span role="tooltip" title="The Pig Game">🎲</span>
+                  <div
+                    class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
+                    style="background: var(--tblr-gray-dark); display: none"
+                  >
+                    <p class="fs-3 text-white">The Pig Game</p>
+                    <img
+                      class="img-fluid rounded-2"
+                      src="/dom-and-events-fundamentals/the-pig-game.png"
+                    />
+                  </div>
                 </a>
               </div>
               <div class="d-flex align-items-center mb-3">
@@ -386,8 +444,6 @@
         </div>
       </div>
     </footer>
-    <script>
-      document.addEventListener('contextmenu', e => e.preventDefault());
-    </script>
+    <script type="module" src="/_assets/scripts.js"></script>
   </body>
 </html>

@@ -35,21 +35,17 @@
       content="https://javascript-tungns.netlify.app/dom-and-events-fundamentals/banner.png"
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <link
-      rel="icon"
-      href="../_assets/images/js-logo.svg"
-      type="image/svg+xml"
-    />
+    <link rel="icon" href="/_assets/images/js-logo.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.css"
+      href="https://cdn.jsdelivr.net/npm/@tabler/core/dist/css/tabler.css"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.min.css"
     />
-    <!-- <link rel="stylesheet" href="../_assets/vendor/prismjs/prism.css" /> -->
-    <link rel="stylesheet" href="../_assets/styles.css" />
+    <!-- <link rel="stylesheet" href="/_assets/vendor/prismjs/prism.css" /> -->
+    <link rel="stylesheet" href="/_assets/styles.css" />
   </head>
 
   <body class="page user-select-none">
@@ -103,12 +99,9 @@
                 <div class="d-flex align-items-center">
                   <i
                     class="ti ti-circle-check-filled fs-3 me-1"
-                    style="color: var(--tblr-blue-darken)"
+                    style="color: var(--tblr-green-darken)"
                   ></i>
                   <span>DOM and Events Fundamentals</span>
-                  <span class="text-secondary ms-1"
-                    >(Updating coming soon)</span
-                  >
                 </div>
               </li>
             </ol>
@@ -118,6 +111,102 @@
               src="/dom-and-events-fundamentals/banner.png"
               alt="DOM and Events Fundamentals"
             />
+          </div>
+          <div class="hr-text hr-text-left fs-3">Section content</div>
+          <div class="card">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">What's the DOM and DOM Manipulation</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Selecting and Manipulating Elements</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Handling Click Events</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Manipulating CSS Styles</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3"
+                  >Refactoring Our Code: The DRY Principle</span
+                >
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <img
+                  class="img-fluid me-1"
+                  src="/_assets/images/mona.gif"
+                  alt="hourglass"
+                  width="20"
+                  role="tooltip"
+                />
+                <a
+                  role="tooltip"
+                  class="fs-3 text-reset"
+                  href="https://gmn-tungns.netlify.app"
+                  target="_blank"
+                  >Guess My Number Game</a
+                >
+                <div
+                  class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
+                  style="background: var(--tblr-gray-dark); display: none"
+                >
+                  <p class="fs-3 text-white">Guess My Number Game</p>
+                  <img class="img-fluid rounded-2" src="guess-my-number.png" />
+                </div>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Working With Classes</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Handling Keypress Event</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <span class="fs-3 mx-1" title="The Pig Game">🎲</span>
+                <a
+                  role="tooltip"
+                  class="fs-3 text-reset"
+                  href="https://thepiggame-tungns.netlify.app"
+                  target="_blank"
+                  >The Pig Game</a
+                >
+                <div
+                  class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
+                  style="background: var(--tblr-gray-dark); display: none"
+                >
+                  <p class="fs-3 text-white">The Pig Game</p>
+                  <img class="img-fluid rounded-2" src="the-pig-game.png" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -168,18 +257,7 @@
       </div>
     </footer>
 
-    <!-- <script src="../_assets/vendor/prismjs/prism.js" defer></script> -->
-    <script>
-      window.onload = function () {
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        const links = document.querySelectorAll('a.token.url-link[href]');
-        links.forEach(link => {
-          link.addEventListener('click', event => {
-            event.preventDefault();
-            window.open(link.href, '_blank');
-          });
-        });
-      };
-    </script>
+    <!-- <script src="/_assets/vendor/prismjs/prism.js" defer></script> -->
+    <script type="module" src="/_assets/scripts.js"></script>
   </body>
 </html>
