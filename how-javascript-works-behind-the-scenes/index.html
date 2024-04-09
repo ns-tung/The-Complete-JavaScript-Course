@@ -53,7 +53,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.min.css"
     />
-    <!-- <link rel="stylesheet" href="/_assets/vendor/prismjs/prism.css" /> -->
+    <link rel="stylesheet" href="/_assets/vendor/prismjs/prism.css" />
     <link rel="stylesheet" href="/_assets/styles.css" />
   </head>
 
@@ -111,9 +111,7 @@
                     style="color: var(--tblr-blue-darken)"
                   ></i>
                   <span>How JavaScript Works Behind the Scenes</span>
-                  <span class="text-secondary ms-1"
-                    >(Updating coming soon)</span
-                  >
+                  <span class="text-secondary ms-1">(Updating ...)</span>
                 </div>
               </li>
             </ol>
@@ -124,6 +122,79 @@
               alt="How JavaScript Works Behind the Scenes"
             />
           </div>
+          <div class="hr-text hr-text-left fs-3">Section content</div>
+          <div class="card">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">An High-Level Overview of JavaScript</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">The JavaScript Engine and Runtime</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Execution Contexts and The Call Stack</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Scope and The Scope Chain</span>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3"
+                  >Variable Environment: Hoisting and The TDZ</span
+                >
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3"
+                  >The
+                  <code class="text-red" style="background: var(--tblr-red-lt)"
+                    >this</code
+                  >
+                  Keyword</span
+                >
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Arrow Functions</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3"
+                  >Primitives vs. Objects (Primitive vs. Reference Types)</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="hr-text hr-text-left fs-3">Theories</div>
+          <pre class="line-numbers" data-src="theories.js"></pre>
         </div>
       </div>
     </div>
@@ -173,7 +244,8 @@
       </div>
     </footer>
 
-    <!-- <script src="/_assets/vendor/prismjs/prism.js" defer></script> -->
+    <script src="/_assets/vendor/prismjs/prism.js" defer></script>
+    <script src="theories.js"></script>
     <script type="module" src="/_assets/scripts.js"></script>
   </body>
 </html>
