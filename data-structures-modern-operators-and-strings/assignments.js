@@ -1,3 +1,5 @@
+'use strict';
+
 /* 
   DESTRUCTURING ARRAYS ==================================================
 
@@ -14,8 +16,6 @@
       const ratingStars = [63405, 1808];
 */
 
-const books = ['a', 'b', 'c', 'd'];
-
 // 1.
 const [firstBook, secondBook] = books;
 
@@ -29,3 +29,74 @@ const [[, rating], [, ratingsCount]] = ratings;
 // 4.
 const ratingStars = [63405, 1808];
 const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
+
+/* 
+  DESTRUCTURING OBJECTS ==================================================
+
+    1. Destructure the first book object from the books array into variables called title, author and ISBN.
+
+    2. Each book object has the keywords property. Destructure the first book object from the books array into a variable called tags. The tags variable should be assigned with the value of the keywords property.
+
+    3. The seventh book from the books array is missing the programmingLanguage property. Destructure the seventh book object (books[6]) into variables called language and programmingLanguage. Assign the programmingLanguage variable with a default value of 'unknown'.
+
+    4. Below are two variables called bookTitle and bookAuthor. Reassign them with the values of the title and author properties of the first book object from the books array.
+
+      let bookTitle = 'unknown';
+      let bookAuthor = 'unknown';
+
+    5. Each book object has a deeply nested rating property as illustrated below:
+
+      {
+        title: 'Algorithms',
+        ...
+        thirdParty: {
+          goodReads: {
+            rating: 4.41,              // <-- HERE
+            ratingsCount: 1733,
+            reviewsCount: 63,
+            fiveStarRatingCount: 976,
+            oneStarRatingCount: 13
+          }
+        }
+      },
+
+    Destructure the first book object from the books array into a variable called bookRating. In the result of your destructuring, the bookRating variable should be assigned with the value of the book[0].thirdParty.goodReads.rating property.
+
+    Please do most of the work on the left side of the assignment operator: const ... = books[0];
+
+    6. Write a function called printBookInfo that has three parameters called title, author and year. This function should work for a single object passed as an argument, and it should log to the console information about the book in this format: "${title} by ${author}, ${year}".
+
+    If year is undefined (was not passed), it should be assigned with a default value of 'year unknown'.
+
+    Ex 1:
+      Code: printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick', year: '2011' });
+      Output: "Algorithms by Robert Sedgewick, 2011"
+
+    Ex 2:
+      Code: printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
+      Output: "Algorithms by Robert Sedgewick, year unknown"
+*/
+
+// 1.
+const { title, author, ISBN } = books[0];
+
+// 2.
+const { keywords: tags } = books[0];
+
+// 3.
+const { languages, programmingLanguage = 'unknown' } = books[6];
+
+// 4.
+let bookTitle = 'unknown';
+let bookAuthor = 'unknown';
+({ title: bookTitle, author: bookAuthor } = books[0]);
+
+// 5.
+const { thirdParty: { goodReads: { rating: bookRating } } } = books[0];
+
+// 6.
+const printBookInfo = function ({ title, author, year = 'year unknown' }) {
+  console.log(`${title} by ${author}, ${year}`);
+}
+printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick', year: '2011' });
+printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
