@@ -37,6 +37,9 @@ const restaurant = {
   },
   orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
     console.log(`ORDER RECEIVED: "${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]}" will be delivered to "${address}" at ${time}.`);
+  },
+  orderPasta: function (ingOne, ingTwo, ingThree) {
+    console.log(`Here is your delicious pasta with ${ingOne}, ${ingTwo} and ${ingThree}.`);
   }
 };
 
@@ -99,3 +102,44 @@ restaurant.orderDelivery({ time: '22:30', address: "Via del Sole, 21", starterIn
 
 restaurant.orderDelivery({ address: "Via del Sole, 21", starterIndex: 1 });
 // ORDER RECEIVED: "Bruschetta and Pizza" will be delivered to "Via del Sole, 21" at 20:00.
+
+/* THE SPREAD OPERATOR (...) ==================================================
+
+  The spread (...) syntax allows an iterable, such as an array or string, to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected. In an object literal, the spread syntax enumerates the properties of an object and adds the key-value pairs to the object being created.
+
+*/
+
+const arr = [7, 8, 9];
+const newArray = [1, 2, ...arr];
+console.log(newArray); // ▶ (5) [1, 2, 7, 8, 9]
+console.log(...newArray); // 1 2 7 8 9
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu); // ▶ (4) ['Pizza', 'Pasta', 'Risotto', 'Gnocci']
+
+// Copy array (sallow copy)
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Join two arrays
+const menuJoined = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menuJoined); // ▶ (7) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad', 'Pizza', 'Pasta', 'Risotto']
+
+// Iterables: arrays, strings, maps, sets. NOT objects
+const str = 'Jonas';
+const letters = [...str, '', 'S.'];
+console.log(letters); // ▶ (7) ['J', 'o', 'n', 'a', 's', '', 'S.']
+console.log(...str); // J o n a s
+
+const ingredients = ['mushroom', 'asparagus', 'cheese'];
+restaurant.orderPasta(...ingredients);
+// Here is your delicious pasta with mushroom, asparagus and cheese.
+
+// Objects
+const newRestaurant = { ...restaurant, foundedIn: 1998, founder: 'Guiseppe' };
+console.log(newRestaurant);
+
+// Sallow copy
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurant.name); // Classico Italiano
+console.log(restaurantCopy.name); // Ristorante Roma

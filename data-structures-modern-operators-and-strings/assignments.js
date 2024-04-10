@@ -68,13 +68,13 @@ const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
 
     If year is undefined (was not passed), it should be assigned with a default value of 'year unknown'.
 
-    Ex 1:
-      Code: printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick', year: '2011' });
-      Output: "Algorithms by Robert Sedgewick, 2011"
+      Ex 1:
+        Code: printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick', year: '2011' });
+        Output: "Algorithms by Robert Sedgewick, 2011"
 
-    Ex 2:
-      Code: printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
-      Output: "Algorithms by Robert Sedgewick, year unknown"
+      Ex 2:
+        Code: printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
+        Output: "Algorithms by Robert Sedgewick, year unknown"
 */
 
 // 1.
@@ -100,3 +100,23 @@ const printBookInfo = function ({ title, author, year = 'year unknown' }) {
 }
 printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick', year: '2011' });
 printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
+
+/* THE SPREAD OPERATOR (...) ==================================================
+
+    1. Each book object has the author property, which stores an array of strings (author names) if there are multiple authors, or a single string (author name) if there is just one author.
+
+    Declare an array called bookAuthors, and fill it with authors of the first two books from the books array. The bookAuthors array should have just one level (no nested arrays).
+
+    2. Write a function called spellWord that accepts a single string as an argument. This function should log to the console each letter of the argument separated by a space.
+      Ex:
+        Code: spellWord('JavaScript');
+        Output: "J a v a S c r i p t"
+*/
+
+const bookAuthors = [...books[0].author, ...books[1].author];
+console.log(bookAuthors);
+
+const spellWord = function (word) {
+  console.log(...word);
+};
+spellWord('JavaScript');
