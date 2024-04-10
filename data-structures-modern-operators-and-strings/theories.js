@@ -310,3 +310,41 @@ for (const [index, item] of restaurantMenu.entries()) console.log(`${index + 1}:
 */
 console.log(...restaurantMenu.entries());
 // ▶ (2) [1, 'Bruschetta'] ▶ (2) [2, 'Garlic Bread'] ▶ (2) [3, 'Caprese Salad'] ▶ (2) [4, 'Pizza'] ▶ (2) [5, 'Pasta'] ▶ (2) [6, 'Risotto']
+
+/* ENHANCED OBJECT LITERALS  ==================================================
+
+  💠 Shorthand Property Names: You can use shorthand syntax when the property name and value are the same.
+
+  💠 Shorthand Method Names: You can define methods in a shorter syntax by specifying the method name without using the function keyword.
+
+  💠 Computed Property Names: You can use expressions to compute the property name.
+
+*/
+
+// Shorthand Property Names
+const firstName = "Tung";
+const age = 34;
+
+const personProperty = {
+  firstName, // shorthand for name: name
+  age   // shorthand for age: age
+};
+console.log(personProperty); // ▶ {firstName: 'Tung', age: 34}
+
+// Shorthand Method Names
+const personMethod = {
+  firstName: "Tung",
+  greet() { // shorthand for greet: function(){}
+    console.log(`Hello, ${this.firstName}!`);
+  }
+};
+console.log(personMethod); // ▶ {firstName: 'Tung', greet: ƒ}
+
+// Computed Property Names
+const prop = "age";
+
+const personCompute = {
+  firstName: "Tung",
+  [prop]: 2024 - 1990 // computed property name based on the value of 'prop'
+};
+console.log(personCompute); // ▶ {firstName: 'Tung', age: 34}
