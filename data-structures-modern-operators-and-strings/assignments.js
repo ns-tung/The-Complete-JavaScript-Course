@@ -424,3 +424,22 @@ for (let i = 0; i < books.length; i++) {
 for (let i = 0; i < books.length; i++) {
   books[i].onlineContent ?? console.log(`"${books[i].title}" provides no data about its online content`);
 }
+
+/* LOGICAL ASSIGNMENT OPERATORS ==================================================
+
+    1. Some of the book objects from the books array are missing the edition property. Loop over the books array, and assign this property with a number 1 (if it doesn't already exist). Use logical assignment operators.
+
+    2. Some of the book objects from the books array have the highlighted property, which by default is set to true. Iterate over the books array, and if the thirdParty.goodReads.rating property is less than 4.2, reassign it with false.
+
+    Use the &&= operator (tip: you may also need the ! operator)
+*/
+
+// 1.
+for (let i = 0; i < books.length; i++) {
+  books[i].edition ||= 1;
+}
+
+// 2.
+for (let i = 0; i < books.length; i++) {
+  books[i].highlighted &&= !(books[i].thirdParty.goodReads.rating < 4.2);
+}
