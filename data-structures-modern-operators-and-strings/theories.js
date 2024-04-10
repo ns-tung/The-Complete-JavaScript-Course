@@ -223,3 +223,14 @@ if (restaurant.orderPizza) {
 // Use short-circuiting
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 // 👉 mushrooms ▶ ['spinach']
+
+/* THE NULLISH COALESCING OPERATOR ?? ==================================================
+
+  💠 Introduced in ES2020
+  
+  💠 Nullish values are NULL and UNDEFINED, NOT are 0 or '' (the empty string)
+  
+*/
+
+const guest = restaurant.numGuests ?? 10; // fix for 209 of line
+console.log(guest); // 0 👍
