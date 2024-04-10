@@ -42,8 +42,7 @@ const restaurant = {
     console.log(`Here is your delicious pasta with ${ingOne}, ${ingTwo} and ${ingThree}.`);
   },
   orderPizza: function (mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
+    console.log(mainIngredient, otherIngredients);
   }
 };
 
@@ -187,6 +186,40 @@ const x = [23, 5, 7];
 add(...x); // 35
 
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
-// mushrooms // ▶ (3) ['onion', 'olives', 'spinach']
+// mushrooms ▶ (3) ['onion', 'olives', 'spinach']
 restaurant.orderPizza('mushrooms');
-// mushrooms // ▶ []
+// mushrooms ▶ []
+
+/* SHORT CIRCUITING && AND || ==================================================
+
+  💠 Use ANY data type, and return ANY data type
+
+*/
+
+// --- OR ----
+console.log(3 || 'Jonas'); // 3
+console.log('' || 'Jonas'); // Jonas
+console.log(true || 0); // true
+console.log(undefined || null); // null
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello
+
+// 🚨 Attention!
+restaurant.numGuests = 0; // This is a meaningful variable 👇
+const guests = restaurant.numGuests || 10; // but this makes the unexpected result
+console.log(guests); // 👆 🚫 10 is a wrong result, the result must be 0
+
+// --- AND ----
+console.log(0 && 'Jonas'); // 0
+console.log(7 && 'Jonas'); // Jonas
+
+console.log('Hello' && 23 && null && 'jonas'); // null
+
+// Normal code
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+} // 👉 mushrooms ▶ ['spinach']
+
+// Use short-circuiting
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+// 👉 mushrooms ▶ ['spinach']
