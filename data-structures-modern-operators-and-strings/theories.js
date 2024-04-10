@@ -40,6 +40,10 @@ const restaurant = {
   },
   orderPasta: function (ingOne, ingTwo, ingThree) {
     console.log(`Here is your delicious pasta with ${ingOne}, ${ingTwo} and ${ingThree}.`);
+  },
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
   }
 };
 
@@ -131,7 +135,7 @@ console.log(letters); // ▶ (7) ['J', 'o', 'n', 'a', 's', '', 'S.']
 console.log(...str); // J o n a s
 
 const ingredients = ['mushroom', 'asparagus', 'cheese'];
-restaurant.orderPasta(...ingredients);
+restaurant.orderPasta(...ingredients); // pass parameters to a function
 // Here is your delicious pasta with mushroom, asparagus and cheese.
 
 // Objects
@@ -143,3 +147,46 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurant.name); // Classico Italiano
 console.log(restaurantCopy.name); // Ristorante Roma
+
+/* REST PATTERN AND PARAMETERS ==================================================
+
+  Rest syntax looks exactly like spread syntax. In a way, spread syntax is the opposite of rest syntax. Spread syntax "expands" an array into its elements, while rest syntax collects multiple elements and "condenses" them into a single element.
+*/
+
+// 👉 Destructuring
+
+// SPREAD, because the (...) on the RIGHT side of the assignment operator
+const arrNum = [1, 2, ...[3, 4]];
+console.log(arrNum); // ▶ (4) [1, 2, 3, 4]
+
+// REST, because the (...) on the LEFT side of the assignment operator
+const [d, e, ...others] = [1, 2, 3, 4, 5];
+console.log(d, e, others); // 1 2 ▶ (3) [3, 4, 5]
+
+const [pizza, , risotto, ...otherFoods] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(pizza, risotto, otherFoods);
+// Pizza Risotto ▶ (4) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(sat); // ▶ {open: 0, close: 24}
+console.log(weekdays); // ▶ {thu: {…}, fri: {…}}
+
+// 👉 Function (pass parameters)
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+}
+
+add(2, 3); // 5
+add(5, 3, 7, 2); // 17
+add(8, 2, 5, 3, 2, 1, 4); // 25
+
+const x = [23, 5, 7];
+add(...x); // 35
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+// mushrooms // ▶ (3) ['onion', 'olives', 'spinach']
+restaurant.orderPizza('mushrooms');
+// mushrooms // ▶ []
