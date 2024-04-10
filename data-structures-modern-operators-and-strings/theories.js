@@ -278,3 +278,35 @@ rest2.owner &&= '<ANONYMOUS>';
 
 console.log(rest1); // ▶ {name: 'Capri', numGuests: 0}
 console.log(rest2); // ▶ { name: 'La Piazza', owner: 'Giovanni Rossi', numGuests: 10 }
+
+/* LOOPING ARRAYS: THE FOR-OF LOOP ==================================================
+
+  for (... of ...) loop
+
+  for-of loop not provided index, but can use entries() method to get that
+
+*/
+
+const restaurantMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (const item of restaurantMenu) console.log(item);
+/*
+  Focaccia
+  Bruschetta
+  Garlic Bread
+  Caprese Salad
+  Pizza
+  Pasta
+  Risotto
+*/
+for (const [index, item] of restaurantMenu.entries()) console.log(`${index + 1}: ${item}`);
+/*
+  1: Focaccia
+  2: Bruschetta
+  3: Garlic Bread
+  4: Caprese Salad
+  5: Pizza
+  6: Pasta
+  7: Risotto
+*/
+console.log(...restaurantMenu.entries());
+// ▶ (2) [1, 'Bruschetta'] ▶ (2) [2, 'Garlic Bread'] ▶ (2) [3, 'Caprese Salad'] ▶ (2) [4, 'Pizza'] ▶ (2) [5, 'Pasta'] ▶ (2) [6, 'Risotto']
