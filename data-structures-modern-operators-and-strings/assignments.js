@@ -605,3 +605,43 @@ for (const [index, value] of Object.values(books[0].thirdParty.goodReads).entrie
 const entries2 = Object.entries(books[0].thirdParty.goodReads);
 console.log(entries);
 console.log(entries2);
+
+/* SETS ==================================================
+
+    1. Below is the allKeywords variable, which stores an empty array. Loop over the books array, and fill the allKeywords array with the keywords coming from the keywords property of each book object. The allKeywords array should have just one level (no nested arrays).
+
+    Use whatever loop and methods you want. You can also use the spread syntax. In the end, the allKeywords array should look more or less like this: ['computer science', 'programming', 'algorithms', 'data structures', ...].
+
+      const allKeywords = [];
+
+    2. The allKeyword array contains duplicates. Remove them by creating a Set out of that array. Assign the newly created set to the uniqueKeywords variable.
+
+    3. Add two more keywords to the uniqueKeywords set, for example, 'coding' and 'science'.
+
+    4. Delete 'business' from the uniqueKeywords set.
+
+    5. Create an array out of the uniqueKeywords set, and assign it to the uniqueKeywordsArr variable.
+
+    6. Delete all items from the uniqueKeywords set.
+
+*/
+
+// 1.
+const allKeywords = [];
+for (const { keywords } of books) allKeywords.push(...keywords);
+
+// 2.
+const uniqueKeywords = new Set(allKeywords);
+
+// 3.
+uniqueKeywords.add('coding');
+uniqueKeywords.add('science');
+
+// 4.
+uniqueKeywords.delete('business');
+
+// 5.
+const uniqueKeywordsArr = [...uniqueKeywords];
+
+// 6.
+uniqueKeywords.clear();

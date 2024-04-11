@@ -415,3 +415,52 @@ for (const [day, { open, close }] of entire) console.log(`On ${day} we open at $
 // On thu we open at 12h and close at 22h.
 // On fri we open at 11h and close at 23h.
 // On sat we open at 0h and close at 24h.
+
+/* SETS ==================================================
+
+  💠 Creating a Set: let mySet = new Set();
+
+  💠 Adding elements to the Set: mySet.add("apple");
+
+  💠 Checking for the existence of an element in the Set: mySet.has("apple"); // true
+
+  💠 Deleting an element from the Set: mySet.delete("banana");
+
+  💠 Getting the size of the Set: mySet.size;
+
+  💠 Iterating over the elements of the Set: mySet.forEach(function(value) console.log(value);
+
+  💠 Deleting all elements from the Set: mySet.clear();
+
+*/
+
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+console.log(ordersSet); // ▶ Set(3) {'Pasta', 'Pizza', 'Risotto'}
+console.log(new Set('Tung')); // ▶ Set(4) {'T', 'u', 'n', 'g'}
+
+console.log(ordersSet.size); // 3
+console.log(ordersSet.has('Pizza')); // true
+console.log(ordersSet.has('Bread')); // false
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+console.log(ordersSet); // ▶ Set(4) {'Pasta', 'Pizza', 'Risotto', 'Garlic Bread'}
+ordersSet.delete('Risotto');
+console.log(ordersSet); // ▶ Set(3) {'Pasta', 'Pizza', 'Garlic Bread'}
+
+for (const order of ordersSet) console.log(order);
+// Pasta
+// Pizza
+// Garlic Bread
+
+ordersSet.clear();
+console.log(ordersSet); // ▶ Set(0) {size: 0}
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = new Set(staff);
+console.log(staffUnique); // ▶ Set(3) {'Waiter', 'Chef', 'Manager'}
+console.log([...staffUnique]); // ▶ (3) ['Waiter', 'Chef', 'Manager']
+
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size); // 3
+
+console.log(new Set('jonasschmedtmann').size); // 11
