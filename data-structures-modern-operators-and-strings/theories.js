@@ -348,3 +348,35 @@ const personCompute = {
   [prop]: 2024 - 1990 // computed property name based on the value of 'prop'
 };
 console.log(personCompute); // ▶ {firstName: 'Tung', age: 34}
+
+/* OPTIONAL CHAINING (?.) ==================================================
+
+  💠 Introduced in ES2020
+
+  💠 Nullish values are NULL and UNDEFINED, NOT are 0 or '' (the empty string)
+
+*/
+console.log(restaurant.openingHours.mon?.open); // undefined
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+// Objects
+for (const day of days) {
+  const open = restaurant.openingHours?.[day]?.open ?? 'closed';
+  console.log(`On ${day}, we ${open === 'closed' ? open : `open at ${open}h`}`);
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? 'Methods does not exist.');
+// ▶ (2) ['Focaccia', 'Pasta']
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Methods does not exist.');
+// Methods does not exist.
+
+// Arrays
+let users = [{ firstName: 'Tung', email: 'tu@ma.co' }];
+console.log(users[0]?.firstName ?? 'User array empty.'); // Tung
+users = [];
+console.log(users[0]?.firstName ?? 'User array empty.'); // User array empty.
+
+// Without ?.
+if (users.length > 0) console.log(users[0].firstName); else console.log('User array empty.')

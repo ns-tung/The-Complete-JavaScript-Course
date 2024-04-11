@@ -295,11 +295,11 @@ const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
 
       Ex 1:
         Code: printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick', year: '2011' });
-        Output: "Algorithms by Robert Sedgewick, 2011"
+        Expected output: "Algorithms by Robert Sedgewick, 2011"
 
       Ex 2:
         Code: printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
-        Output: "Algorithms by Robert Sedgewick, year unknown"
+        Expected output: "Algorithms by Robert Sedgewick, year unknown"
 */
 
 // 1.
@@ -335,7 +335,7 @@ printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
     2. Write a function called spellWord that accepts a single string as an argument. This function should log to the console each letter of the argument separated by a space.
       Ex:
         Code: spellWord('JavaScript');
-        Output: "J a v a S c r i p t"
+        Expected output: "J a v a S c r i p t"
 */
 
 const bookAuthors = [...books[0].author, ...books[1].author];
@@ -356,7 +356,7 @@ spellWord('JavaScript');
 
       Ex:
         Code: printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
-        Output: "The book "Algorithms" has 2 authors"
+        Expected output: "The book "Algorithms" has 2 authors"
 */
 
 // 1.
@@ -388,11 +388,11 @@ printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
 
       Ex 1:
         Code: hasExamplesInJava(books[0]);
-        Output: true
+        Expected output: true
 
       Ex 2:
         Code: hasExamplesInJava(books[1]);
-        Output: "no data available"
+        Expected output: "no data available"
 
     2. Some of the book objects have the onlineContent property, which is either true or false. Loop over the books array, and for the books that provide online content, log to the console a string in this format: "${title}" provides online content. Use short-circuiting.
 
@@ -547,3 +547,25 @@ const newBook2 = {
 };
 console.log(newBook2);
 // ▶ {title: 'The C Programming Language', author: Array(2), pages: 880}
+
+/* OPTIONAL CHAINING (?.) ==================================================
+
+    Write a function called getFirstKeyword that takes the book object as an argument. This function should return the first keyword from the book's keywords property (array) or undefined (if the keywords property doesn't exist). It shouldn't throw an error. Use optional chaining for that.
+
+      Ex 1:
+        Code: getFirstKeyword(books[0]);
+        Expected output: "computer science"
+
+      Ex 2:
+        Code: getFirstKeyword(newBook2); // from previous tasks
+        Expected output: undefined
+
+*/
+
+const getFirstKeyword = function ({ keywords }) {
+  const firstKeyword = keywords?.[0] ?? 'undefined';
+  console.log(firstKeyword);
+  return firstKeyword;
+};
+getFirstKeyword(books[0]);
+getFirstKeyword(newBook2);
