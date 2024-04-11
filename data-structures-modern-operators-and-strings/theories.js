@@ -12,36 +12,39 @@
     const [a, b, ...[c, d]] = array;
 */
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const openingHours = {
+  [weekdays[3]]: { // ES6 enhanced object literals
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: { // ES6 enhanced object literals
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: { // ES6 enhanced object literals
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  order: function (starterIndex, mainIndex) {
+  openingHours, // ES6 enhanced object literals
+  order(starterIndex, mainIndex) { // ES6 enhanced object literals
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-  orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) { // ES6 enhanced object literals
     console.log(`ORDER RECEIVED: "${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]}" will be delivered to "${address}" at ${time}.`);
   },
-  orderPasta: function (ingOne, ingTwo, ingThree) {
+  orderPasta(ingOne, ingTwo, ingThree) { // ES6 enhanced object literals
     console.log(`Here is your delicious pasta with ${ingOne}, ${ingTwo} and ${ingThree}.`);
   },
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) { // ES6 enhanced object literals
     console.log(mainIngredient, otherIngredients);
   }
 };
@@ -73,8 +76,8 @@ console.log(p, q, r); // 8 9 1
     const { [key]: a } = obj;
 */
 
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+const { name, openingHours: openHours, categories } = restaurant;
+console.log(name, openHours, categories);
 // ▶ {thu: {…}, fri: {…}, sat: {…}} 
 // ▶ (4) ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']
 
@@ -97,7 +100,7 @@ const obj = { a: 23, b: 7, c: 14 };
 console.log(a, b); // 23 7
 
 // Nested objects
-const { fri: { open: o, close: c } } = openingHours;
+const { fri: { open: o, close: c } } = restaurant.openingHours;
 console.log(o, c); // 11 23
 
 restaurant.orderDelivery({ time: '22:30', address: "Via del Sole, 21", starterIndex: 2, mainIndex: 2 });
@@ -167,9 +170,9 @@ console.log(pizza, risotto, otherFoods);
 // Pizza Risotto ▶ (4) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']
 
 // Objects
-const { sat, ...weekdays } = restaurant.openingHours;
+const { sat, ...weekDay } = restaurant.openingHours;
 console.log(sat); // ▶ {open: 0, close: 24}
-console.log(weekdays); // ▶ {thu: {…}, fri: {…}}
+console.log(weekDay); // ▶ {thu: {…}, fri: {…}}
 
 // 👉 Function (pass parameters)
 const add = function (...numbers) {
@@ -353,7 +356,11 @@ console.log(personCompute); // ▶ {firstName: 'Tung', age: 34}
 
   💠 Introduced in ES2020
 
-  💠 Nullish values are NULL and UNDEFINED, NOT are 0 or '' (the empty string)
+  💠 With optional chaining, it is returned undefined immediately if a specific property does not exist
+
+  💠 The property exists means it is not null or undefined (not are nullish values)
+
+  💠 Zero and '' (the empty string) are accepted (they exist)
 
 */
 console.log(restaurant.openingHours.mon?.open); // undefined
@@ -378,5 +385,33 @@ console.log(users[0]?.firstName ?? 'User array empty.'); // Tung
 users = [];
 console.log(users[0]?.firstName ?? 'User array empty.'); // User array empty.
 
-// Without ?.
+// Without optional chaining ?.
 if (users.length > 0) console.log(users[0].firstName); else console.log('User array empty.')
+
+/* LOOPING OBJECTS: OBJECT KEYS, VALUES, AND ENTRIES ==================================================
+
+  Object.keys(obj), Object.values(obj), Object.entries(obj)
+
+*/
+
+// Property KEYS
+const daysOpening = Object.keys(openingHours);
+console.log(daysOpening); // ▶ (3) ['thu', 'fri', 'sat']
+
+let openStr = `We are open on ${daysOpening.length} days: `;
+for (let i = 0; i < daysOpening.length; i++)
+  openStr += daysOpening.length - 1 > i ? `${daysOpening[i]}, ` : `${daysOpening[i]}.`;
+console.log(openStr); // We are open on 3 days: thu, fri, sat.
+
+// Property VALUES
+const daysHour = Object.values(openingHours);
+console.log(daysHour); // ▶ (3) [{…}, {…}, {…}]
+
+// Entire object
+const entire = Object.entries(openingHours);
+console.log(entire); // ▶ (3) [Array(2), Array(2), Array(2)]
+
+for (const [day, { open, close }] of entire) console.log(`On ${day} we open at ${open}h and close at ${close}h.`);
+// On thu we open at 12h and close at 22h.
+// On fri we open at 11h and close at 23h.
+// On sat we open at 0h and close at 24h.

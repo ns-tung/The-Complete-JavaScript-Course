@@ -569,3 +569,39 @@ const getFirstKeyword = function ({ keywords }) {
 };
 getFirstKeyword(books[0]);
 getFirstKeyword(newBook2);
+
+/* LOOPING OBJECTS: OBJECT KEYS, VALUES, AND ENTRIES ==================================================
+
+    1. Write a function called getFirstKeyword that takes the book object as an argument. This function should return the first keyword from the book's keywords property (array) or undefined (if the keywords property doesn't exist). It shouldn't throw an error. Use optional chaining for that.
+
+    In the end, the entries array should be filled with arrays containing keys:
+
+      [['rating'], ['ratingsCount'], ['reviewsCount'], ['fiveStartRatingCount'], ['oneStartRatingCount']]
+
+      const entries = [];
+
+    2. The Object.values() method returns an array, which means you can call the Array's entries() method on it, for example, Object.entries(books[0].thirdParty.goodReads).entries(). The Array's entries() method returns [index, value] arrays for each element in the array.
+
+    Use the for-of loop together with the Object.values() method and Array's entries() method to loop over thirdParty.goodReads property of the first book from the books array.
+
+    Push each value to the appropriate inner array in the entries array (use index from entries()).
+
+    3. Use the Object.entries() method on the thirdParty.goodReads property of the first book from the books array. Assign the returned value to the variable called entries2.
+
+    4. Log the entries and entries2 variables to the console, and compare them. They should look the same.
+
+*/
+
+// 1.
+const entries = [];
+for (const key of Object.keys(books[0].thirdParty.goodReads)) entries.push([key]);
+
+// 2.
+for (const [index, value] of Object.values(books[0].thirdParty.goodReads).entries()) {
+  entries[index].push(value);
+}
+
+// 3.
+const entries2 = Object.entries(books[0].thirdParty.goodReads);
+console.log(entries);
+console.log(entries2);
