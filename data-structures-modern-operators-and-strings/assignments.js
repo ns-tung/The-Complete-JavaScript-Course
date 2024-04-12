@@ -645,3 +645,34 @@ const uniqueKeywordsArr = [...uniqueKeywords];
 
 // 6.
 uniqueKeywords.clear();
+
+/* MAPS: FUNDAMENTALS ==================================================
+
+    1. Create a new book, but this time, as a Map. Assign it to the bookMap variable. Use this array as initial data:
+
+      [['title', 'Clean Code'], ['author', 'Robert C. Martin']]
+
+    2. Set a new key in bookMap called pages, and assign it with a number 464.
+
+    3. Get the title and author values from bookMap, and log to the console a string formatted like that: "${title} by ${author}".
+
+    4. Get the size of bookMap, and log it to the console.
+
+    5. Check if bookMap has the author key. and if so, log "The author of the book is known" to the console.
+
+*/
+
+// 1.
+const bookMap = new Map([['title', 'Clean Code'], ['author', 'Robert C. Martin']]);
+
+// 2.
+bookMap.set('pages', 464);
+
+// 3.
+console.log(`${bookMap.get('title')} by ${bookMap.get('author')}`);
+
+// 4.
+console.log(bookMap.size);
+
+// 5.
+bookMap.has('author') && console.log('The author of the book is known');

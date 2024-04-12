@@ -464,3 +464,55 @@ console.log([...staffUnique]); // ▶ (3) ['Waiter', 'Chef', 'Manager']
 console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size); // 3
 
 console.log(new Set('jonasschmedtmann').size); // 11
+
+/* MAPS: FUNDAMENTALS ==================================================
+
+  💠 Creating a Map: let myMap = new Map();
+
+  💠 Adding a key-value pair to the Map:
+
+      myMap.set("key1", "value1");
+      myMap.set("key2", "value2");
+
+  💠 Getting a value from the Map by key: myMap.get("key1"); // "value1"
+
+  💠 Checking for the existence of a key in the Map: myMap.has("key2"); // true
+
+  💠 Deleting a key-value pair from the Map: myMap.delete("key1");
+
+  💠 Getting the size of the Map: myMap.size;
+
+  💠 Iterating over the key-value pairs of the Map:
+  
+      myMap.forEach(function(value, key) console.log(key + " = " + value);
+
+  💠 Deleting all key-value pairs from the Map: myMap.clear();
+
+*/
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Lisbon, Portugal'));
+// ▶ Map(3) {'name' => 'Classico Italiano', 1 => 'Firenze, Italy', 2 => 'Lisbon, Portugal'}
+
+rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']).set('open', 11).set('close', 23).set(true, 'We are open :D').set(false, 'We are closed :(');
+
+console.log(rest.get('name')); // Classico Italiano
+console.log(rest.get(true)); // We are open :D
+console.log(rest.get(1)); // Firenze, Italy
+
+const time = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // We are closed :(
+
+console.log(rest.has('categories')); // true
+rest.delete(2);
+
+const arn = [1, 2];
+rest.set(arn, 'Test');
+rest.set(document.querySelector('.card'), 'Card');
+console.log(rest);
+console.log(rest.size); // 9
+
+console.log(rest.get(arn)); // Test
+rest.clear();
