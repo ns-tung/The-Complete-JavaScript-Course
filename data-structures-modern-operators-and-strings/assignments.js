@@ -676,3 +676,17 @@ console.log(bookMap.size);
 
 // 5.
 bookMap.has('author') && console.log('The author of the book is known');
+
+/* MAPS: ITERATION ==================================================
+
+    1. Convert the first book object from the books array into a Map, and assign it to a firstBookMap variable.
+
+    2. Use the for-of loop to iterate over firstBookMap, and log to the console keys that have numbers as values.
+
+*/
+
+// 1.
+const firstBookMap = new Map(Object.entries(books[0]));
+
+// 2.
+for (const [key, value] of firstBookMap) typeof value === 'number' && console.log(key);

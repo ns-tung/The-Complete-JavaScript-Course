@@ -516,3 +516,40 @@ console.log(rest.size); // 9
 
 console.log(rest.get(arn)); // Test
 rest.clear();
+
+/* MAPS: ITERATION ==================================================
+
+*/
+
+const quiz = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct 🎉'],
+  [false, 'Try again!'],
+]);
+console.log(quiz);
+// ▶ Map(7) {'question' => 'What is the best programming language in the world?', 1 => 'C', 2 => 'Java', 3 => 'JavaScript', 'correct' => 3, …}
+
+// Convert object to map
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap); // ▶ Map(3) {'thu' => {…}, 'fri' => {…}, 'sat' => {…}}
+
+// Quiz app
+console.log(quiz.get('question'));
+for (const [key, value] of quiz) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+// const answer = Number(prompt('Your answer'));
+const answer = 3;
+console.log(answer);
+
+console.log(quiz.get(quiz.get('correct') === answer));
+
+// Convert map to array
+console.log([...quiz]);// = 👇
+console.log([...quiz.entries()]); // ▶ (7) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+console.log([...quiz.keys()]); // ▶ (7) ['question', 1, 2, 3, 'correct', true, false]
+console.log([...quiz.values()]); // ▶ (7) ['What is the best programming language in the world?', 'C', 'Java', 'JavaScript', 3, 'Correct 🎉', 'Try again!']
