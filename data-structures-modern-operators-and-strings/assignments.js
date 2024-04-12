@@ -690,3 +690,46 @@ const firstBookMap = new Map(Object.entries(books[0]));
 
 // 2.
 for (const [key, value] of firstBookMap) typeof value === 'number' && console.log(key);
+
+/* WORKING WITH STRINGS – PART 1 ==================================================
+
+    1. Take the ISBN property of the first book from the books array, and log to the console characters at index 6, 4, 9 and 8. Use bracket notation to access individual characters.
+
+    2. Below is the quote variable that stores a string. Find the index of the word 'chess', and log it to the console.
+
+      const quote = 'A computer once beat me at chess, but it was no match for me at kick boxing';
+
+    3. Extract the word "boxing" from the same quote string, and log it to the console.
+
+    4. Some authors are noted as "(Contributor)", for example "Julie Sussman (Contributor)". Create a function called isContributor that takes an author's name as an argument, and returns either true (if he's a contributor) of false (if he's not a contributor). The string "(Contributor)" is always the last part of the author's name string.
+
+      Ex 1:
+        Code: isContributor('Julie Sussman (Contributor)');
+        Expected output: true
+
+      Ex 2:
+        Code: isContributor('Robert Sedgewick');
+        Expected output: false
+
+*/
+
+// 1.
+const isbn = books[0].ISBN;
+console.log(isbn['6'], isbn['4'], isbn['9'], isbn['8']);
+
+// 2.
+const quote = 'A computer once beat me at chess, but it was no match for me at kick boxing';
+console.log(quote.indexOf('chess'));
+
+// 3.
+const extractWord = function (word, sentence) {
+  const wordIndex = sentence.indexOf(word);
+  console.log(wordIndex !== -1 ? quote.slice(wordIndex, wordIndex + word.length) : `"${word}" does not exist`);
+}
+extractWord('boxing', quote);
+
+// 4.
+const isContributor = function (author) {
+  return author.lastIndexOf('(Contributor)') !== -1;
+};
+console.log(isContributor('Julie Sussman (Contributor)'), isContributor('Robert Sedgewick'));

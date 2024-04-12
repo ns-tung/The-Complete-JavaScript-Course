@@ -553,3 +553,51 @@ console.log([...quiz]);// = 👇
 console.log([...quiz.entries()]); // ▶ (7) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
 console.log([...quiz.keys()]); // ▶ (7) ['question', 1, 2, 3, 'correct', true, false]
 console.log([...quiz.values()]); // ▶ (7) ['What is the best programming language in the world?', 'C', 'Java', 'JavaScript', 3, 'Correct 🎉', 'Try again!']
+
+/* WORKING WITH STRINGS – PART 1 ==================================================
+
+  'string'[0], indexOf(), lastIndexOf(), slice()
+
+  Methods can work with strings, because behind the scenes javascript converts the string to object automatically, and to string again after finish.
+
+*/
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]); // A
+console.log(plane[1]); // 3
+console.log(plane[2]); // 2
+console.log('B737'[0]); // B
+
+console.log(airline.length); // 16
+console.log('B737'.length); // 4
+
+console.log(airline.indexOf('r')); // 6
+console.log(airline.lastIndexOf('r')); // 10
+console.log(airline.indexOf('Portugal')); // 8
+console.log(airline.indexOf('portugal')); // -1 (can not found)
+
+console.log(airline.slice(4)); // Air Portugal
+console.log(airline.slice(4, 7)); // Air
+
+console.log(airline.slice(0, airline.indexOf(' '))); // 👉 airline.slice(0,3) -> TAP
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // 👉 airline.slice(8) -> Portugal
+
+console.log(airline.slice(-2)); // al
+console.log(airline.slice(1, -1)); // AP Air Portuga
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat 😬');
+  else console.log('You got lucky 😎');
+};
+
+checkMiddleSeat('11B'); // You got the middle seat 😬
+checkMiddleSeat('23C'); // You got lucky 😎
+checkMiddleSeat('3E'); // You got the middle seat 😬
+
+const jn = new String('jonas');
+console.log(jn); // ▶ String {'jonas'}
+console.log(typeof jn); // object
+console.log(typeof jn.slice(1)); // string
