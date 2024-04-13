@@ -741,7 +741,7 @@ console.log(isContributor('Julie Sussman (Contributor)'), isContributor('Robert 
     You can be sure that the author's name always consists of two words separated by a space, and possibly ends with "(Contributor)". The string may also contain trailing spaces.
 
       Ex:
-        Code: 
+        Code: normalizeAuthorName('  JuliE sussMan (Contributor)');
         Expected output: "Julie Sussman"
 
     2. Take the title of the second book (books[1]) from the books array, and replace the word "Programs" with "Software". Assign the new string to the newBookTitle variable.
@@ -776,12 +776,17 @@ const normalizeAuthorName = function (author) {
 
     word.includes('.') ?
       nameStr += word.toUpperCase() + ' ' :
-      nameStr += word[0].toUpperCase() + word.slice(1).toLowerCase() + ' ';
+      // nameStr += word[0].toUpperCase() + word.slice(1).toLowerCase() + ' ';
+      nameStr += word.replace(word[0], word[0].toUpperCase()) + ' ';
 
     startIndex = spaceIndex + 1;
     spaceIndex = author.indexOf(' ', startIndex);
 
-    if (spaceIndex === -1) { const last = author.slice(startIndex); nameStr += last[0].toUpperCase() + last.slice(1).toLowerCase(); }
+    if (spaceIndex === -1) {
+      const last = author.slice(startIndex);
+      // nameStr += last[0].toUpperCase() + last.slice(1).toLowerCase();
+      nameStr += last.replace(last[0], last[0].toUpperCase());
+    }
   }
   console.log(nameStr);
 };
@@ -814,3 +819,79 @@ const logBookTheme = function (title) {
 }
 
 for (const { title } of books) logBookTheme(title);
+
+/* WORKING WITH STRINGS – PART 3 ==================================================
+
+    1. Below is the bookCategories variable that stores a string of categories. Each category is separated with a semicolon, for example, in a string "science;computing", 'science' and 'computing' are separate categories.
+
+    Write a function called logBookCategories that takes a string of categories separated with semicolons, and logs each category to the console (as separate strings).
+
+      Example
+        Code:
+          const bookCategories = 'science;computing;computer science;algorithms;business;operating systems;networking;electronics';
+          logBookCategories(bookCategories);
+        
+        Expected output:
+          science
+          computing
+          computer science
+          algorithms
+          business
+          operating systems
+          networking
+          electronics
+
+    2. Now, the opposite. Each book from the books array has the keywords property.
+
+    Write a function called getKeywordsAsString that takes the books array as an argument, collects keywords from each book, removes duplicates, and then joins them to create a single string where keywords are separated by a semicolon.
+
+      Example
+        Code: getKeywordsAsString(books);
+        
+        Expected output: computer science;programming;algorithms;data structures;java;math;software;engineering;javascript;computer systems;C;operating systems;Java;mathematics;business;compilers;interpreters;work;focus;personal development
+
+    3. Below is the bookChapters array that contains inner arrays. Each inner array consists of a chapter's title, and the number of a page, for example, in ['The Basics', 14], 'The Basics' is the chapter's title, and 14 is the number of a page.
+
+    Write a function called logBookChapters that takes an array of arrays (like bookChapters) as an argument, and logs each chapter's name to the console together with the page number. The page number should be separated from the chapter's name with underscores (take a look at the example below).
+
+    Use the padEnd method.
+
+      Example
+        Code:
+          const bookChapters = [['The Basics', 14], ['Sorting', 254], ['Searching', 372], ['Graphs', 526], ['Strings', 706]];
+          logBookChapters(bookChapters);
+        
+        Expected output:
+          The Basics __________ 14
+          Sorting _____________ 254
+          Searching ___________ 372
+          Graphs ______________ 526
+          Strings _____________ 706
+
+*/
+
+// 1.
+const bookCategories = 'science;computing;computer science;algorithms;business;operating systems;networking;electronics';
+const logBookCategories = function (categories) {
+  categories = categories.split(';');
+  for (const category of categories) console.log(category);
+}
+logBookCategories(bookCategories);
+
+// 2.
+const getKeywordsAsString = function (books) {
+  const keywords = [];
+  for (const book of books) {
+    keywords.push(...book.keywords);
+  }
+  const uniqueKeywords = [...new Set(keywords)];
+  console.log(uniqueKeywords.join(';'))
+}
+getKeywordsAsString(books);
+
+// 3.
+const bookChapters = [['The Basics', 14], ['Sorting', 254], ['Searching', 372], ['Graphs', 526], ['Strings', 706]];
+const logBookChapters = function (chapters) {
+  for (const [chapter, page] of chapters) console.log((chapter + ' ').padEnd(20, '_') + ' ' + page);
+}
+logBookChapters(bookChapters);

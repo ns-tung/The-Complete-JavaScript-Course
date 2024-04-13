@@ -659,3 +659,64 @@ const checkBaggage = function (items) {
 checkBaggage('I have a laptop, some Food and a pocket Knife'); // You are NOT allowed on board
 checkBaggage('Socks and camera'); // Welcome aboard!
 checkBaggage('Got some snacks and a gun for protection'); // You are NOT allowed on board
+
+/* WORKING WITH STRINGS – PART 3 ==================================================
+
+  split(), join(), padStart(), padEnd(), repeat()
+
+  References more about String: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+*/
+
+// Split and join
+console.log('a+very+nice+string'.split('+')); // ▶ (4) ['a', 'very', 'nice', 'string']
+console.log('Jonas Schmedtmann'.split(' ')); // ▶ (2) ['Jonas', 'Schmedtmann']
+
+const [f_Name, l_Name] = 'Jonas Schmedtmann'.split(' ');
+
+const newName = ['Mr.', f_Name, l_Name.toUpperCase()].join(' ');
+console.log(newName); // Mr. Jonas SCHMEDTMANN
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+
+  for (const n of names) {
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica ann smith davis'); // Jessica Ann Smith Davis
+capitalizeName('jonas schmedtmann'); // Jonas Schmedtmann
+
+// Padding
+const message = 'Go to gate 23!';
+console.log(message.padStart(20, '+').padEnd(30, '+')); // ++++++Go to gate 23!++++++++++
+console.log('Jonas'.padStart(20, '+').padEnd(30, '+')); // +++++++++++++++Jonas++++++++++
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(64637836)); // ****7836
+console.log(maskCreditCard(43378463864647384)); // *************7384
+console.log(maskCreditCard('334859493847755774747')); // *****************4747
+
+// Repeat
+const messages = 'Bad weather... All Departures Delayed...\n';
+console.log(messages.repeat(5));
+// Bad weather... All Departures Delayed...
+// Bad weather... All Departures Delayed...
+// Bad weather... All Departures Delayed...
+// Bad weather... All Departures Delayed...
+// Bad weather... All Departures Delayed... 
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}`);
+};
+planesInLine(3);  // There are 3 planes in line 🛩🛩🛩
+planesInLine(5);  // There are 5 planes in line 🛩🛩🛩🛩🛩
+planesInLine(12);// There are 12 planes in line 🛩🛩🛩🛩🛩🛩🛩🛩🛩🛩🛩🛩
