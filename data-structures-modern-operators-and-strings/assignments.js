@@ -733,3 +733,84 @@ const isContributor = function (author) {
   return author.lastIndexOf('(Contributor)') !== -1;
 };
 console.log(isContributor('Julie Sussman (Contributor)'), isContributor('Robert Sedgewick'));
+
+/* WORKING WITH STRINGS – PART 2 ==================================================
+
+    1. Write a function called normalizeAuthorName that takes an author's name (string) as an argument, and returns the same string, but the first name and last name are capitalized, and the "(Contributor)" part is removed (if exists).
+
+    You can be sure that the author's name always consists of two words separated by a space, and possibly ends with "(Contributor)". The string may also contain trailing spaces.
+
+      Ex:
+        Code: 
+        Expected output: "Julie Sussman"
+
+    2. Take the title of the second book (books[1]) from the books array, and replace the word "Programs" with "Software". Assign the new string to the newBookTitle variable.
+
+    3. Write a function called logBookTheme that takes book's title (string), and logs to the console:
+
+    "This book is about computers" if the title starts with the word "computer",
+
+    "This book is about algorithms and data structures" if the title includes both the "algorithms" and "structures" words,
+
+    and, "This book is about some systems, but definitely not about operating systems" if the title ends with the word "system" or "systems", but doesn't include the word "operating".
+
+    The title may contain both small and capital letters.
+
+*/
+
+// 1.
+const normalizeAuthorName = function (author) {
+
+  author = author.toLowerCase().trim();
+  const conIndex = author.indexOf('(contributor)');
+
+  if (conIndex !== -1) author = author.slice(0, conIndex).trim();
+
+  let nameStr = '';
+  let startIndex = 0;
+  let spaceIndex = author.indexOf(' ');
+
+  while (spaceIndex !== -1) {
+
+    const word = author.slice(startIndex, spaceIndex);
+
+    word.includes('.') ?
+      nameStr += word.toUpperCase() + ' ' :
+      nameStr += word[0].toUpperCase() + word.slice(1).toLowerCase() + ' ';
+
+    startIndex = spaceIndex + 1;
+    spaceIndex = author.indexOf(' ', startIndex);
+
+    if (spaceIndex === -1) { const last = author.slice(startIndex); nameStr += last[0].toUpperCase() + last.slice(1).toLowerCase(); }
+  }
+  console.log(nameStr);
+};
+
+normalizeAuthorName('  JuliE sussMan (Contributor)');
+
+for (const { author } of books)
+  if (typeof author === 'string') normalizeAuthorName(author);
+  else for (const auth of author.values()) normalizeAuthorName(auth);
+
+// 2.
+const newBookTitle = books[1].title.replace('Programs', 'Software');
+
+// 3.
+const logBookTheme = function (title) {
+  title = title.toLowerCase().trim();
+  const pre = '––– ' + title + ' ';
+  if (title.startsWith('computer'))
+    console.log('This book is about computers.');
+  else if (title.includes('algorithms') && title.includes('data structures'))
+    console.log('This book is about algorithms and data structures.');
+  else if (title.includes('algorithms'))
+    console.log('This book is about algorithms.');
+  else if (title.includes('data structures'))
+    console.log('This book is about data structures.');
+  else if (title.endsWith('system') || title.endsWith('systems') && !title.includes('operating'))
+    console.log('This book is about some systems, but definitely not about operating systems.');
+  else
+    console.log('Other books.');
+}
+
+for (const { title } of books) logBookTheme(title);
