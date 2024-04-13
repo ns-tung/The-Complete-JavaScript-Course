@@ -895,3 +895,55 @@ const logBookChapters = function (chapters) {
   for (const [chapter, page] of chapters) console.log((chapter + ' ').padEnd(20, '_') + ' ' + page);
 }
 logBookChapters(bookChapters);
+
+/* STRING METHODS PRACTICE ==================================================
+
+  Code: const flights = '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+        
+  Expected output:
+    🔴 Delayed Departure from FAO to TXL (11h25)
+                Arrival from BRU to FAO (11h45)
+      🔴 Delayed Arrival from HEL to FAO (12h05)
+              Departure from FAO to LIS (12h30)
+
+*/
+
+const flights = '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+let maxLength = 0;
+const output = [];
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split('+')) {
+  let str = '';
+  let [type, from, to, time] = flight.split(';');
+  type = type.replaceAll('_', ' ').trim();
+  from = getCode(from);
+  to = getCode(to);
+  time = time.replace(':', 'h')
+  str += `${type.includes('Delayed') ? `🔴 ${type}` : type} from ${from} to ${to} (${time})`;
+  str.length > maxLength && (maxLength = str.length);
+  output.push(str);
+}
+
+for (const out of output) console.log(out.padStart(maxLength));
+
+// Pro version 😀
+
+let length = 0;
+const outputArr = [];
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';').map((element, index) => {
+    if (index === 0) return element.replaceAll('_', ' ').trim();
+    if (index === 3) return element.replace(':', 'h');
+    return getCode(element);
+  });
+
+  const str = `${type.includes('Delayed') ? `🔴 ${type}` : type} from ${from} to ${to} (${time})`;
+  length = Math.max(length, str.length);
+  outputArr.push(str);
+}
+
+outputArr.forEach(out => console.log(out.padStart(length)));
