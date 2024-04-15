@@ -65,3 +65,69 @@ const newPassport = function (person) {
 
 newPassport(jonas);
 checkIn(flight, jonas); // Wrong passport!
+
+/* FIRST-CLASS AND HIGHER-ORDER FUNCTIONS ==================================================
+
+    💠 First-class functions (just a concept)
+      👉 JavaScript treats functions as first-class citizens
+      👉 This means that functions are simply values
+      👉 Functions are just another “type” of object
+
+    💠 Higher-order functions
+      👉 A function that receives another function as an argument, that returns a new function, or both
+      👉 This is only possible because of first-class functions
+
+*/
+
+// ––– Functions Accepting Callback Functions –––
+
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+// Higher-order function
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer('JavaScript is the best!', upperFirstWord);
+// Original string: JavaScript is the best!
+// Transformed string: JAVASCRIPT is the best!
+// Transformed by: upperFirstWord
+transformer('JavaScript is the best!', oneWord);
+// Original string: JavaScript is the best!
+// Transformed string: javascriptisthebest!
+// Transformed by: oneWord
+
+// JS uses callbacks all the time
+const high5 = function () {
+  console.log('👋');
+};
+document.body.addEventListener('click', high5);
+['Jonas', 'Martha', 'Adam'].forEach(high5);
+
+// ––– Functions Returning Functions –––
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey');
+greeterHey('Jonas'); // Hey Jonas
+greeterHey('Steven'); // Hey Steven
+
+greet('Hello')('Jonas'); // Hello Jonas
+
+// Challenge
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+
+greetArr('Hi')('Jonas'); // Hi Jonas
