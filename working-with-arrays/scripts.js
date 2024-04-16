@@ -36,3 +36,20 @@ console.log([...arrOne, ...arrTwo]); // ▶ (10) ['a', 'b', 'c', 'd', 'e', 'f', 
 
 // JOIN -> DOESN'T MUTATES any of the involved arrays
 console.log(letters.join(' - ')); // a - b - c - d - e - f - g - h - i - j
+
+/* THE NEW AT() METHOD ==================================================
+
+    Introduced on ES2020
+
+*/
+const arr = [23, 11, 64];
+console.log(arr[0]); // 23
+console.log(arr.at(0)); // 23
+
+// getting last array element
+console.log(arr[arr.length - 1]); // 64
+console.log(arr.slice(-1)[0]); // 64
+console.log(arr.at(-1)); // 64
+
+console.log('jonas'.at(0)); // j
+console.log('jonas'.at(-1)); // s
