@@ -419,3 +419,35 @@ const boardPassengers = function (n, wait) {
 
 const perGroup = 1000; // This perGroup will not be used because the scope chain is not prioritized over closure.
 boardPassengers(180, 3);
+
+/* CODING CHALLENGE #2 ==================================================
+
+    This is more of a thinking challenge than a coding challenge 🤓
+
+    YOUR TASKS:
+
+    1. Take the IIFE below and at the end of the function, attach an event listener that changes the color of the selected h1 element ('header') to blue, each time the BODY element is clicked. Do NOT select the h1 element again!
+
+    2. And now explain to YOURSELF (or someone around you) WHY this worked! Take all the time you need. Think about WHEN exactly the callback function is executed, and what that means for the variables involved in this example.
+
+*/
+
+(function () {
+  const text = document.querySelector('.closure');
+  text.classList.add('text-red');
+  text.classList.add('fw-bold');
+  document.querySelector('.closureBtn')
+    .addEventListener('click', () => {
+      text.classList.remove('fw-bold');
+      text.classList.remove('text-red');
+      setTimeout(
+        () => document.querySelector('.closureBtn').textContent = '👍 Normalized!', 100
+      );
+      setTimeout(
+        () => document.querySelector('.closureBtn').textContent = '👋 Bye!', 2000
+      );
+      setTimeout(
+        () => document.querySelector('.closureBtn').remove(), 4000
+      );
+    });
+})();
