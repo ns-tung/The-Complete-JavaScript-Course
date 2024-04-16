@@ -323,3 +323,99 @@ runOnce(); // This will never run again
 }
 // console.log(isPrivate);
 console.log(notPrivate);
+
+/* CLOSURES ==================================================
+
+    A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+    👉 A function has access to the variable environment (VE) of the execution context in which it was created
+
+    👉 Closure: VE attached to the function, exactly as it was at the time and place the function was created
+
+    👉 The closure has priority over the scope chain.
+
+    REFERENCES MORE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+
+    ––– SOME WAYS OF DEFINING CLOSURE –––
+
+    💠 A closure is the closed-over variable environment of the execution context in which a function was created, even after that execution context is gone;
+          |
+          | Less formal
+          ↓
+    💠 A closure gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a reference to its outer scope, which preserves the scope chain throughout time.
+          |
+          | Less formal
+          ↓
+    💠 A closure makes sure that a function doesn’t lose connection to variables that existed at the function’s birthplace;
+          |
+          |                   🚶‍♂️          🔗           🏡          🗒️
+          | Less formal       🔺          🔺           🔺          🔺
+          |                function  connection  parent–scope  variables
+          ↓
+    💠 A closure is like a backpack that a function carries around wherever it goes. This backpack has all the variables in the environment where the function was created.
+           
+                              🚶‍♂️        🎒        🗒️
+                              🔺        🔺        🔺
+                           function  closure  variables
+           
+    We do NOT have to create closures manually, and this is a JavaScript feature that happens automatically. We can’t even access closed-over variables explicitly. A closure is NOT a tangible JavaScript object.
+
+*/
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking(); // How does booker access the passengerCount? 🤔
+
+booker(); // 1 passengers
+booker(); // 2 passengers
+booker(); // 3 passengers
+
+console.dir(booker); // ▶ ƒ anonymous()
+
+// Example 1
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g(); // 46
+f(); // 1554
+console.dir(f); // ▶ ƒ()
+
+// Re-assigning f function
+h();
+f();
+console.dir(f); // ▶ ƒ()
+
+// Example 2
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+const perGroup = 1000; // This perGroup will not be used because the scope chain is not prioritized over closure.
+boardPassengers(180, 3);
