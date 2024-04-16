@@ -297,3 +297,29 @@ const data2 = [1, 5, 3, 9, 6, 1];
 
 poll.displayResults.call({ answers: data1 }, 'string');
 poll.displayResults.call({ answers: data2 }, 'string');
+
+/* IMMEDIATELY INVOKED FUNCTION EXPRESSIONS (IIFE) ==================================================
+
+*/
+
+const runOnce = function () {
+  console.log('This will never run again');
+};
+runOnce(); // This will never run again
+
+// IIFE
+(function () {
+  console.log('This will never run again');
+  const isPrivate = 23;
+})(); // This will never run again
+
+// console.log(isPrivate);
+
+(() => console.log('This will ALSO never run again'))(); // This will ALSO never run again
+
+{
+  const isPrivate = 23;
+  var notPrivate = 46;
+}
+// console.log(isPrivate);
+console.log(notPrivate);
