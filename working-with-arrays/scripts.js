@@ -53,3 +53,31 @@ console.log(arr.at(-1)); // 64
 
 console.log('jonas'.at(0)); // j
 console.log('jonas'.at(-1)); // s
+
+/* LOOPING ARRAYS: forEach() ==================================================
+
+    Can not use 'continue' and 'break' keywords in forEach loop
+
+*/
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for-of loop
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+// forEach loop
+console.log('––––– FOREACH –––––');
+movements.forEach(function (mov, i, arr) {
+  if (mov > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+  }
+  // console.log(arr);
+});
