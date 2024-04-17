@@ -173,3 +173,19 @@ const max = movements.reduce(
   (acc, mov) => { if (acc > mov) return acc; else return mov; }, movements[0]
 );
 console.log(max);
+
+/* CHAINING OF METHODS ==================================================
+
+    💠 We should use chaining sparingly because chaining many methods can cause performance issues if we have massive arrays. So if we have many chaining methods, chained one after the other, we should compress all the functionality they do into as few methods as possible.
+
+    💠 Don't use chaining with methods that mutate the original array. For example: splice(), reverse()
+
+*/
+
+// THE CHAINING <-> PIPELINE
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD);
