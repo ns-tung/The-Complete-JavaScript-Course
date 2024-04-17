@@ -300,3 +300,46 @@ const overallBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance2);
+
+/* SORTING ARRAYS ==================================================
+
+    The sort() method of Array instances sorts the elements of an array in place and returns the reference to the same array, which is now sorted. The default sort order is ascending, built upon converting the elements into strings and comparing their UTF-16 code unit value sequences.
+
+    The sort() method does mutate the original array. To sort the elements in an array without mutating the original array, use toSorted().
+
+    Syntax:
+      sort() -> covert to string and sorting
+      sort(compareFn) -> resultOfCompareFn(a, b) < 0 => a, b
+      sort(compareFn) -> resultOfCompareFn(a, b) > 0 => b, a
+
+    Ascending order: (a, b) => a - b
+    Descending order: (a, b) => b - a
+
+*/
+
+// Strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort()); // ▶ (4) ['Adam', 'Jonas', 'Martha', 'Zach']
+console.log(owners); // ▶ (4) ['Adam', 'Jonas', 'Martha', 'Zach']
+
+// Numbers
+console.log(movements);
+
+// return < 0 => A, B (keep order)
+// return > 0 => B, A (switch order)
+
+// Ascending
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (a < b) return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
