@@ -77,5 +77,17 @@ const calcAverageHumanAge = function (ages) {
   return adultDogs.reduce((acc, age, _, arr) => acc + age / arr.length, 0);
 }
 
-const avgOne = calcAverageHumanAge(agesOne); console.log(avgOne);
-const avgTwo = calcAverageHumanAge(agesTwo); console.log(avgTwo);
+/* CODING CHALLENGE #3 ==================================================
+
+    Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time as an arrow function, and using chaining!
+
+*/
+
+const averageHumanAge = ages =>
+  ages
+    .map(age => age <= 2 ? age * 2 : 16 + age * 4)
+    .filter(age => age >= 18)
+    .reduce((acc, age, _, arr) => acc + age / arr.length, 0);
+
+const avgOne = averageHumanAge(agesOne); console.log(avgOne);
+const avgTwo = averageHumanAge(agesTwo); console.log(avgTwo);
