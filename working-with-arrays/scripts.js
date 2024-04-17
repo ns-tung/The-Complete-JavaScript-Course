@@ -231,3 +231,13 @@ console.log(firstWithdrawal);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
+
+/* THE findIndex() METHOD ==================================================
+
+    The findIndex() method of Array instances returns the index of the first element in an array that satisfies the provided testing function. If no elements satisfy the testing function, -1 is returned.
+
+*/
+
+const index = accounts.findIndex(acc => acc.owner === 'Sarah Smith');
+const indexTung = accounts.findIndex(acc => acc.owner === 'Tung');
+console.log(index, indexTung); // 3 -1
