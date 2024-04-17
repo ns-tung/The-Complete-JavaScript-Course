@@ -241,3 +241,29 @@ console.log(account);
 const index = accounts.findIndex(acc => acc.owner === 'Sarah Smith');
 const indexTung = accounts.findIndex(acc => acc.owner === 'Tung');
 console.log(index, indexTung); // 3 -1
+
+/* some() AND every() ==================================================
+
+    The some() method of Array instances tests whether at least one element in the array passes the test implemented by the provided function. It returns true if, in the array, it finds an element for which the provided function returns true; otherwise, it returns false. It doesn't modify the array.
+
+    The every() method of Array instances tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+*/
+
+// EQUALITY
+console.log(movements.includes(-130)); // true
+
+// SOME: CONDITION
+console.log(movements.some(mov => mov === -130)); // true
+
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits); // true
+
+// EVERY
+console.log(movements.every(mov => mov > 0)); // false
+console.log(account4.movements.every(mov => mov > 0)); // true
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit)); // true
+console.log(movements.every(deposit)); // false
+console.log(movements.filter(deposit)); // ▶ (5) [200, 450, 3000, 70, 1300]
