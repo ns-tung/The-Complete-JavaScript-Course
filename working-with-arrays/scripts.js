@@ -267,3 +267,36 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit)); // true
 console.log(movements.every(deposit)); // false
 console.log(movements.filter(deposit)); // ▶ (5) [200, 450, 3000, 70, 1300]
+
+/* flat() AND flatMap() ==================================================
+
+    Introduced on ES2019
+
+    The flat() method of Array instances creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+
+    The flatMap() method of Array instances returns a new array formed by applying a given callback function to each array element and then flattening the result by ONE LEVEL. It is identical to a map() followed by a flat() of depth 1 (arr.map(...args).flat()), but slightly more efficient than calling those two methods separately.
+
+*/
+
+const arrNum = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arrNum.flat()); // ▶ (8) [1, 2, 3, 4, 5, 6, 7, 8]
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(1)); // ▶ (6) [[1, 2], 3, 4, [5, 6], 7, 8]
+console.log(arrDeep.flat(2)); // ▶ (8) [1, 2, 3, 4, 5, 6, 7, 8]
+
+const arrSoDeep = [0, 1, [2, [3, [4, [5, [6, 7, [8]]]]]]];
+console.log(arrSoDeep.flat(Infinity)); // ▶ (8) [1, 2, 3, 4, 5, 6, 7, 8]
+
+// flat
+const overallBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+// flatMap -> flattening the result by ONE LEVEL
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
