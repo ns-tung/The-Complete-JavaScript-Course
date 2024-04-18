@@ -343,3 +343,45 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
+
+/* MORE WAYS OF CREATING AND FILLING ARRAYS ==================================================
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+*/
+
+const arrNumber = [1, 2, 3, 4, 5, 6, 7]; // ▶ (7) [1, 2, 3, 4, 5, 6, 7]
+console.log(new Array(1, 2, 3, 4, 5, 6, 7)); // ▶ (7) [1, 2, 3, 4, 5, 6, 7]
+
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x); // ▶ (7) [empty × 7]
+x.fill(1, 3, 5);
+console.log(x); // ▶ (7) [empty × 3, 1, 1, empty × 2]
+
+arr.fill(23, 2, 6);
+console.log(arr); // ▶ (3) [23, 11, 23]
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y); // ▶ (7) [1, 1, 1, 1, 1, 1, 1]
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z); // (7) [1, 2, 3, 4, 5, 6, 7]
+
+const diceArr = Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6 + 1));
+console.log('Arrays of 100 rolls of dice:\n', diceArr);
+
+const diceRolls = Array.from({ length: 100 }, () => {
+  let roll = 0;
+  do roll = Math.trunc(Math.random() * 6 + 1); while (roll === 1);
+  return roll;
+});
+console.log('Arrays of 100 rolls of dice without 1:\n', diceRolls);
+
+const items = document.querySelectorAll('.item');
+const itemArrays = Array.from(items, item => item.innerText.replaceAll('\n', ' ').replaceAll(' ,', ','));
+console.log('Section content:\n', itemArrays);
