@@ -421,3 +421,65 @@ console.log('Section content:\n', itemArrays);
       👉 Based on callback: .forEach() – (Does not create a new array, just loops over it)
 
 */
+
+/* ARRAY METHODS PRACTICE ==================================================
+*/
+
+// 1.
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
+
+console.log(bankDepositSum); // 25180
+
+// 2.
+// const numDeposits1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+console.log(numDeposits1000); // 6
+
+// Prefixed ++ operator
+let a = 10;
+console.log(++a); // 11
+console.log(a); // 11
+
+// 3.
+const { deposits: accDeposits, withdrawals: accWithdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+      sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+      return sums;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+
+console.log(accDeposits, accWithdrawals); // 25180 -7340
+
+// 4.
+// this is a nice title -> This Is a Nice Title
+const convertTitleCase = function (title) {
+  // const capitalize = str => str[0].toUpperCase() + str.slice(1);
+  const capitalize = str => str.replace(str[0], str[0].toUpperCase());
+
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(' ');
+
+  return capitalize(titleCase);
+};
+
+console.log(convertTitleCase('this is a nice title')); // This Is a Nice Title
+console.log(convertTitleCase('this is a LONG title but not too long')); // This Is a Long Title but Not Too Long
+console.log(convertTitleCase('and here is another title with an EXAMPLE')); // And Here Is Another Title with an Example
