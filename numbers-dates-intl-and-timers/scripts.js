@@ -143,3 +143,46 @@ console.log(PI);
 // DO NOT use with string type
 console.log(Number('230_000')); // NaN
 console.log(parseInt('230_000')); // 230
+
+/* WORKING WITH BigInt ==================================================
+
+    Introduced ES2020
+
+    A BigInt value, also sometimes just called a BigInt, is a bigint primitive created by appending n to the end of an integer literal or by calling the BigInt() function (without the new operator) and giving it an integer value or string value.
+
+    NOT WORKING with Math operations, ex: Math.sqrt(), ...
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+
+*/
+
+console.log(2 ** 53 - 1); // 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+console.log(2 ** 53 + 1); // 🚫 9007199254740992
+console.log(2 ** 53 + 2); // 🚫 9007199254740994
+console.log(2 ** 53 + 3); // 🚫 9007199254740996
+console.log(2 ** 53 + 4); // 🚫 9007199254740996
+
+console.log(4838430248342043823408394839483204n);
+console.log(BigInt(48384302));
+
+// Operations
+console.log(10000n + 10000n);
+console.log(36286372637263726376237263726372632n * 10000000n);
+// console.log(Math.sqrt(16n));
+
+const huge = 20289830237283728378237n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+// Exceptions
+console.log(20n > 15); // true
+console.log(20n === 20); // false
+console.log(typeof 20n); // bigint
+console.log(20n == '20'); // true
+
+console.log(huge + ' is REALLY big!!!'); // 20289830237283728378237 is REALLY big!!!
+
+// Divisions
+console.log(11n / 3n); // 3n
+console.log(10 / 3); // 3.3333333333333335
