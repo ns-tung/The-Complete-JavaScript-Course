@@ -121,3 +121,25 @@ labelPercent.addEventListener('click', function () {
         if (i % 3 === 0) item.classList.add('text-blue');
     });
 });
+
+/* NUMERIC SEPARATORS ==================================================
+
+    Introduced on ES2021: we can use underscore (_) for a thousand separators.
+*/
+
+// ONLY use with number type
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+const price = 345_99;
+console.log(price);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+const PI = 3.1415;
+console.log(PI);
+
+// DO NOT use with string type
+console.log(Number('230_000')); // NaN
+console.log(parseInt('230_000')); // 230
