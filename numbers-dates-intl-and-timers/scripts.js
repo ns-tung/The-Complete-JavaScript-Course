@@ -239,3 +239,22 @@ const calcDaysPassed = (date1, date2) =>
 
 const days1 = calcDaysPassed(new Date(2037, 3, 4), new Date(2037, 3, 14));
 console.log(days1);
+
+/* INTERNATIONALIZING DATES (Intl) ==================================================
+
+    The Intl.DateTimeFormat() object enables language-sensitive date and time formatting.
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
+*/
+
+const dateOptions = {
+    hour: 'numeric',
+    minute: 'numeric',
+    day: 'numeric',
+    month: 'numeric', // 2-digit, long, short
+    year: 'numeric',
+    weekday: 'long',
+}
+const formatDate = date => new Intl.DateTimeFormat('vi-VN', dateOptions).format(date);
+console.log(formatDate(futures));
+console.log(formatDate(days1));
