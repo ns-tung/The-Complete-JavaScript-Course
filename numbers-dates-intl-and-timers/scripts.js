@@ -282,3 +282,45 @@ console.log(
     navigator.language,
     new Intl.NumberFormat(navigator.language, numOptions).format(number)
 );
+
+/* TIMERS: setTimeout() AND setInterval() ==================================================
+
+    The global setTimeout() method sets a timer which executes a function or specified piece of code once the timer expires.
+
+        https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
+
+    The global clearTimeout() method cancels a timeout previously established by calling setTimeout().
+
+        https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout
+
+    The setInterval() method, offered on the Window and WorkerGlobalScope interfaces, repeatedly calls a function or executes a code snippet, with a fixed time delay between each call.
+
+        https://developer.mozilla.org/en-US/docs/Web/API/setInterval
+    
+    The global clearInterval() method cancels a timed, repeating action which was previously established by a call to setInterval(). If the parameter provided does not identify a previously established action, this method does nothing.
+
+        https://developer.mozilla.org/en-US/docs/Web/API/clearInterval
+*/
+
+// setTimeout
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+    (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`),
+    3000,
+    ...ingredients
+);
+console.log('Waiting...');
+
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// setInterval
+const clock = {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+}
+function updateClock() {
+    const now = new Date();
+    console.log(new Intl.DateTimeFormat(navigator.language, clock).format(now));
+}
+setInterval(updateClock, 1000);
