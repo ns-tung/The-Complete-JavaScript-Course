@@ -258,3 +258,27 @@ const dateOptions = {
 const formatDate = date => new Intl.DateTimeFormat('vi-VN', dateOptions).format(date);
 console.log(formatDate(futures));
 console.log(formatDate(days1));
+
+/* INTERNATIONALIZING NUMBERS (Intl) ==================================================
+
+    The Intl.NumberFormat object enables language-sensitive number formatting.
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+    
+*/
+
+const number = 3884764.23;
+const numOptions = {
+    style: 'currency',
+    unit: 'celsius',
+    currency: 'EUR',
+    // useGrouping: false,
+};
+
+console.log('US:      ', new Intl.NumberFormat('en-US', numOptions).format(number));
+console.log('Germany: ', new Intl.NumberFormat('de-DE', numOptions).format(number));
+console.log('Vietnam: ', new Intl.NumberFormat('vi-VN', numOptions).format(number));
+console.log(
+    navigator.language,
+    new Intl.NumberFormat(navigator.language, numOptions).format(number)
+);
