@@ -4,7 +4,7 @@ This repository showcases my progress through [The Complete JavaScript Course](h
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="/_assets/images/banner-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="/_assets/images/banner-light.png">
+  <!-- <source media="(prefers-color-scheme: light)" srcset="/_assets/images/banner-light.png"> -->
   <img src="/_assets/images/banner-light.png" alt="The Complete JavaScript Course">
 </picture>
 
