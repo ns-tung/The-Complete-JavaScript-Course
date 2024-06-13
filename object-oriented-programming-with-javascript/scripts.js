@@ -108,3 +108,33 @@ mercedes.accelerate();
 mercedes.accelerate();
 mercedes.brake();
 mercedes.accelerate();
+
+/* ES6 CLASSES ==================================================
+
+    1. Classes are NOT hoisted
+    2. Classes are first-class citizens
+    3. Classes are executed in strict mode
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+
+*/
+
+class Persons {
+    constructor(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+    calcAge() {
+        console.log(2034 - this.birthYear);
+    }
+    greet() {
+        console.log(`Hi, ${this.firstName}.`);
+    }
+}
+
+const jessica = new Persons('Jessica Davis', 1996);
+console.log(jessica);
+jessica.calcAge();
+
+console.log(jessica.__proto__ === Persons.prototype);
+jessica.greet();
