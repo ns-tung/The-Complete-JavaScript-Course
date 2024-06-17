@@ -138,3 +138,37 @@ jessica.calcAge();
 
 console.log(jessica.__proto__ === Persons.prototype);
 jessica.greet();
+
+/* SETTERS AND GETTERS ==================================================
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set
+*/
+
+const currentYear = new Date().getFullYear();
+
+class PersonGS {
+    constructor(fullName, birthYear) {
+        this.fullName = fullName;
+        this.birthYear = birthYear;
+    }
+
+    get age() { return currentYear - this.birthYear }
+
+    get fullName() { return this._fullName; }
+
+    set fullName(name) {
+        if (name.includes(' ')) this._fullName = name;
+        else console.log(`${name} is not full name.`);
+    }
+}
+
+const tung = new PersonGS('Tung', 1990); // Tung is not a full name.
+console.log(tung); // ▶ PersonGS {birthYear: 1990}
+console.log(tung.age); // 34
+
+const walter = new PersonGS('Walter White', 1965);
+console.log(walter); // ▶ PersonGS {_fullName: 'Walter White', birthYear: 1965}
+console.log(walter.age); // 59
+console.log(walter.fullName); // Walter White
