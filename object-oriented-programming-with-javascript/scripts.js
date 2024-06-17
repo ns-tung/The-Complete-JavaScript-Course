@@ -172,3 +172,48 @@ const walter = new PersonGS('Walter White', 1965);
 console.log(walter); // ▶ PersonGS {_fullName: 'Walter White', birthYear: 1965}
 console.log(walter.age); // 59
 console.log(walter.fullName); // Walter White
+
+/* STATIC METHODS ==================================================
+
+    https://www.w3schools.com/js/js_class_static.asp
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
+*/
+
+class PersonStatic {
+
+    // instance methods/features
+    constructor(fullName, birthYear) { this.fullName = fullName; this.birthYear = birthYear; }
+    get age() { return currentYear - this.birthYear }
+    get fullName() { return this._fullName; }
+    set fullName(name) { if (name.includes(' ')) this._fullName = name; else console.log(`${name} is not full name.`); }
+
+    // static methods/features
+    static hey() {
+        console.log('Hey there 👋');
+    }
+}
+
+const me = new PersonStatic('Tung Nguyen', 1990);
+
+// You can call 'hey()' on the PersonStatic Class
+PersonStatic.hey(); // Hey there 👋
+
+// But NOT on a PersonStatic instance, this will raise an error.
+me.hey(); // 🚫 me.hey is not a function
+
+// If you want to use the PersonStatic instance inside the static method, you can send it as a parameter.
+class PersonStatics {
+
+    constructor(fullName, birthYear) { this.fullName = fullName; this.birthYear = birthYear; }
+    get age() { return currentYear - this.birthYear }
+    get fullName() { return this._fullName; }
+    set fullName(name) { if (name.includes(' ')) this._fullName = name; else console.log(`${name} is not full name.`); }
+
+    static hey(x) {
+        console.log(`Hey ${x.fullName} 👋`);
+    }
+}
+
+const mes = new PersonStatics('Tung Nguyen', 1990);
+PersonStatics.hey(mes); // Hey Tung Nguyen 👋
