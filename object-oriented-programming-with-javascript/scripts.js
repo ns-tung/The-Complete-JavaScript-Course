@@ -217,3 +217,44 @@ class PersonStatics {
 
 const mes = new PersonStatics('Tung Nguyen', 1990);
 PersonStatics.hey(mes); // Hey Tung Nguyen 👋
+
+/* THE Object.create() STATIC METHOD ==================================================
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
+*/
+
+const PersonPrototype = {
+    calcAge() {
+        console.log(currentYear - this.birthYear);
+    },
+    init(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+}
+
+const steven = Object.create(PersonPrototype);
+console.log(steven);
+steven.name = 'Steven';
+steven.birthYear = 2000;
+steven.calcAge(); // 24
+
+console.log(steven.__proto__ === PersonPrototype); // true
+
+const sarah = Object.create(PersonPrototype);
+sarah.init('Sarah', 1972);
+sarah.calcAge(); // 52
+
+//////////////////////////////////////////////////
+const person = {
+    isHuman: false,
+    printIntroduction: function () {
+        console.log(`My name is ${this.name}. Am I human? => ${this.isHuman}`);
+    },
+};
+
+const meObj = Object.create(person);
+
+meObj.name = 'Tung';
+meObj.isHuman = true;
+meObj.printIntroduction(); // My name is Tung. Am I human? => true
