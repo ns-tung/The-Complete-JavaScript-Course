@@ -22,9 +22,7 @@ console.log(matilda, jack);
 
 console.log(jonas instanceof Person); // true
 
-/* PROTOTYPES ==================================================
-
-*/
+/* PROTOTYPES ================================================== */
 
 Person.prototype.calcAge = function () {
     console.log(2034 - this.birthYear);
@@ -292,3 +290,32 @@ ford.accelerate();
 ford.brake();
 ford.speedUS = 50;
 console.log(ford.speed); // 80
+
+/* INHERITANCE BETWEEN "CLASSES": CONSTRUCTOR FUNCTIONS ================================================== */
+
+const ThePerson = function (firstName, birthYear) {
+    this.firstName = firstName; this.birthYear = birthYear;
+}
+
+ThePerson.prototype.calcAge = function () { console.log(currentYear - this.birthYear) };
+
+const TheStudent = function (firstName, birthYear, course) {
+    ThePerson.call(this, firstName, birthYear); this.course = course;
+}
+
+TheStudent.prototype = Object.create(ThePerson.prototype); // Linking prototypes
+TheStudent.prototype.introduce = function () { console.log(`My name is ${this.firstName}, and I study ${this.course}.`) };
+
+const mike = new TheStudent('Mike', 2000, 'Computer Science');
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__); // ▶ ThePerson {introduce: ƒ}
+console.log(mike.__proto__.__proto__); // ▶ {calcAge: ƒ}
+
+TheStudent.prototype.constructor = TheStudent; // re-assign the constructor back to the right place
+console.dir(TheStudent.prototype.constructor); // ▶ ƒ TheStudent(firstName, birthYear, course)
+
+console.log(mike instanceof TheStudent); // true
+console.log(mike instanceof ThePerson); // true
+console.log(mike instanceof Object); // true
