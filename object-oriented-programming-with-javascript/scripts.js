@@ -452,7 +452,7 @@ class AccountProtect {
     _approveLoan() { return true }
 
     // Public interface
-    get movements() { return this._movements }
+    getMovements() { return this._movements }
     deposit(val) { this._movements.push(val) }
     withdraw(val) { this.deposit(-val) }
     requestLoan(val) { if (this._approveLoan()) { this.deposit(val); console.log('Loan approved.') } }
@@ -462,4 +462,50 @@ const tungOne = new AccountProtect('Tung', 'VND', 1234);
 tungOne.deposit(250);
 tungOne.withdraw(140);
 tungOne.requestLoan(1000);
-console.log(tungOne.movements);
+
+/* ENCAPSULATION: PRIVATE CLASS FIELDS AND METHODS ==================================================
+
+    1. Public fields
+    2. Private fields
+    3. Public methods
+    4. Private methods
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties
+
+*/
+
+class AccountPrivate {
+    // Public fields (instances)
+    locale = navigator.language;
+
+    // Private fields (instances)
+    #pin;
+    #movements = [];
+
+    constructor(owner, currency, pin) {
+        this.#pin = pin;
+        this.owner = owner;
+        this.currency = currency;
+        console.log(`Thanks for opening an account, ${owner}.`);
+    }
+    // Private methods
+    #approveLoan() { return true }
+
+    // Public methods/Public interface
+    getMovements() { return this.#movements }
+    deposit(val) { this.#movements.push(val) }
+    withdraw(val) { this.deposit(-val) }
+    requestLoan(val) { if (this.#approveLoan()) { this.deposit(val); console.log('Loan approved.') } }
+}
+
+const tungTwo = new AccountPrivate('Tung', 'VND', 1234);
+tungTwo.deposit(250);
+tungTwo.withdraw(140);
+tungTwo.requestLoan(1000);
+console.log(tungTwo);
+// cannot be accessed .movements and .pin outside the class any more
+console.log(tungTwo.movements); // undefined
+console.log(tungTwo.pin) // undefined
+// also do not accessible to .#approveLoan, .#movements and .#pin outside class
+// console.log(tungTwo.#approveLoan);
+// console.log(tungTwo.#movements);
+// console.log(tungTwo.#pin);
