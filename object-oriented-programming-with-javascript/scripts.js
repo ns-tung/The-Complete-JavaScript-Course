@@ -378,3 +378,29 @@ class TheStudents extends ThePersons {
 const martha = new TheStudents('Martha Jones', 2002, 'Computer Science');
 martha.introduce();
 martha.calcAge();
+
+/* INHERITANCE BETWEEN "CLASSES": Object.create ================================================== */
+
+const ThePersonPrototype = {
+    calcAge() {
+        console.log(currentYear - this.birthYear);
+    },
+    init(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+}
+
+const stevens = Object.create(ThePersonPrototype);
+
+const TheStudentPrototype = Object.create(ThePersonPrototype);
+TheStudentPrototype.init = function (firstName, birthYear, course) {
+    ThePersonPrototype.init.call(this, firstName, birthYear);
+    this.course = course;
+}
+TheStudentPrototype.introduce = function () { console.log(`My name is ${this.firstName}, and I study ${this.course}.`) };
+
+const jay = Object.create(TheStudentPrototype);
+jay.init('Jay', 2000, 'Computer Science');
+jay.introduce();
+jay.calcAge();
