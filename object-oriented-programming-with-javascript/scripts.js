@@ -428,3 +428,38 @@ tungAcc.deposit(250);
 tungAcc.withdraw(140);
 tungAcc.requestLoan(1000);
 console.log(tungAcc);
+
+/* ENCAPSULATION: PROTECTED PROPERTIES AND METHODS ==================================================
+
+    Convention: use the underscore (_) prefix to mark a property or method that needs to be protected.
+    This convention is between developers to implicitly understand that they should not access them directly.
+    It does not prevent direct access to protected marked property/method.
+
+*/
+
+class AccountProtect {
+    constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        this.locale = navigator.language;
+        console.log(`Thanks for opening an account, ${owner}.`);
+
+        // Protected properties
+        this._pin = pin;
+        this._movements = [];
+    }
+    // Protected methods
+    _approveLoan() { return true }
+
+    // Public interface
+    get movements() { return this._movements }
+    deposit(val) { this._movements.push(val) }
+    withdraw(val) { this.deposit(-val) }
+    requestLoan(val) { if (this._approveLoan()) { this.deposit(val); console.log('Loan approved.') } }
+}
+
+const tungOne = new AccountProtect('Tung', 'VND', 1234);
+tungOne.deposit(250);
+tungOne.withdraw(140);
+tungOne.requestLoan(1000);
+console.log(tungOne.movements);
