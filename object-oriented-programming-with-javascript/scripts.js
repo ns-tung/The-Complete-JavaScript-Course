@@ -348,3 +348,33 @@ const tesla = new EV('Tesla', 120, 23);
 tesla.chargeBattery(90);
 tesla.brake();
 tesla.accelerate();
+
+/* INHERITANCE BETWEEN "CLASSES": ES6 CLASSES ================================================== */
+
+class ThePersons {
+    constructor(fullName, birthYear) { this._fullName = fullName; this.birthYear = birthYear; }
+    get age() { return currentYear - this.birthYear }
+    get fullName() { return this._fullName; }
+    set fullName(name) { if (name.includes(' ')) this._fullName = name; else console.log(`${name} is not full name.`); }
+    calcAge() { console.log(this.age) }
+    static hey() {
+        console.log('Hey there 👋');
+    }
+}
+
+class TheStudents extends ThePersons {
+    constructor(fullName, birthYear, course) {
+        super(fullName, birthYear);
+        this.course = course;
+    }
+    introduce = function () { console.log(`My name is ${this.fullName}, and I study ${this.course}.`) };
+    calcAge() {
+        console.log(
+            `I'm ${this.age} years old, but as a student I feel more like ${this.age + 5}.`
+        );
+    }
+}
+
+const martha = new TheStudents('Martha Jones', 2002, 'Computer Science');
+martha.introduce();
+martha.calcAge();
