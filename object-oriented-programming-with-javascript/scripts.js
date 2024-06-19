@@ -492,9 +492,9 @@ class AccountPrivate {
 
     // Public methods/Public interface
     getMovements() { return this.#movements }
-    deposit(val) { this.#movements.push(val) }
-    withdraw(val) { this.deposit(-val) }
-    requestLoan(val) { if (this.#approveLoan()) { this.deposit(val); console.log('Loan approved.') } }
+    deposit(val) { this.#movements.push(val); return this; }
+    withdraw(val) { this.deposit(-val); return this; }
+    requestLoan(val) { if (this.#approveLoan()) { this.deposit(val); console.log('Loan approved.'); return this; } }
 }
 
 const tungTwo = new AccountPrivate('Tung', 'VND', 1234);
@@ -509,3 +509,8 @@ console.log(tungTwo.pin) // undefined
 // console.log(tungTwo.#approveLoan);
 // console.log(tungTwo.#movements);
 // console.log(tungTwo.#pin);
+
+/* CHAINING METHODS ================================================== */
+
+tungTwo.deposit(300).deposit(500).withdraw(350).requestLoan(20000).withdraw(4000);
+console.log(tungTwo.getMovements()); // ▶ (8) [250, -140, 1000, 300, 500, -350, 20000, -4000]
