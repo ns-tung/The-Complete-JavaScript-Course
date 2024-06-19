@@ -404,3 +404,27 @@ const jay = Object.create(TheStudentPrototype);
 jay.init('Jay', 2000, 'Computer Science');
 jay.introduce();
 jay.calcAge();
+
+/* PUBLIC CLASS FIELDS AND METHODS ================================================== */
+
+class Account {
+    constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        this.pin = pin;
+        this.movements = [];
+        this.locale = navigator.language;
+        console.log(`Thanks for opening an account, ${owner}.`);
+    }
+    // Public interface
+    deposit(val) { this.movements.push(val) }
+    withdraw(val) { this.deposit(-val) }
+    approveLoan() { return true }
+    requestLoan(val) { if (this.approveLoan()) { this.deposit(val); console.log('Loan approved.') } }
+}
+
+const tungAcc = new Account('Tung', 'VND', 1234);
+tungAcc.deposit(250);
+tungAcc.withdraw(140);
+tungAcc.requestLoan(1000);
+console.log(tungAcc);
