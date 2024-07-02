@@ -198,7 +198,7 @@ const me = new PersonStatic('Tung Nguyen', 1990);
 PersonStatic.hey(); // Hey there 👋
 
 // But NOT on a PersonStatic instance, this will raise an error.
-me.hey(); // 🚫 me.hey is not a function
+// me.hey(); // 🚫 me.hey is not a function
 
 // If you want to use the PersonStatic instance inside the static method, you can send it as a parameter.
 class PersonStatics {
@@ -275,10 +275,12 @@ class Cars {
     accelerate() {
         this.speed += 10;
         console.log(`${this.make} is going at ${this.speed} km/h`);
+        return this;
     }
     brake() {
         this.speed -= 5;
         console.log(`${this.make} is going at ${this.speed} km/h`);
+        return this;
     }
     get speedUS() { return this.speed / 1.6 }
     set speedUS(s) { this.speed = s * 1.6 }
@@ -367,7 +369,7 @@ class TheStudents extends ThePersons {
         super(fullName, birthYear);
         this.course = course;
     }
-    introduce = function () { console.log(`My name is ${this.fullName}, and I study ${this.course}.`) };
+    introduce() { console.log(`My name is ${this.fullName}, and I study ${this.course}.`) };
     calcAge() {
         console.log(
             `I'm ${this.age} years old, but as a student I feel more like ${this.age + 5}.`
@@ -514,3 +516,37 @@ console.log(tungTwo.pin) // undefined
 
 tungTwo.deposit(300).deposit(500).withdraw(350).requestLoan(20000).withdraw(4000);
 console.log(tungTwo.getMovements()); // ▶ (8) [250, -140, 1000, 300, 500, -350, 20000, -4000]
+
+/* CODING CHALLENGE #4 ==================================================
+
+    1. Re-create challenge #3, but this time using ES6 classes: create an 'EVCl' child class of the 'Cars' class
+    2. Make the 'charge' property private;
+    3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the 'Cars' class. They experiment with chaining!
+
+    DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
+
+*/
+
+class EVs extends Cars {
+    #charge;
+    constructor(make, speed, charge) {
+        super(make, speed);
+        this.#charge = charge;
+    }
+    chargeBattery(chargeTo) {
+        this.#charge = chargeTo;
+        return this;
+    };
+    accelerate() {
+        this.speed += 20;
+        this.#charge--;
+        console.log(`${this.make} is going at ${this.speed} km/h, with a charge of ${this.#charge}%`);
+        return this;
+    }
+}
+
+const rivian = new EVs('Rivian', 120, 23);
+console.log(rivian);
+
+rivian.accelerate().accelerate().accelerate().brake().chargeBattery(51).accelerate();
+console.log(rivian.speedUS);
