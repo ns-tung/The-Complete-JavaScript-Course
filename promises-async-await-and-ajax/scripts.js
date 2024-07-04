@@ -7,6 +7,7 @@ const countriesRow = document.querySelector('.countries');
 /* Asynchronous JavaScript, AJAX and APIs ==================================================
 
   https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous
+
 */
 
 const getCountry = function (country) {
@@ -71,7 +72,7 @@ const getCountryAndNeighbor = function (country) {
     renderCountry(data);
 
     // Get neighbor countries
-    const neighbors = data.borders; console.log(neighbors)
+    const neighbors = data.borders;
     if (!neighbors) return;
 
     // AJAX call neighbor countries
@@ -87,7 +88,7 @@ const getCountryAndNeighbor = function (country) {
   })
 }
 
-getCountryAndNeighbor('fin');
+// getCountryAndNeighbor('fin');
 
 /*
   setTimeout(() => {
@@ -103,3 +104,15 @@ getCountryAndNeighbor('fin');
     }, 1000);
   }, 1000);
 */
+
+/* Promises, the Fetch API and Consuming Promises ================================================== */
+
+const getCountryData = function (country) {
+  fetch(restCountriesName + country)
+    .then(res => res.json())
+    .then(data => {
+      renderCountry(data[0]);
+    })
+}
+
+getCountryData('fin'); getCountryData('swe'); getCountryData('swi');
