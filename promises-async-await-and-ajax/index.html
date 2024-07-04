@@ -60,6 +60,11 @@
     <script defer src="/_assets/vendor/prismjs/prism.js"></script>
     <script defer type="module" src="/_assets/scripts.js"></script>
     <script defer src="scripts.js"></script>
+    <style>
+      .neighbor {
+        transform: scale(0.9);
+      }
+    </style>
   </head>
 
   <body class="page">
@@ -135,17 +140,26 @@
           <div class="hr-text hr-text-left fs-3">Section content</div>
           <div class="card mb-3">
             <div class="card-body p-4">
-              <div class="item d-flex align-items-center">
+              <div class="item d-flex align-items-center mb-3">
                 <i
                   class="ti ti-circle-check-filled fs-2 me-1"
                   style="color: var(--tblr-green-darken)"
                 ></i>
                 <span class="fs-3">Asynchronous JavaScript, AJAX and APIs</span>
               </div>
+              <div class="item d-flex align-items-center">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Callback Hell</span>
+              </div>
             </div>
           </div>
           <div class="hr-text hr-text-left fs-3">UI</div>
-          <div class="row row-cards row-cols-2 row-cols-md-3 countries"></div>
+          <div
+            class="row row-cards row-cols-2 row-cols-md-3 row-cols-lg-4 countries"
+          ></div>
           <div class="hr-text hr-text-left fs-3">Scripts</div>
           <pre class="line-numbers match-braces" data-src="scripts.js"></pre>
         </div>
