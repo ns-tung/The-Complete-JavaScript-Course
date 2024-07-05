@@ -64,6 +64,11 @@
       .neighbor {
         transform: scale(0.9);
       }
+
+      .spinner,
+      .neighbor {
+        transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+      }
     </style>
   </head>
 
@@ -163,16 +168,28 @@
                   >Promises, the Fetch API and Consuming Promises</span
                 >
               </div>
-              <div class="item d-flex align-items-center">
+              <div class="item d-flex align-items-center mb-3">
                 <i
                   class="ti ti-circle-check-filled fs-2 me-1"
                   style="color: var(--tblr-green-darken)"
                 ></i>
                 <span class="fs-3">Chaining Promises</span>
               </div>
+              <div class="item d-flex align-items-center">
+                <i
+                  class="ti ti-circle-check-filled fs-2 me-1"
+                  style="color: var(--tblr-green-darken)"
+                ></i>
+                <span class="fs-3">Handling Rejected Promises</span>
+              </div>
             </div>
           </div>
-          <div class="hr-text hr-text-left fs-3">UI</div>
+          <div class="hr-text hr-text-left fs-3">
+            <div class="btn px-4 view-country">View country</div>
+          </div>
+          <div class="text-center mb-3 spinner d-none">
+            <div class="spinner-border text-teal" role="status"></div>
+          </div>
           <div
             class="row row-cards row-cols-2 row-cols-md-3 row-cols-lg-4 countries"
           ></div>
