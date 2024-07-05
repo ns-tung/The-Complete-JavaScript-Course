@@ -115,4 +115,37 @@ const getCountryData = function (country) {
     })
 }
 
-getCountryData('fin'); getCountryData('swe'); getCountryData('swi');
+// getCountryData('fin'); getCountryData('swe'); getCountryData('swi');
+
+/* Chaining Promises ================================================== */
+
+// Chaining Promises
+const getCountryDataAndNeighbor = function (country) {
+  fetch(restCountriesName + country)
+    .then(res => res.json())
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbor = data[0].borders[0];
+      if (!neighbor) return;
+      return fetch(restCountriesCode + neighbor);
+    })
+    .then(res => res.json())
+    .then(data => {
+      renderCountry(data[0], ' neighbor')
+    })
+}
+
+// getCountryDataAndNeighbor('viet');
+
+// Use recursive to get all neighbors
+const getCountryDataRecursive = function (country, neighbor = '') {
+  fetch(neighbor === '' ? restCountriesName + country : restCountriesCode + country)
+    .then((response) => response.json())
+    .then((data) => {
+      renderCountry(data[0], neighbor);
+      if (!data[0].borders || neighbor !== '') return;
+      data[0].borders.map(country => getCountryDataRecursive(country, ' neighbor'));
+    });
+};
+
+getCountryDataRecursive('finland');
