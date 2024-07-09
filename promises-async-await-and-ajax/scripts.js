@@ -2,6 +2,7 @@
 
 const restCountriesName = 'https://restcountries.com/v3.1/name/';
 const restCountriesCode = 'https://restcountries.com/v3.1/alpha/';
+const err = document.querySelector('.errors');
 const spn = document.querySelector('.spinner');
 const btn = document.querySelector('.view-country');
 let countriesRow = document.querySelector('.countries');
@@ -10,9 +11,9 @@ const removeSpinner = function () {
   spn.classList.add('d-none');
 }
 
-const clearCountries = function () {
-  if (countriesRow.innerHTML === '') return;
-  countriesRow.innerHTML = ''
+const clearContent = function () {
+  if (err.innerHTML !== '') err.innerHTML = '';
+  if (countriesRow.innerHTML !== '') countriesRow.innerHTML = '';
 };
 
 const renderCountry = function (data, neighbor = '') {
@@ -38,9 +39,9 @@ const renderCountry = function (data, neighbor = '') {
 }
 
 const renderError = function (msg) {
-  clearCountries();
-  msg = `<p class="pt-3">${'🔻 ' + msg}</p>`;
-  countriesRow.insertAdjacentHTML('afterbegin', msg);
+  if (err.innerHTML !== '') err.innerHTML = '';
+  msg = `<p class="py-3">${'🔻 ' + msg}</p>`;
+  err.insertAdjacentHTML('afterbegin', msg);
 }
 
 /* Asynchronous JavaScript, AJAX and APIs ==================================================
@@ -171,28 +172,32 @@ const getCountryDataRecursive = function (country, neighbor = '') {
 
 /* Handling Rejected Promises ================================================== */
 
+// Chaining Promises (no recursive)
 const getCountryWithErr = function (country) {
   fetch(restCountriesName + country)
     .then(res => res.json())
     .then(data => {
-      console.log(data[0])
       renderCountry(data[0]);
-      const neighbor = data[0].borders[0];
+      const neighbor = data[0].borders;
       if (!neighbor) return;
-      return fetch(restCountriesCode + neighbor);
+      return fetch(restCountriesCode + neighbor[0]);
     })
     .then(res => res.json())
     .then(data => {
       renderCountry(data[0], ' neighbor')
+    }).catch(err => {
+      console.error('🔺 ' + err + '.');
+      renderError(`<strong>Error</strong>: ${err.message}. Try again!`);
     }).finally(() => removeSpinner());
 }
 
 // btn.addEventListener('click', function () {
-//   clearCountries();
+//   clearContent();
 //   spn.classList.remove('d-none');
-//   getCountryWithErr('viet');
+//   getCountryWithErr('vietnam');
 // });
 
+// Use recursive to get all neighbors
 const getCountryWithError = function (country, neighbor = '') {
   fetch(neighbor === '' ? restCountriesName + country : restCountriesCode + country)
     .then(response => response.json())
@@ -201,23 +206,77 @@ const getCountryWithError = function (country, neighbor = '') {
       if (!data[0].borders || neighbor !== '') return;
       data[0].borders.map(country => getCountryWithError(country, ' neighbor'))
     }).catch(err => {
-      console.error(err + ' 🔺');
+      console.error('🔺 ' + err + '.');
       renderError(`<strong>Error</strong>: ${err.message}. Try again!`);
     }).finally(() => removeSpinner());
 }
 
-getCountryWithError('norway');
+// getCountryWithError('norway');
+
+// btn.addEventListener('click', function () {
+//   clearContent();
+//   spn.classList.remove('d-none');
+//   getCountryWithError('finland');
+// });
+
+/* Throwing Errors Manually ================================================== */
+
+const fetchCountry = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`(${response.status}) ${errorMsg}`);
+    return response.json();
+  })
+}
+
+// Chaining Promises (no recursive)
+const getCountryAndThrowErr = function (country) {
+  const url = restCountriesName + country;
+  const message = `Can not found country "${country}"`;
+  fetchCountry(url, message)
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbor = data[0].borders;
+      if (!neighbor) throw new Error('No neighbor');
+      const url = restCountriesCode + neighbor[0];
+      const message = `Can not found countries "neighbor"`;
+      return fetchCountry(url, message);
+    })
+    .then(data => {
+      renderCountry(data[0], ' neighbor')
+    }).catch(err => {
+      console.error('🔺 ' + err + '.');
+      renderError(err.message + `.`);
+    }).finally(() => removeSpinner());
+}
+
+// Use recursive to get all neighbors
+const getCountryAndThrowError = function (country, neighbor = '') {
+  const url = (neighbor === '' ? restCountriesName : restCountriesCode) + country;
+  const message = `Can not found ${neighbor === '' ? 'country "' + country + '"' : 'countries "neighbor"'}`;
+  fetchCountry(url, message)
+    .then(data => {
+      renderCountry(data[0], neighbor);
+      if (!data[0].borders || neighbor !== '') return;
+      data[0].borders.map(neigh => getCountryAndThrowError(neigh, ' neighbor'));
+    }).catch(err => {
+      console.error('🔺 ' + err + '.');
+      renderError(`<strong>Error</strong>: ${err.message}.`);
+    }).finally(() => removeSpinner());
+}
+
+spn.classList.remove('d-none');
+getCountryAndThrowError('finland');
 
 btn.addEventListener('click', function () {
-  clearCountries();
+  clearContent();
   spn.classList.remove('d-none');
-  getCountryWithError('finland');
+  getCountryAndThrowError('usa');
 });
 
 countriesRow.addEventListener('click', e => {
   const viewCountry = e.target;
   if (!viewCountry.classList.contains('view-country')) return;
-  clearCountries();
+  clearContent();
   spn.classList.remove('d-none');
-  getCountryWithError(viewCountry.dataset.country);
+  getCountryAndThrowError(viewCountry.dataset.country);
 });
