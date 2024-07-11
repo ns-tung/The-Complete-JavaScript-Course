@@ -363,3 +363,14 @@ const whereAmIRefactor = function (lat, lng) {
 whereAmIRefactor(52.508, 13.381);
 whereAmIRefactor(19.037, 72.873);
 whereAmIRefactor(-33.933, 18.474);
+
+/* The Event Loop ==================================================
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop
+
+*/
+
+console.log('start'); // 1
+setTimeout(() => console.log('0 seconds timer')); // 4
+Promise.resolve('Promise resolved').then(res => console.log(res)); // 3
+console.log('end'); // 2
