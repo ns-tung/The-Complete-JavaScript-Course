@@ -374,3 +374,33 @@ console.log('start'); // 1
 setTimeout(() => console.log('0 seconds timer')); // 4
 Promise.resolve('Promise resolved').then(res => console.log(res)); // 3
 console.log('end'); // 2
+
+/* Building a Promise ================================================== */
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('Lottery draw is happening 🔮')
+  setTimeout(function () {
+    const randomNum = Math.random();
+    randomNum >= .5 && resolve('You WIN 💰');
+    randomNum < .5 && reject(new Error('You LOST your money 🤧'));
+  }, 2000)
+});
+
+lotteryPromise
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+
+// Promisifying setTimeout
+const timer = function (seconds, sec = 0) {
+  console.log(`⏳ ${sec} second passed.`);
+  return new Promise(resolve => setTimeout(resolve, seconds * 1000));
+}
+
+timer(1, 1)
+  .then(() => timer(1, 2))
+  .then(() => timer(1, 3))
+  .then(() => timer(1, 4));
+
+// static resolve() and reject() methods
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('Problem!')).catch(x => console.error(x));
