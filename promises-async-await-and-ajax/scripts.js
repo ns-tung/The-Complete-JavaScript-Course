@@ -3,23 +3,27 @@
 const restCountriesName = 'https://restcountries.com/v3.1/name/';
 const restCountriesCode = 'https://restcountries.com/v3.1/alpha/';
 const err = document.querySelector('.errors');
-const spn = document.querySelector('.spinner');
-const btn = document.querySelector('.view-country');
+const spnOne = document.querySelector('.spinner-one');
+const spnTwo = document.querySelector('.spinner-two');
+const spnThree = document.querySelector('.spinner-three');
+const btnVC = document.querySelector('.view-country');
+const btnWAI = document.querySelector('.where-am-i');
 let countriesRow = document.querySelector('.countries');
 
-const removeSpinner = function () {
-  spn.classList.add('d-none');
+const toggleDisplay = function (selector, act = 'remove') {
+  act === 'remove' && selector.classList.add('d-none');
+  act === 'add' && selector.classList.remove('d-none');
 }
 
-const clearContent = function () {
+const clearContent = function (container = countriesRow) {
   if (err.innerHTML !== '') err.innerHTML = '';
-  if (countriesRow.innerHTML !== '') countriesRow.innerHTML = '';
+  if (container.innerHTML !== '') container.innerHTML = '';
 };
 
 const renderCountry = function (data, neighbor = '') {
   const html = `
     <div class="col d-flex flex-wrap align-items-stretch country${neighbor}">
-      <div class="card shadow-lg border-0 overflow-hidden">
+      <div class="card shadow-sm overflow-hidden">
         <img class="card-img-top" src="${data.flags.svg}" alt="${data.flags.alt || `The flag of ${data.name.common}`}" />
         <div class="card-body bg-gray-400">
           <div class="d-flex align-items-center justify-content-between mb-3">
@@ -35,6 +39,7 @@ const renderCountry = function (data, neighbor = '') {
         ${neighbor !== '' ? `<div class="ribbon ribbon-bottom bg-teal"><p class="card-text">Neighbor</p></div>` : ``}
       </div>
     </div>`;
+  toggleDisplay(spnOne);
   countriesRow.insertAdjacentHTML('beforeend', html);
 }
 
@@ -57,7 +62,7 @@ const getCountry = function (country) {
   request.addEventListener('load', function () {
     const [data] = JSON.parse(this.responseText);
     const html = `
-    <div class="col country">
+    <div class="col d-flex flex-wrap align-items-stretch country">
       <div class="card overflow-hidden">
         <img class="card-img-top" src="${data.flags.svg}" alt="${data.flags.alt || `The flag of ${data.name.common}`}" />
         <div class="card-body border-top bg-gray-400">
@@ -70,11 +75,11 @@ const getCountry = function (country) {
         </div>
       </div>
     </div>`;
-
     countriesRow.insertAdjacentHTML('beforeend', html);
   })
 }
 
+// toggleDisplay(spnOne, 'add');
 // getCountry('vietnam'); getCountry('lao'); getCountry('cambodia'); getCountry('usa'); getCountry('germany'); getCountry('portugal');
 
 /* Callback Hell ================================================== */
@@ -89,6 +94,7 @@ const getCountryAndNeighbor = function (country) {
     const [data] = JSON.parse(this.responseText);
 
     // Render country
+    toggleDisplay(spnOne);
     renderCountry(data);
 
     // Get neighbor countries
@@ -108,6 +114,7 @@ const getCountryAndNeighbor = function (country) {
   })
 }
 
+// toggleDisplay(spnOne, 'add');
 // getCountryAndNeighbor('fin');
 
 /*
@@ -131,10 +138,12 @@ const getCountryData = function (country) {
   fetch(restCountriesName + country)
     .then(res => res.json())
     .then(data => {
+      toggleDisplay(spnOne);
       renderCountry(data[0]);
     })
 }
 
+// toggleDisplay(spnOne, 'add');
 // getCountryData('fin'); getCountryData('swe'); getCountryData('swi');
 
 /* Chaining Promises ================================================== */
@@ -144,6 +153,7 @@ const getCountryDataAndNeighbor = function (country) {
   fetch(restCountriesName + country)
     .then(res => res.json())
     .then(data => {
+      toggleDisplay(spnOne);
       renderCountry(data[0]);
       const neighbor = data[0].borders[0];
       if (!neighbor) return;
@@ -155,6 +165,7 @@ const getCountryDataAndNeighbor = function (country) {
     })
 }
 
+// toggleDisplay(spnOne, 'add');
 // getCountryDataAndNeighbor('viet');
 
 // Use recursive to get all neighbors
@@ -162,12 +173,14 @@ const getCountryDataRecursive = function (country, neighbor = '') {
   fetch(neighbor === '' ? restCountriesName + country : restCountriesCode + country)
     .then((response) => response.json())
     .then((data) => {
+      neighbor === '' && toggleDisplay(spnOne);
       renderCountry(data[0], neighbor);
       if (!data[0].borders || neighbor !== '') return;
       data[0].borders.map(country => getCountryDataRecursive(country, ' neighbor'));
     });
 };
 
+// toggleDisplay(spnOne, 'add');
 // getCountryDataRecursive('finland');
 
 /* Handling Rejected Promises ================================================== */
@@ -188,12 +201,12 @@ const getCountryWithErr = function (country) {
     }).catch(err => {
       console.error('🔺 ' + err + '.');
       renderError(`<strong>Error</strong>: ${err.message}. Try again!`);
-    }).finally(() => removeSpinner());
+    }).finally(() => toggleDisplay(spnOne));
 }
 
-// btn.addEventListener('click', function () {
+// btnVC.addEventListener('click', function () {
 //   clearContent();
-//   spn.classList.remove('d-none');
+//   toggleDisplay(spnOne, 'add');
 //   getCountryWithErr('vietnam');
 // });
 
@@ -208,14 +221,14 @@ const getCountryWithError = function (country, neighbor = '') {
     }).catch(err => {
       console.error('🔺 ' + err + '.');
       renderError(`<strong>Error</strong>: ${err.message}. Try again!`);
-    }).finally(() => removeSpinner());
+    }).finally(() => toggleDisplay(spnOne));
 }
 
 // getCountryWithError('norway');
 
-// btn.addEventListener('click', function () {
+// btnVC.addEventListener('click', function () {
 //   clearContent();
-//   spn.classList.remove('d-none');
+//   toggleDisplay(spnOne, 'add');
 //   getCountryWithError('finland');
 // });
 
@@ -246,7 +259,7 @@ const getCountryAndThrowErr = function (country) {
     }).catch(err => {
       console.error('🔺 ' + err + '.');
       renderError(err.message + `.`);
-    }).finally(() => removeSpinner());
+    }).finally(() => toggleDisplay(spnOne));
 }
 
 // Use recursive to get all neighbors
@@ -261,15 +274,15 @@ const getCountryAndThrowError = function (country, neighbor = '') {
     }).catch(err => {
       console.error('🔺 ' + err + '.');
       renderError(`<strong>Error</strong>: ${err.message}.`);
-    }).finally(() => removeSpinner());
+    }).finally(() => toggleDisplay(spnOne));
 }
 
-spn.classList.remove('d-none');
+toggleDisplay(spnOne, 'add');
 getCountryAndThrowError('finland');
 
-btn.addEventListener('click', function () {
+btnVC.addEventListener('click', function () {
   clearContent();
-  spn.classList.remove('d-none');
+  toggleDisplay(spnOne, 'add');
   getCountryAndThrowError('usa');
 });
 
@@ -277,7 +290,7 @@ countriesRow.addEventListener('click', e => {
   const viewCountry = e.target;
   if (!viewCountry.classList.contains('view-country')) return;
   clearContent();
-  spn.classList.remove('d-none');
+  toggleDisplay(spnOne, 'add');
   getCountryAndThrowError(viewCountry.dataset.country);
 });
 
@@ -309,23 +322,25 @@ countriesRow.addEventListener('click', e => {
 
 const countriesReverse = document.querySelector('.reverse-countries');
 
-const renderCountryReverse = function (data) {
+const renderCountryReverse = function (data, city = '', container = countriesReverse) {
   const html = `
     <div class="col d-flex flex-wrap align-items-stretch country">
-      <div class="card shadow-lg border-0 overflow-hidden">
+      <div class="card shadow-sm overflow-hidden">
         <img class="card-img-top" src="${data.flags.svg}" alt="${data.flags.alt || `The flag of ${data.name.common}`}" />
         <div class="card-body bg-gray-400">
           <div class="d-flex align-items-center justify-content-between mb-3">
             <h2 class="card-title m-0">${data.name.common}</h2>
             <p class="badge bg-primary-lt pb-1 m-0">${data.region.toUpperCase()}</p>
           </div>
-          <p class="card-text"><span>👫 </span>${(+data.population / 1000000).toFixed(2)}M people</p>
+          ${city !== '' ? `<p class="card-text"><span>🏙️ </span>${city}</p>` : ''}
+          ${city === '' ? `<p class="card-text"><span>👫 </span>${(+data.population / 1000000).toFixed(2)}M people</p>` : ''}
           <p class="card-text"><span>🗣️ </span>${Object.values(data.languages).join(', ')}</p>
           <p class="card-text"><span>💰 </span>${Object.keys(data.currencies).join(', ')}</p>
         </div>
+        ${city !== '' ? '<div class="ribbon ribbon-bottom bg-teal"><p class="card-text">You are</p></div>' : ''}
       </div>
     </div>`;
-  countriesReverse.insertAdjacentHTML('beforeend', html);
+  container.insertAdjacentHTML('beforeend', html);
 }
 
 const whereAmI = function (lat, lng) {
@@ -345,7 +360,7 @@ const whereAmI = function (lat, lng) {
       return res.json();
     })
     .then(data => renderCountryReverse(data[0]))
-    .catch(err => console.log('🚫 ' + err));
+    .catch(err => console.log('🚫 ' + err)).finally(() => toggleDisplay(spnTwo));
 }
 
 const whereAmIRefactor = function (lat, lng) {
@@ -357,9 +372,10 @@ const whereAmIRefactor = function (lat, lng) {
       return fetchCountry(restCountriesCode + country_code, 'Country not found.')
     })
     .then(data => renderCountryReverse(data[0]))
-    .catch(err => console.log('🚫 ' + err));
+    .catch(err => console.log('🚫 ' + err)).finally(() => toggleDisplay(spnTwo));
 }
 
+toggleDisplay(spnTwo, 'add');
 whereAmIRefactor(52.508, 13.381);
 whereAmIRefactor(19.037, 72.873);
 whereAmIRefactor(-33.933, 18.474);
@@ -404,3 +420,35 @@ timer(1, 1)
 // static resolve() and reject() methods
 Promise.resolve('abc').then(x => console.log(x));
 Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+
+// Promisifying the Geo-location API
+const getPosition = function () {
+  clearContent(iAm);
+  toggleDisplay(spnThree, 'add');
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(pos => resolve(pos), err => reject(err));
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  })
+}
+
+let city, country, country_code;
+const iAm = document.querySelector('.i-am');
+const youR = document.querySelector('.you-are');
+
+const whereAmIPromise = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+      const apiReverse = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=en`;
+      return fetchCountry(apiReverse, 'Problem with geocoding.')
+    })
+    .then(data => {
+      ({ city, country, country_code } = data.address);
+      console.log(`You are in ${city}, ${country}`)
+      return fetchCountry(restCountriesCode + country_code, 'Country not found.');
+    })
+    .then(data => { renderCountryReverse(data[0], city, iAm); console.log(data[0]) })
+    .catch(err => console.log('🚫 ' + err)).finally(() => { toggleDisplay(spnThree); toggleDisplay(youR) });
+}
+
+btnWAI.addEventListener('click', whereAmIPromise);
