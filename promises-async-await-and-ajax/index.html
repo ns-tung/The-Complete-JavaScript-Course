@@ -65,9 +65,9 @@
         transform: scale(0.9);
       }
 
-      .spinner,
-      .neighbor {
-        transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+      .card {
+        min-width: 100px;
+        min-height: 100px;
       }
     </style>
   </head>
@@ -208,31 +208,47 @@
           <div class="hr-text hr-text-left fs-3">
             <button class="btn px-4 view-country">View country</button>
           </div>
-          <div class="text-center mb-5 spinner-one d-none">
+          <div class="text-center my-5 spinner-one d-none">
             <div class="spinner-border text-teal" role="status"></div>
           </div>
           <div class="text-center errors"></div>
           <div
-            class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-5 countries"
+            class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 g-md-5 countries"
           ></div>
           <div class="hr-text hr-text-left fs-3">Coding Challenge #1</div>
-          <div class="text-center mb-5 spinner-two d-none">
+          <div class="text-center my-5 spinner-two d-none">
             <div class="spinner-border text-teal" role="status"></div>
           </div>
           <div
-            class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-5 mb-5 reverse-countries"
+            class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 g-md-5 mb-5 reverse-countries"
           ></div>
           <div class="hr-text hr-text-left my-5 fs-3">
             <button class="btn px-4 where-am-i">Where am I?</button>
           </div>
           <div
-            class="row row-cols-2 row-cols-md-3 row-cols-lg-4 justify-content-center g-5 mb-5 i-am"
+            class="row row-cols-2 row-cols-md-3 row-cols-lg-4 justify-content-center g-3 g-md-5 mb-5 i-am"
           ></div>
-          <div class="text-center mb-5 you-are">
+          <div class="text-center mt-5 you-are">
             <p class="fs-3">You are ...</p>
           </div>
-          <div class="text-center mb-5 spinner-three d-none">
+          <div class="text-center my-5 spinner-three d-none">
             <span class="spinner-border text-teal" role="status"></span>
+          </div>
+          <div class="hr-text hr-text-left fs-3">Coding Challenge #2</div>
+          <div class="row justify-content-center mb-5">
+            <div
+              class="col d-flex flex-wrap justify-content-center align-items-stretch country"
+            >
+              <div
+                class="card justify-content-center shadow-sm rounded-3 overflow-hidden images"
+              >
+                <div
+                  class="text-center spinner-four position-absolute top-50 start-50 translate-middle z-3 d-none"
+                >
+                  <div class="spinner-border text-teal" role="status"></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="hr-text hr-text-left fs-3">Scripts</div>
           <pre class="line-numbers match-braces" data-src="scripts.js"></pre>

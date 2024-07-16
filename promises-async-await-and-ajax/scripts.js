@@ -6,6 +6,7 @@ const err = document.querySelector('.errors');
 const spnOne = document.querySelector('.spinner-one');
 const spnTwo = document.querySelector('.spinner-two');
 const spnThree = document.querySelector('.spinner-three');
+const spnFour = document.querySelector('.spinner-four');
 const btnVC = document.querySelector('.view-country');
 const btnWAI = document.querySelector('.where-am-i');
 let countriesRow = document.querySelector('.countries');
@@ -407,15 +408,15 @@ lotteryPromise
   .catch(err => console.error(err));
 
 // Promisifying setTimeout
-const timer = function (seconds, sec = 0) {
-  console.log(`⏳ ${sec} second passed.`);
+const timer = function (seconds = 0) {
+  console.log(`⏳ ${seconds} second passed.`);
   return new Promise(resolve => setTimeout(resolve, seconds * 1000));
 }
 
-timer(1, 1)
-  .then(() => timer(1, 2))
-  .then(() => timer(1, 3))
-  .then(() => timer(1, 4));
+timer(1)
+  .then(() => timer(2))
+  .then(() => timer(3))
+  .then(() => timer(4));
 
 // static resolve() and reject() methods
 Promise.resolve('abc').then(x => console.log(x));
@@ -444,11 +445,92 @@ const whereAmIPromise = function () {
     })
     .then(data => {
       ({ city, country, country_code } = data.address);
-      console.log(`You are in ${city}, ${country}`)
       return fetchCountry(restCountriesCode + country_code, 'Country not found.');
     })
-    .then(data => { renderCountryReverse(data[0], city, iAm); console.log(data[0]) })
-    .catch(err => console.log('🚫 ' + err)).finally(() => { toggleDisplay(spnThree); toggleDisplay(youR) });
+    .then(data => renderCountryReverse(data[0], city, iAm))
+    .catch(err => console.error('🚫 ' + err)).finally(() => { toggleDisplay(spnThree); toggleDisplay(youR) });
 }
 
 btnWAI.addEventListener('click', whereAmIPromise);
+
+/* Coding Challenge #2 ==================================================
+
+  Build the image loading functionality that I just showed you on the screen.
+
+  Tasks are not super-descriptive this time, so that you can figure out some stuff on your own. Pretend you're working on your own 😉
+
+  PART 1:
+
+  1. Create a function 'createImage' which receives imgPath as an input. This function returns a promise which creates a new image (use document.createElement('img')) and sets the .src attribute to the provided image path. When the image is done loading, append it to the DOM element with the 'images' class, and resolve the promise. The fulfilled value should be the image element itself. In case there is an error loading the image ('error' event), reject the promise.
+
+  If this part is too tricky for you, just watch the first part of the solution.
+
+  PART 2:
+
+  2. Consume the promise using .then and also add an error handler;
+  3. After the image has loaded, pause execution for 2 seconds using the wait function we created earlier;
+  4. After the 2 seconds have passed, hide the current image (set display to 'none'), and load a second image (HINT: Use the image element returned by the createImage promise to hide the current image. You will need a global variable for that 😉);
+  5. After the second image has loaded, pause execution for 2 seconds again;
+  6. After the 2 seconds have passed, hide the current image.
+
+  TEST DATA: Images in the img folder. Test the error handler by passing a wrong image path. Set the network speed to 'Fast 3G' in the dev tools Network tab, otherwise images load too fast.
+
+*/
+
+const img = document.createElement('img');
+const images = document.querySelector('.images');
+const imageOne = 'https://images.unsplash.com/photo-1504457047772-27faf1c00561';
+const imageTwo = 'https://images.unsplash.com/photo-1516484681091-7d83961805f4';
+const imageThree = 'https://images.unsplash.com/photo-1599898330165-6c3b93296d60';
+const imageFour = 'https://images.unsplash.com/photo-1600051916848-b39423368552';
+
+img.classList = 'card-img';
+const createImage = function (imgPath) {
+  toggleDisplay(spnFour, 'add');
+  return new Promise(function (resolve, reject) {
+    img.src = imgPath;
+    img.addEventListener('load', function () {
+      resolve(img);
+    });
+    img.addEventListener('error', function () {
+      const err = '<div class="py-3 px-5 fs-3">🚫 Image not found.</div>'
+      images.innerHTML = err;
+      reject(new Error('Image not found.'));
+    });
+  })
+}
+
+toggleDisplay(spnFour, 'add');
+createImage(imageOne)
+  .then(image => {
+    toggleDisplay(spnFour);
+    images.append(image);
+    return timer(5);
+  })
+  .then(() => {
+    img.style.visibility = 'hidden';
+    return createImage(imageTwo);
+  })
+  .then(() => {
+    img.style.visibility = 'visible';
+    toggleDisplay(spnFour);
+    return timer(5);
+  })
+  .then(() => {
+    img.style.visibility = 'hidden';
+    return createImage(imageThree);
+  })
+  .then(() => {
+    img.style.visibility = 'visible';
+    toggleDisplay(spnFour);
+    return timer(5);
+  })
+  .then(() => {
+    img.style.visibility = 'hidden';
+    return createImage(imageFour);
+  })
+  .then(() => {
+    img.style.visibility = 'visible';
+    toggleDisplay(spnFour);
+  })
+  .catch(err => console.error(err));
