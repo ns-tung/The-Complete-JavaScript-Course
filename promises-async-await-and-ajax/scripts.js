@@ -338,7 +338,7 @@ const renderCountryReverse = function (data, city = '', container = countriesRev
           <p class="card-text"><span>🗣️ </span>${Object.values(data.languages).join(', ')}</p>
           <p class="card-text"><span>💰 </span>${Object.keys(data.currencies).join(', ')}</p>
         </div>
-        ${city !== '' ? '<div class="ribbon ribbon-bottom bg-teal"><p class="card-text">You are</p></div>' : ''}
+        ${city !== '' ? '<div class="ribbon bg-teal"><p class="card-text">You are</p></div>' : ''}
       </div>
     </div>`;
   container.insertAdjacentHTML('beforeend', html);
@@ -432,11 +432,12 @@ const getPosition = function () {
   })
 }
 
-let city, country, country_code;
+let city, country_code;
 const iAm = document.querySelector('.i-am');
 const youR = document.querySelector('.you-are');
 
 const whereAmIPromise = function () {
+  toggleDisplay(youR);
   getPosition()
     .then(pos => {
       const { latitude: lat, longitude: lng } = pos.coords;
@@ -444,14 +445,14 @@ const whereAmIPromise = function () {
       return fetchCountry(apiReverse, 'Problem with geocoding.')
     })
     .then(data => {
-      ({ city, country, country_code } = data.address);
+      ({ city, country_code } = data.address);
       return fetchCountry(restCountriesCode + country_code, 'Country not found.');
     })
     .then(data => renderCountryReverse(data[0], city, iAm))
-    .catch(err => console.error('🚫 ' + err)).finally(() => { toggleDisplay(spnThree); toggleDisplay(youR) });
+    .catch(err => console.error('🚫 ' + err)).finally(() => toggleDisplay(spnThree));
 }
 
-btnWAI.addEventListener('click', whereAmIPromise);
+// btnWAI.addEventListener('click', whereAmIPromise);
 
 /* Coding Challenge #2 ==================================================
 
@@ -534,3 +535,19 @@ createImage(imageOne)
     toggleDisplay(spnFour);
   })
   .catch(err => console.error(err));
+
+/* Consuming Promises with Async/Await ================================================== */
+
+const whereAmIAA = async function () {
+  toggleDisplay(youR);
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+  const apiReverse = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=en`;
+  const data = await fetchCountry(apiReverse, 'Problem with geocoding.');
+  const { city, country_code } = data.address;
+  const [country] = await fetchCountry(restCountriesCode + country_code, 'Country not found.');
+  renderCountryReverse(country, city, iAm);
+  toggleDisplay(spnThree);
+}
+
+btnWAI.addEventListener('click', whereAmIAA);
