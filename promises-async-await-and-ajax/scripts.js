@@ -550,4 +550,27 @@ const whereAmIAA = async function () {
   toggleDisplay(spnThree);
 }
 
-btnWAI.addEventListener('click', whereAmIAA);
+// btnWAI.addEventListener('click', whereAmIAA);
+
+/* Error Handling With try...catch ================================================== */
+
+const whereAmITC = async function () {
+  try {
+    toggleDisplay(youR);
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+    const apiReverse = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=en`;
+    const data = await fetchCountry(apiReverse, 'Problem with geocoding.');
+    let { city, country_code } = data.address;
+    const [country] = await fetchCountry(restCountriesCode + country_code, `Country '${country_code}' not found.`);
+    renderCountryReverse(country, city, iAm);
+    toggleDisplay(spnThree);
+  } catch (err) {
+    toggleDisplay(spnThree);
+    console.error('👉 ' + err);
+    toggleDisplay(youR, 'add');
+    youR.textContent = err;
+  }
+}
+
+btnWAI.addEventListener('click', whereAmITC);
