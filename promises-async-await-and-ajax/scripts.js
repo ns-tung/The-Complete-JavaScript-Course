@@ -561,7 +561,7 @@ const whereAmITC = async function () {
     const { latitude: lat, longitude: lng } = pos.coords;
     const apiReverse = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=en`;
     const data = await fetchCountry(apiReverse, 'Problem with geocoding.');
-    let { city, country_code } = data.address;
+    const { city, country_code } = data.address;
     const [country] = await fetchCountry(restCountriesCode + country_code, `Country '${country_code}' not found.`);
     renderCountryReverse(country, city, iAm);
     toggleDisplay(spnThree);
@@ -574,3 +574,47 @@ const whereAmITC = async function () {
 }
 
 btnWAI.addEventListener('click', whereAmITC);
+
+/* Returning Values from Async Functions ================================================== */
+
+const whereAmIRV = async function () {
+  try {
+    toggleDisplay(youR);
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+    const apiReverse = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=en`;
+    const data = await fetchCountry(apiReverse, 'Problem with geocoding.');
+    const { city, country, country_code } = data.address;
+    const [you] = await fetchCountry(restCountriesCode + country_code, `Country '${country_code}' not found.`);
+    renderCountryReverse(you, city, iAm);
+    toggleDisplay(spnThree);
+
+    // return value from async function
+    return `You are in ${city}, ${country}`;
+  } catch (err) {
+    toggleDisplay(spnThree);
+    console.error('👉 ' + err);
+    toggleDisplay(youR, 'add');
+    youR.textContent = err;
+
+    // reject promise returned from async function
+    throw err;
+  }
+}
+
+console.log('❶ Will get your location.');
+
+// whereAmIRV()
+//   .then(data => console.log('❷ ' + data))
+//   .catch(err => console.error('❷ 👉 ' + err.message))
+//   .finally(() => console.log('❸ Finished getting location.'));
+
+(async function () {
+  try {
+    const data = await whereAmIRV();
+    console.log('❷ ' + data);
+  } catch (error) {
+    console.error('❷ 👉 ' + error.message);
+  }
+  console.log('❸ Finished getting location.');
+})()
