@@ -618,3 +618,24 @@ console.log('❶ Will get your location.');
   }
   console.log('❸ Finished getting location.');
 })()
+
+/* Running Promises in Parallel ================================================== */
+
+const getCountries = async function (one, two, three) {
+  try {
+    // const [countryOne] = await fetchCountry(restCountriesName + one, `Country ${one} not found.`);
+    // const [countryTwo] = await fetchCountry(restCountriesName + two, `Country ${two} not found.`);
+    // const [countryThree] = await fetchCountry(restCountriesName + three, `Country ${three} not found.`);
+    // console.log([countryOne.capital, countryTwo.capital, countryThree.capital].flat());
+    const data = await Promise.all([
+      fetchCountry(restCountriesName + one, `Country ${one} not found.`),
+      fetchCountry(restCountriesName + two, `Country ${two} not found.`),
+      fetchCountry(restCountriesName + three, `Country ${three} not found.`)
+    ]);
+    console.log(data.map(d => d[0].capital).flat());
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getCountries('portugal', 'canada', 'tanzania');
