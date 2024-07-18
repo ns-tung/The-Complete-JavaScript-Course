@@ -626,16 +626,69 @@ const getCountries = async function (one, two, three) {
     // const [countryOne] = await fetchCountry(restCountriesName + one, `Country ${one} not found.`);
     // const [countryTwo] = await fetchCountry(restCountriesName + two, `Country ${two} not found.`);
     // const [countryThree] = await fetchCountry(restCountriesName + three, `Country ${three} not found.`);
-    // console.log([countryOne.capital, countryTwo.capital, countryThree.capital].flat());
+    // console.log([countryOne.capital[0], countryTwo.capital[0], countryThree.capital[0]]);
     const data = await Promise.all([
       fetchCountry(restCountriesName + one, `Country ${one} not found.`),
       fetchCountry(restCountriesName + two, `Country ${two} not found.`),
       fetchCountry(restCountriesName + three, `Country ${three} not found.`)
     ]);
-    console.log(data.map(d => d[0].capital).flat());
+    console.log(data.map(d => d[0].capital[0]));
   } catch (error) {
     console.error(error);
   }
 }
 
 getCountries('portugal', 'canada', 'tanzania');
+
+/* Other Promise Combinator: race, allSettled and any ==================================================
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled
+  
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any
+
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
+
+*/
+
+(async function () {
+  try {
+    const data = await Promise.race([
+      fetchCountry(restCountriesName + 'italy', `Country not found.`),
+      fetchCountry(restCountriesName + 'egypt', `Country not found.`),
+      fetchCountry(restCountriesName + 'mexico', `Country not found.`)
+    ]);
+    console.log(data[0].flag, data[0].name.common);
+  } catch (error) {
+    console.error(error);
+  }
+})()
+
+const timeout = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error('🐢 Request took too long!'))
+    }, sec * 1000)
+  })
+}
+
+Promise.race([
+  timeout(5),
+  fetchCountry(restCountriesName + 'mexico', `Country not found.`)
+])
+  .then(res => console.log('🚅', res[0].flag, res[0].name.common, 'won.'))
+  .catch(err => console.error(err))
+
+Promise.all([
+  Promise.resolve('SUCCESS FIRST'), Promise.reject('ERROR'), Promise.resolve('SUCCESS AGAIN')
+]).then(res => res.map(r => console.log(r.status === 'rejected' ? '🔺' + r.reason : r.value)))
+  .catch(err => console.error(err))
+
+Promise.allSettled([
+  Promise.resolve('SUCCESS FIRST'), Promise.reject('ERROR'), Promise.resolve('SUCCESS AGAIN')
+]).then(res => res.map(r => console.log(r.status === 'rejected' ? '🔺 ' + r.reason : r.value)))
+
+Promise.any([
+  Promise.reject('ERROR'), Promise.resolve('SUCCESS FIRST (any)'), Promise.resolve('SUCCESS AGAIN')
+]).then(res => console.log(res))
