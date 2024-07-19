@@ -3,6 +3,7 @@
 const restCountriesName = 'https://restcountries.com/v3.1/name/';
 const restCountriesCode = 'https://restcountries.com/v3.1/alpha/';
 const err = document.querySelector('.errors');
+const spn = document.querySelectorAll('.spinner');
 const spnOne = document.querySelector('.spinner-one');
 const spnTwo = document.querySelector('.spinner-two');
 const spnThree = document.querySelector('.spinner-three');
@@ -311,7 +312,7 @@ countriesRow.addEventListener('click', e => {
   5. This API allows you to make only 3 requests per second. If you reload fast, you will get this error with code 403. This is an error with the request. Remember, fetch() does NOT reject the promise in this case. So create an error to reject the promise yourself, with a meaningful error message.
 
   PART 2
-  
+
   6. Now it's time to use the received data to render a country. So take the relevant attribute from the geocoding API result, and plug it into the countries API that we have been using.
   7. Render the country and catch any errors, just like we have done in the last lecture (you can even copy this code, no need to type the same code)
 
@@ -480,12 +481,13 @@ const whereAmIPromise = function () {
 
 const img = document.createElement('img');
 const images = document.querySelector('.images');
-const imageOne = 'https://images.unsplash.com/photo-1504457047772-27faf1c00561';
-const imageTwo = 'https://images.unsplash.com/photo-1516484681091-7d83961805f4';
-const imageThree = 'https://images.unsplash.com/photo-1599898330165-6c3b93296d60';
-const imageFour = 'https://images.unsplash.com/photo-1600051916848-b39423368552';
+const imageOne = 'https://images.unsplash.com/photo-1504457047772-27faf1c00561?q=100&w=640';
+const imageTwo = 'https://images.unsplash.com/-1516484681091-7d83961805f4?q=100&w=640';
+const imageThree = 'https://images.unsplash.com/photo-1599898330165-6c3b93296d60?q=100&w=640';
+const imageFour = 'https://images.unsplash.com/photo-1600051916848-b39423368552?q=100&w=640';
+const errorMsg = '<div class="py-3 px-5 fs-3">🚫 Image not found.</div>';
 
-img.classList = 'card-img';
+img.classList = 'card-img rounded-2';
 const createImage = function (imgPath) {
   toggleDisplay(spnFour, 'add');
   return new Promise(function (resolve, reject) {
@@ -494,8 +496,7 @@ const createImage = function (imgPath) {
       resolve(img);
     });
     img.addEventListener('error', function () {
-      const err = '<div class="py-3 px-5 fs-3">🚫 Image not found.</div>'
-      images.innerHTML = err;
+      images.innerHTML = errorMsg;
       reject(new Error('Image not found.'));
     });
   })
@@ -645,7 +646,7 @@ getCountries('portugal', 'canada', 'tanzania');
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled
-  
+
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any
 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
@@ -692,3 +693,141 @@ Promise.allSettled([
 Promise.any([
   Promise.reject('ERROR'), Promise.resolve('SUCCESS FIRST (any)'), Promise.resolve('SUCCESS AGAIN')
 ]).then(res => console.log(res))
+
+/* Coding Challenge #3 ==================================================
+
+  PART 1:
+
+  Write an async function 'loadNPause' that recreates Coding Challenge #2, this time using async/await (only the part where the promise is consumed). Compare the two versions, think about the big differences, and see which one you like more.
+
+  Don't forget to test the error handler, and to set the network speed to 'Fast 3G' in the dev tools Network tab.
+
+  PART 2:
+
+  1. Create an async function 'loadAll' that receives an array of image paths 'imgArr';
+  2. Use .map to loop over the array, to load all the images with the 'createImage' function (call the resulting array 'imgs')
+  3. Check out the 'imgs' array in the console! Is it like you expected?
+  4. Use a promise combinator function to actually get the images from the array 😉
+  5. Add the 'parallel' class to all the images (it has some CSS styles).
+
+  TEST DATA: ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']. To test, turn off the 'loadNPause' function.
+*/
+
+const allImg = document.querySelectorAll('.img');
+const imgOne = document.querySelector('.image-one');
+const imgTwo = document.querySelector('.image-two');
+const imgThree = document.querySelector('.image-three');
+const imgFour = document.querySelector('.image-four');
+const imgsArr = [imgOne, imgTwo, imgThree, imgFour];
+const imO = 'https://images.unsplash.com/photo-1499561385668-5ebdb06a79bc?q=100&w=1920';
+const imT = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=100&w=1920';
+const imTh = 'https://images.unsplash.com/photo-1440778303588-435521a205bc?q=100&w=1920';
+const imF = 'https://images.unsplash.com/photo-1471500466955-85aecf33f71f?q=100&w=1920';
+const imgArr = [imO, imT, imTh, imF];
+
+const createImg = function (imgPath) {
+  const imgEl = document.createElement('img');
+  imgEl.classList = 'h-100 rounded-2';
+  imgEl.src = imgPath;
+  return new Promise(function (resolve, reject) {
+    imgEl.addEventListener('load', function () {
+      resolve(imgEl);
+    });
+    imgEl.addEventListener('error', function () {
+      reject(new Error('Image not found.'));
+    });
+  })
+}
+
+spn.forEach(s => s.classList.remove('d-none'));
+const loadNPause = async function () {
+  try {
+    for (let i = 0; i < imgArr.length; i++) {
+      try {
+        const iE = await createImg(imgArr[i]);
+        spn[i].classList.add('d-none');
+        imgsArr[i].append(iE);
+      } catch (error) {
+        spn[i].classList.add('d-none');
+        imgsArr[i].innerHTML = errorMsg;
+        console.error('Error loading image:', error);
+      }
+      i < 3 && await timer(1);
+    }
+
+    // try {
+    //   const iO = await createImg(imO);
+    //   spn[0].classList.add('d-none');
+    //   imgOne.append(iO);
+    // } catch (error) {
+    //   spn[0].classList.add('d-none');
+    //   imgOne.innerHTML = errorMsg;
+    //   console.error(error);
+    // }
+    // await timer(1);
+
+    // try {
+    //   const iT = await createImg(imT);
+    //   spn[1].classList.add('d-none');
+    //   imgTwo.append(iT);
+    // } catch (error) {
+    //   imgTwo.innerHTML = errorMsg;
+    //   console.error(error);
+    // }
+    // await timer(1);
+
+    // try {
+    //   const iTh = await createImg(imTh);
+    //   spn[2].classList.add('d-none');
+    //   imgThree.append(iTh);
+    // } catch (error) {
+    //   spn[2].classList.add('d-none');
+    //   imgThree.innerHTML = errorMsg;
+    //   console.error(error);
+    // }
+    // await timer(1);
+
+    // try {
+    //   const iF = await createImg(imF);
+    //   spn[3].classList.add('d-none');
+    //   imgFour.append(iF);
+    // } catch (error) {
+    //   spn[3].classList.add('d-none');
+    //   imgFour.innerHTML = errorMsg;
+    //   console.error(error);
+    // }
+  } catch (error) { console.error('Unexpected error:', error) }
+}
+loadNPause();
+
+const loadAll = async function (imgs) {
+  try {
+    const arrImg = imgs.map(async i => {
+      try {
+        return await createImg(i)
+      }
+      catch (error) {
+        console.error('Error loading image:', error);
+        return null;
+      }
+    })
+
+    const imgsEl = await Promise.allSettled(arrImg);
+
+    for (let i = 0; i < imgsEl.length; i++) {
+      if (imgsEl[i].value !== null) allImg[i].append(imgsEl[i].value);
+      else allImg[i].innerHTML = errorMsg;
+      spn[i + 4].classList.add('d-none');
+    }
+  } catch (error) { console.error('Unexpected error:', error) }
+
+  // try {
+  //   const arrImg = imgs.map(async i => await createImg(i));
+  //   const imgsEl = await Promise.all(arrImg);
+  //   for (let i = 0; i < allImg.length; i++) {
+  //     allImg[i].append(imgsEl[i]);
+  //     spn[i + 4].classList.add('d-none');
+  //   }
+  // } catch (error) { console.error('Unexpected error:', error) }
+}
+loadAll([imageOne, imageTwo, imageThree, imageFour]);
