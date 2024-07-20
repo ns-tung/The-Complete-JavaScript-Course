@@ -410,7 +410,7 @@ lotteryPromise
 
 // Promisifying setTimeout
 const timer = function (seconds = 0) {
-  console.log(`⏳ ${seconds} second passed.`);
+  // console.log(`⏳ ${seconds} second passed.`);
   return new Promise(resolve => setTimeout(resolve, seconds * 1000));
 }
 
@@ -479,63 +479,85 @@ const whereAmIPromise = function () {
 
 */
 
-const img = document.createElement('img');
 const images = document.querySelector('.images');
-const imageOne = 'https://images.unsplash.com/photo-1504457047772-27faf1c00561?q=100&w=640';
-const imageTwo = 'https://images.unsplash.com/-1516484681091-7d83961805f4?q=100&w=640';
-const imageThree = 'https://images.unsplash.com/photo-1599898330165-6c3b93296d60?q=100&w=640';
-const imageFour = 'https://images.unsplash.com/photo-1600051916848-b39423368552?q=100&w=640';
+const imageOne = 'https://images.unsplash.com/photo-1504457047772-27faf1c00561?q=100&w=1920';
+const imageTwo = 'https://images.unsplash.com/photo-1516484681091-7d83961805f4?q=100&w=1920';
+const imageThree = 'https://images.unsplash.com/photo-1599898330165-6c3b93296d60?q=100&w=1920';
+const imageFour = 'https://images.unsplash.com/photo-1600051916848-b39423368552?q=100&w=1920';
 const errorMsg = '<div class="py-3 px-5 fs-3">🚫 Image not found.</div>';
 
-img.classList = 'card-img rounded-2';
-const createImage = function (imgPath) {
-  toggleDisplay(spnFour, 'add');
+const createImage = function (imgPath, spinner = '') {
+  spinner !== '' && toggleDisplay(spinner, 'add');
+  const imgEl = document.createElement('img');
+  imgEl.classList = 'h-100 rounded-2';
+  imgEl.src = imgPath;
   return new Promise(function (resolve, reject) {
-    img.src = imgPath;
-    img.addEventListener('load', function () {
-      resolve(img);
+    imgEl.addEventListener('load', function () {
+      resolve(imgEl);
     });
-    img.addEventListener('error', function () {
-      images.innerHTML = errorMsg;
+    imgEl.addEventListener('error', function () {
       reject(new Error('Image not found.'));
     });
   })
 }
 
 toggleDisplay(spnFour, 'add');
-createImage(imageOne)
+createImage(imageOne, spnFour)
   .then(image => {
     toggleDisplay(spnFour);
     images.append(image);
     return timer(5);
   })
-  .then(() => {
-    img.style.visibility = 'hidden';
-    return createImage(imageTwo);
+  .catch(err => {
+    console.error(err, `Error loading image: ${imageOne}:`);
+    toggleDisplay(spnFour);
+    spnFour.insertAdjacentHTML('afterend', errorMsg);
+    return timer(3);
   })
   .then(() => {
-    img.style.visibility = 'visible';
+    spnFour.nextElementSibling.remove();
+    return createImage(imageTwo, spnFour);
+  })
+  .then((image) => {
+    images.append(image);
     toggleDisplay(spnFour);
     return timer(5);
   })
-  .then(() => {
-    img.style.visibility = 'hidden';
-    return createImage(imageThree);
+  .catch(err => {
+    console.error(err, `Error loading image: ${imageTwo}:`);
+    toggleDisplay(spnFour);
+    spnFour.insertAdjacentHTML('afterend', errorMsg);
+    return timer(3);
   })
   .then(() => {
-    img.style.visibility = 'visible';
+    spnFour.nextElementSibling.remove();
+    return createImage(imageThree, spnFour);
+  })
+  .then((image) => {
+    images.append(image);
     toggleDisplay(spnFour);
     return timer(5);
   })
-  .then(() => {
-    img.style.visibility = 'hidden';
-    return createImage(imageFour);
+  .catch(err => {
+    console.error(err, `Error loading image: ${imageThree}:`);
+    toggleDisplay(spnFour);
+    spnFour.insertAdjacentHTML('afterend', errorMsg);
+    return timer(3);
   })
   .then(() => {
-    img.style.visibility = 'visible';
+    spnFour.nextElementSibling.remove();
+    return createImage(imageFour, spnFour);
+  })
+  .then((image) => {
+    images.append(image);
     toggleDisplay(spnFour);
   })
-  .catch(err => console.error(err));
+  .catch(err => {
+    console.error(err, `Error loading image: ${imageFour}:`);
+    toggleDisplay(spnFour);
+    spnFour.insertAdjacentHTML('afterend', errorMsg);
+  })
+// .catch(err => console.error(err));
 
 /* Consuming Promises with Async/Await ================================================== */
 
@@ -725,26 +747,12 @@ const imTh = 'https://images.unsplash.com/photo-1440778303588-435521a205bc?q=100
 const imF = 'https://images.unsplash.com/photo-1471500466955-85aecf33f71f?q=100&w=1920';
 const imgArr = [imO, imT, imTh, imF];
 
-const createImg = function (imgPath) {
-  const imgEl = document.createElement('img');
-  imgEl.classList = 'h-100 rounded-2';
-  imgEl.src = imgPath;
-  return new Promise(function (resolve, reject) {
-    imgEl.addEventListener('load', function () {
-      resolve(imgEl);
-    });
-    imgEl.addEventListener('error', function () {
-      reject(new Error('Image not found.'));
-    });
-  })
-}
-
 spn.forEach(s => s.classList.remove('d-none'));
 const loadNPause = async function () {
   try {
     for (let i = 0; i < imgArr.length; i++) {
       try {
-        const iE = await createImg(imgArr[i]);
+        const iE = await createImage(imgArr[i]);
         spn[i].classList.add('d-none');
         imgsArr[i].append(iE);
       } catch (error) {
@@ -756,7 +764,7 @@ const loadNPause = async function () {
     }
 
     // try {
-    //   const iO = await createImg(imO);
+    //   const iO = await createImage(imO);
     //   spn[0].classList.add('d-none');
     //   imgOne.append(iO);
     // } catch (error) {
@@ -767,7 +775,7 @@ const loadNPause = async function () {
     // await timer(1);
 
     // try {
-    //   const iT = await createImg(imT);
+    //   const iT = await createImage(imT);
     //   spn[1].classList.add('d-none');
     //   imgTwo.append(iT);
     // } catch (error) {
@@ -777,7 +785,7 @@ const loadNPause = async function () {
     // await timer(1);
 
     // try {
-    //   const iTh = await createImg(imTh);
+    //   const iTh = await createImage(imTh);
     //   spn[2].classList.add('d-none');
     //   imgThree.append(iTh);
     // } catch (error) {
@@ -788,7 +796,7 @@ const loadNPause = async function () {
     // await timer(1);
 
     // try {
-    //   const iF = await createImg(imF);
+    //   const iF = await createImage(imF);
     //   spn[3].classList.add('d-none');
     //   imgFour.append(iF);
     // } catch (error) {
@@ -798,31 +806,34 @@ const loadNPause = async function () {
     // }
   } catch (error) { console.error('Unexpected error:', error) }
 }
+
 loadNPause();
 
 const loadAll = async function (imgs) {
   try {
     const arrImg = imgs.map(async i => {
       try {
-        return await createImg(i)
+        return await createImage(i);
       }
       catch (error) {
         console.error('Error loading image:', error);
-        return null;
+
+        // re-rejecting
+        throw error; // throw Promise.reject(error);
       }
     })
 
     const imgsEl = await Promise.allSettled(arrImg);
 
     for (let i = 0; i < imgsEl.length; i++) {
-      if (imgsEl[i].value !== null) allImg[i].append(imgsEl[i].value);
+      if (imgsEl[i].status === 'fulfilled') allImg[i].append(imgsEl[i].value)
       else allImg[i].innerHTML = errorMsg;
       spn[i + 4].classList.add('d-none');
     }
   } catch (error) { console.error('Unexpected error:', error) }
 
   // try {
-  //   const arrImg = imgs.map(async i => await createImg(i));
+  //   const arrImg = imgs.map(async i => await createImage(i));
   //   const imgsEl = await Promise.all(arrImg);
   //   for (let i = 0; i < allImg.length; i++) {
   //     allImg[i].append(imgsEl[i]);
@@ -830,4 +841,5 @@ const loadAll = async function (imgs) {
   //   }
   // } catch (error) { console.error('Unexpected error:', error) }
 }
+
 loadAll([imageOne, imageTwo, imageThree, imageFour]);
