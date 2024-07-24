@@ -56,10 +56,15 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.css"
     />
-    <!-- <link rel="stylesheet" href="/_assets/vendor/prismjs/prism.css" /> -->
+    <link rel="stylesheet" href="/_assets/vendor/prismjs/prism.css" />
     <link rel="stylesheet" href="/_assets/styles.css" />
-    <!-- <script defer src="/_assets/vendor/prismjs/prism.js"></script> -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@tabler/core/dist/js/tabler.js"
+    ></script>
+    <script defer src="/_assets/vendor/prismjs/prism.js"></script>
     <script defer type="module" src="/_assets/scripts.js"></script>
+    <script defer type="module" src="scripts.js"></script>
   </head>
 
   <body class="page">
@@ -111,15 +116,17 @@
               </li>
               <li class="breadcrumb-item active">
                 <div class="d-flex align-items-center">
-                  <i
-                    class="ti ti-circle fs-3 me-1"
-                    style="color: var(--tblr-blue-darken)"
-                  ></i>
+                  <img
+                    class="img-fluid me-1"
+                    src="/_assets/images/hourglass.gif"
+                    alt="hourglass"
+                    width="16"
+                  />
                   <span
                     >Modern JavaScript Development: Modules, Tooling, and
                     Functional</span
                   >
-                  <span class="text-secondary ms-1">(Incomplete)</span>
+                  <span class="text-secondary ms-1">(Learning)</span>
                 </div>
               </li>
             </ol>
@@ -129,6 +136,23 @@
               src="/modules-tooling-and-functional/banner.png"
               alt="Modern JavaScript Development: Modules, Tooling, and Functional"
             />
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="hr-text hr-text-left fs-3">Scripts</div>
+              <pre
+                class="line-numbers match-braces"
+                data-src="scripts.js"
+              ></pre>
+            </div>
+            <div class="col-lg-6">
+              <div class="hr-text hr-text-left fs-3">shopping Cart</div>
+              <pre
+                class="line-numbers match-braces"
+                data-src="shoppingCart.js"
+              ></pre>
+            </div>
           </div>
         </div>
       </div>
