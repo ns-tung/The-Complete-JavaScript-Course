@@ -1,3 +1,5 @@
+/* Exporting and Importing in ES6 Modules ================================================== */
+
 console.log('Exported module.');
 
 // name export
