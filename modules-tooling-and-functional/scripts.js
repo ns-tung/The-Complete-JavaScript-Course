@@ -37,7 +37,7 @@ const users = 'https://jsonplaceholder.typicode.com/users';
 
 const getUser = async function (url) {
   const res = await fetch(url);
-  const data = await res.json(); console.log(data.at(-2))
+  const data = await res.json();
   return { userName: data.at(4).name, userEmail: data.at(4).email };
 }
 
@@ -46,3 +46,25 @@ console.log(uData);
 
 const userData = await getUser(users); // top level await
 console.log(userData.userName, userData.userEmail);
+
+/* The Module Pattern ================================================== */
+
+const Cart = (function () {
+  const cart = [];
+  const totalPrice = 234;
+  const totalQuantity = 23;
+  const shippingCost = 10;
+  const addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`🛒 ${quantity} ${product} added to cart.`)
+  }
+  const orderStock = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`📝 ${quantity} ${product} ordered from supplier.`)
+  }
+
+  return { cart, totalPrice, totalQuantity, addToCart, orderStock }
+})()
+
+Cart.addToCart('bread', 10);
+console.log(Cart.shippingCost); // undefined
