@@ -1,480 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>The Complete JavaScript Course | Tung Nguyen</title>
-    <meta name="copyright" content="Tung Nguyen | github.com/ns-tung" />
-    <meta name="author" content="Tung Nguyen | github.com/ns-tung" />
-    <meta
-      property="og:site_name"
-      content="The Complete JavaScript Course | Tung Nguyen"
-    />
-    <meta
-      property="og:title"
-      content="The Complete JavaScript Course | Tung Nguyen"
-    />
-    <meta
-      property="og:description"
-      content="This website showcases my progress through 'The Complete JavaScript Course'. Each title corresponds to a specific topic, and the mini-learning web apps within each section serve as a testament to my growing knowledge and mastery of JavaScript."
-    />
-    <meta property="og:url" content="https://javascript-tungns.netlify.app" />
-    <meta
-      property="og:image"
-      content="https://javascript-tungns.netlify.app/_assets/images/banner-light.png"
-    />
-    <meta
-      property="og:image:alt"
-      content="The Complete JavaScript Course: The modern JavaScript course is for those who want to become A Master of JavaScript with projects, challenges, and theory."
-    />
-    <meta
-      name="twitter:title"
-      content="The Complete JavaScript Course | Tung Nguyen"
-    />
-    <meta
-      name="twitter:description"
-      content="This website showcases my progress through 'The Complete JavaScript Course'. Each title corresponds to a specific topic, and the mini-learning web apps within each section serve as a testament to my growing knowledge and mastery of JavaScript."
-    />
-    <meta
-      name="twitter:image"
-      content="https://javascript-tungns.netlify.app/_assets/images/banner-light.png"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="/_assets/images/js-logo.svg" type="image/svg+xml" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/core/dist/css/tabler.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.css"
-    />
-    <link rel="stylesheet" href="/_assets/styles.css" />
-    <script defer type="module" src="/_assets/scripts.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>The Complete JavaScript Course | Tung Nguyen</title>
+  <meta name="copyright" content="Tung Nguyen | github.com/ns-tung" />
+  <meta name="author" content="Tung Nguyen | github.com/ns-tung" />
+  <meta property="og:site_name" content="The Complete JavaScript Course | Tung Nguyen" />
+  <meta property="og:title" content="The Complete JavaScript Course | Tung Nguyen" />
+  <meta property="og:description"
+    content="This website showcases my progress through 'The Complete JavaScript Course'. Each title corresponds to a specific topic, and the mini-learning web apps within each section serve as a testament to my growing knowledge and mastery of JavaScript." />
+  <meta property="og:url" content="https://javascript-tungns.netlify.app" />
+  <meta property="og:image" content="https://javascript-tungns.netlify.app/_assets/images/banner-light.png" />
+  <meta property="og:image:alt"
+    content="The Complete JavaScript Course: The modern JavaScript course is for those who want to become A Master of JavaScript with projects, challenges, and theory." />
+  <meta name="twitter:title" content="The Complete JavaScript Course | Tung Nguyen" />
+  <meta name="twitter:description"
+    content="This website showcases my progress through 'The Complete JavaScript Course'. Each title corresponds to a specific topic, and the mini-learning web apps within each section serve as a testament to my growing knowledge and mastery of JavaScript." />
+  <meta name="twitter:image" content="https://javascript-tungns.netlify.app/_assets/images/banner-light.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/_assets/images/js-logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core/dist/css/tabler.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.css" />
+  <link rel="stylesheet" href="/_assets/styles.css" />
+  <script defer type="module" src="/_assets/scripts.js"></script>
+</head>
 
-  <body class="page">
-    <header class="header sticky-top">
-      <nav class="navbar">
-        <div class="container align-items-center">
-          <div class="navbar-brand p-0">
-            <a class="d-flex align-items-center lh-sm text-reset" href="/">
-              <span
-                class="avatar d-none d-sm-block me-sm-2"
-                style="background-image: url(/_assets/images/js-logo.svg)"
-              ></span>
-              <div class="d-block">
-                <div class="fs-3">The Complete JavaScript Course</div>
-                <div class="fw-normal fs-4 text-secondary">
-                  From Zero to Expert!
-                </div>
+<body class="page">
+  <header class="header sticky-top">
+    <nav class="navbar">
+      <div class="container align-items-center">
+        <div class="navbar-brand p-0">
+          <a class="d-flex align-items-center lh-sm text-reset" href="/">
+            <span class="avatar d-none d-sm-block me-sm-2"
+              style="background-image: url(/_assets/images/js-logo.svg)"></span>
+            <div class="d-block">
+              <div class="fs-3">The Complete JavaScript Course</div>
+              <div class="fw-normal fs-4 text-secondary">
+                From Zero to Expert!
               </div>
-            </a>
-          </div>
-          <a
-            href="https://github.com/ns-tung"
-            class="d-flex align-items-center lh-1 text-reset"
-          >
-            <span
-              class="avatar d-none d-sm-block"
-              style="background-image: url(/_assets/images/avatar.jpg)"
-            ></span>
-            <span
-              class="avatar avatar-lg d-block d-sm-none"
-              style="background-image: url(/_assets/images/avatar.jpg)"
-            ></span>
-            <div class="d-none d-sm-block ps-2">
-              <div class="lh-lg fw-bold">Tung Nguyen</div>
-              <div class="mt-1 small text-secondary">A Lifelong Leaner</div>
             </div>
           </a>
         </div>
-      </nav>
-    </header>
-
-    <div class="page-wrapper">
-      <div class="page-body">
-        <div class="container">
-          <div class="fs-3 mb-3">
-            This website showcases my progress through
-            <a
-              class="text-decoration-underline"
-              href="https://www.udemy.com/course/the-complete-javascript-course"
-              target="_blank"
-              role="tooltip"
-              title="The Complete JavaScript Course 2024: From Zero to Expert!"
-              >The Complete JavaScript Course</a
-            >
-            <div
-              class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
-              style="background: var(--tblr-gray-dark); display: none"
-            >
-              <p class="fs-3 text-white">
-                The Complete JavaScript Course 2024: From Zero to Expert!
-              </p>
-              <img
-                class="img-fluid rounded-2"
-                src="https://img-b.udemycdn.com/course/750x422/851712_fc61_6.jpg"
-              />
-            </div>
-            . Each title below the
-            <a href="#content"><b>course content</b></a> corresponds to a
-            specific topic, and the mini-learning web apps within each section
-            serve as a testament to my growing knowledge and mastery of
-            JavaScript.
+        <a href="https://github.com/ns-tung" class="d-flex align-items-center lh-1 text-reset">
+          <span class="avatar d-none d-sm-block" style="background-image: url(/_assets/images/avatar.jpg)"></span>
+          <span class="avatar avatar-lg d-block d-sm-none"
+            style="background-image: url(/_assets/images/avatar.jpg)"></span>
+          <div class="d-none d-sm-block ps-2">
+            <div class="lh-lg fw-bold">Tung Nguyen</div>
+            <div class="mt-1 small text-secondary">A Lifelong Leaner</div>
           </div>
-          <a
-            target="_blank"
-            href="https://github.com/ns-tung/The-Complete-JavaScript-Course"
-            title="View github repository"
-          >
-            <div class="card overflow-hidden mt-0 mt-sm-4 mb-4">
-              <img
-                src="/_assets/images/banner-light.png"
-                alt="The Complete JavaScript Course"
-              />
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-wrapper">
+    <div class="page-body">
+      <div class="container">
+        <div class="fs-3 mb-3">
+          This website showcases my progress through
+          <a class="text-decoration-underline" href="https://www.udemy.com/course/the-complete-javascript-course"
+            target="_blank" role="tooltip" title="The Complete JavaScript Course 2024: From Zero to Expert!">The
+            Complete JavaScript Course</a>
+          <div class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
+            style="background: var(--tblr-gray-dark); display: none">
+            <p class="fs-3 text-white">
+              The Complete JavaScript Course 2024: From Zero to Expert!
+            </p>
+            <img class="img-fluid rounded-2" src="https://img-b.udemycdn.com/course/750x422/851712_fc61_6.jpg" />
+          </div>
+          . Each title below the
+          <a href="#course-content"><b>course content</b></a>
+          corresponds to a specific topic, and the mini-learning web apps
+          within each section serve as a testament to my growing knowledge and
+          mastery of JavaScript.
+        </div>
+        <a target="_blank" href="https://github.com/ns-tung/The-Complete-JavaScript-Course"
+          title="View github repository">
+          <div class="card overflow-hidden mt-0 mt-sm-4 mb-4">
+            <img src="/_assets/images/banner-light.png" alt="The Complete JavaScript Course" />
+          </div>
+        </a>
+        <p class="fs-3">
+          <b>
+            Beyond JavaScript theories, this website is a living record of my
+            learning journey</b>. I've diligently documented my progress in code, providing a
+          detailed and insightful look into my understanding of JavaScript
+          concepts and my ability to apply them in real-world applications.
+        </p>
+        <p class="fs-3 strong">
+          Feel free to explore each project and join me on this exciting
+          journey of becoming an advanced, confident, modern JavaScript
+          developer!
+        </p>
+        <div id="course-content"></div>
+        <div class="hr-text hr-text-left fs-3">Course content</div>
+        <div class="card">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/javascript-fundamentals-part-1">
+                JavaScript Fundamentals – Part 1
+              </a>
             </div>
-          </a>
-          <p class="fs-3">
-            <b>
-              Beyond JavaScript theories, this website is a living record of my
-              learning journey</b
-            >. I've diligently documented my progress in code, providing a
-            detailed and insightful look into my understanding of JavaScript
-            concepts and my ability to apply them in real-world applications.
-          </p>
-          <p class="fs-3 strong">
-            Feel free to explore each project and join me on this exciting
-            journey of becoming an advanced, confident, modern JavaScript
-            developer!
-          </p>
-          <div id="content"></div>
-          <div class="hr-text hr-text-left fs-3">Course content</div>
-          <div class="card">
-            <div class="card-body p-4">
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/javascript-fundamentals-part-1"
-                >
-                  JavaScript Fundamentals – Part 1
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/javascript-fundamentals-part-2"
-                >
-                  JavaScript Fundamentals – Part 2
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/developer-skills"
-                >
-                  Developer Skills
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/html-css-crash-course"
-                >
-                  HTML & CSS Crash Course
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/dom-and-events-fundamentals"
-                >
-                  DOM and Events Fundamentals
-                </a>
-                <a
-                  class="text-decoration-none mx-1"
-                  href="https://gmn-tungns.netlify.app"
-                  target="_blank"
-                  style="padding-bottom: 0.1rem"
-                >
-                  <img
-                    class="img-fluid me-1"
-                    src="/_assets/images/mona.gif"
-                    alt="hourglass"
-                    width="20"
-                    title="Guess My Number"
-                    role="tooltip"
-                  />
-                  <div
-                    class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
-                    style="background: var(--tblr-gray-dark); display: none"
-                  >
-                    <p class="fs-3 text-white">Guess My Number</p>
-                    <img
-                      class="img-fluid rounded-2"
-                      src="/dom-and-events-fundamentals/guess-my-number.png"
-                    />
-                  </div>
-                </a>
-                <a
-                  class="text-decoration-none"
-                  href="https://thepiggame-tungns.netlify.app"
-                  target="_blank"
-                  style="padding-top: 0.1rem"
-                >
-                  <span role="tooltip" title="The Pig Game">🎲</span>
-                  <div
-                    class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
-                    style="background: var(--tblr-gray-dark); display: none"
-                  >
-                    <p class="fs-3 text-white">The Pig Game</p>
-                    <img
-                      class="img-fluid rounded-2"
-                      src="/dom-and-events-fundamentals/the-pig-game.png"
-                    />
-                  </div>
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/how-javascript-works-behind-the-scenes"
-                >
-                  How JavaScript Works Behind the Scenes
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/data-structures-modern-operators-and-strings"
-                >
-                  Data Structures, Modern Operators and Strings
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/a-closer-look-at-functions"
-                >
-                  A Closer Look at Functions
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/working-with-arrays"
-                >
-                  Working With Arrays
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/numbers-dates-intl-and-timers"
-                >
-                  Numbers, Dates, Intl and Timers</a
-                >
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/advanced-dom-and-events"
-                >
-                  Advanced DOM and Events
-                </a>
-                <a
-                  class="text-decoration-none mx-1"
-                  href="https://thebankist.netlify.app"
-                  target="_blank"
-                  style="padding-bottom: 0.1rem"
-                >
-                  <img
-                    class="img-fluid me-1"
-                    src="/advanced-dom-and-events/the-bankist-logo.svg"
-                    alt="The Bankist"
-                    width="16"
-                    title="The Bankist"
-                    role="tooltip"
-                  />
-                  <div
-                    class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
-                    style="background: var(--tblr-gray-dark); display: none"
-                  >
-                    <p class="d-flex align-items-center fs-3 text-white">
-                      <svg
-                        class="me-1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 86 86"
-                        fill="currentColor"
-                      >
-                        <path
-                          d="M71.1371 10.4829C63.5958 3.95169 53.7594 0 43 0C32.2546 0 22.4299 3.94138 14.8924 10.4573C19.1372 21.8697 30.1289 30 43.0195 30C55.9005 30 66.8855 21.8819 71.1371 10.4829Z"
-                        />
-                        <path
-                          d="M10.4822 71.1364C21.8816 66.8849 30 55.8998 30 43.0186C30 30.1282 21.87 19.1366 10.458 14.8917C3.94164 22.4292 0 32.2543 0 43C0 53.759 3.95144 63.5952 10.4822 71.1364Z"
-                        />
-                        <path
-                          d="M71.1223 75.5299C66.8742 64.1242 55.8858 56 43 56C30.1142 56 19.1258 64.1242 14.8777 75.5299C22.417 82.0535 32.2476 86 43 86C53.7524 86 63.583 82.0535 71.1223 75.5299Z"
-                        />
-                        <path
-                          d="M75.5299 14.8777C64.1242 19.1258 56 30.1142 56 43C56 55.8858 64.1242 66.8742 75.5299 71.1223C82.0535 63.583 86 53.7524 86 43C86 32.2476 82.0535 22.417 75.5299 14.8777Z"
-                        /></svg
-                      >The Bankist
-                    </p>
-                    <img
-                      class="img-fluid rounded-2"
-                      src="/advanced-dom-and-events/the-bankist-landingpage.png"
-                    />
-                  </div>
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/object-oriented-programming-with-javascript"
-                >
-                  Object-Oriented Programming (OOP) With JavaScript
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i
-                  class="ti ti-circle-check-filled fs-2 me-1"
-                  style="color: var(--tblr-green-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/promises-async-await-and-ajax"
-                >
-                  Asynchronous JavaScript: Promises, Async/Await, and AJAX
-                </a>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <img
-                  class="img-fluid me-1"
-                  src="/_assets/images/hourglass.gif"
-                  alt="hourglass"
-                  width="20"
-                />
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/modules-tooling-and-functional"
-                >
-                  Modern JavaScript Development: Modules, Tooling, and
-                  Functional
-                </a>
-              </div>
-              <div class="d-flex align-items-center">
-                <i
-                  class="ti ti-circle fs-2 me-1"
-                  style="color: var(--tblr-blue-darken)"
-                ></i>
-                <a
-                  class="fs-3 link-primary link-underline-hover"
-                  href="/setting-up-git-and-deployment"
-                >
-                  Setting Up Git and Deployment
-                </a>
-              </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/javascript-fundamentals-part-2">
+                JavaScript Fundamentals – Part 2
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/developer-skills">
+                Developer Skills
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/html-css-crash-course">
+                HTML & CSS Crash Course
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/dom-and-events-fundamentals">
+                DOM and Events Fundamentals
+              </a>
+              <a class="text-decoration-none mx-1" href="https://gmn-tungns.netlify.app" target="_blank"
+                style="padding-bottom: 0.1rem">
+                <img class="img-fluid me-1" src="/_assets/images/mona.gif" alt="hourglass" width="20"
+                  title="Guess My Number" role="tooltip" />
+                <div class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
+                  style="background: var(--tblr-gray-dark); display: none">
+                  <p class="fs-3 text-white">Guess My Number</p>
+                  <img class="img-fluid rounded-2" src="/dom-and-events-fundamentals/guess-my-number.png" />
+                </div>
+              </a>
+              <a class="text-decoration-none" href="https://thepiggame-tungns.netlify.app" target="_blank"
+                style="padding-top: 0.1rem">
+                <span role="tooltip" title="The Pig Game">🎲</span>
+                <div class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
+                  style="background: var(--tblr-gray-dark); display: none">
+                  <p class="fs-3 text-white">The Pig Game</p>
+                  <img class="img-fluid rounded-2" src="/dom-and-events-fundamentals/the-pig-game.png" />
+                </div>
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/how-javascript-works-behind-the-scenes">
+                How JavaScript Works Behind the Scenes
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/data-structures-modern-operators-and-strings">
+                Data Structures, Modern Operators and Strings
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/a-closer-look-at-functions">
+                A Closer Look at Functions
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/working-with-arrays">
+                Working With Arrays
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/numbers-dates-intl-and-timers">
+                Numbers, Dates, Intl and Timers</a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/advanced-dom-and-events">
+                Advanced DOM and Events
+              </a>
+              <a class="text-decoration-none mx-1" href="https://thebankist.netlify.app" target="_blank"
+                style="padding-bottom: 0.1rem">
+                <img class="img-fluid me-1" src="/advanced-dom-and-events/the-bankist-logo.svg" alt="The Bankist"
+                  width="16" title="The Bankist" role="tooltip" />
+                <div class="float p-3 rounded-3 position-absolute shadow-lg w-25 z-3"
+                  style="background: var(--tblr-gray-dark); display: none">
+                  <p class="d-flex align-items-center fs-3 text-white">
+                    <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 86 86"
+                      fill="currentColor">
+                      <path
+                        d="M71.1371 10.4829C63.5958 3.95169 53.7594 0 43 0C32.2546 0 22.4299 3.94138 14.8924 10.4573C19.1372 21.8697 30.1289 30 43.0195 30C55.9005 30 66.8855 21.8819 71.1371 10.4829Z" />
+                      <path
+                        d="M10.4822 71.1364C21.8816 66.8849 30 55.8998 30 43.0186C30 30.1282 21.87 19.1366 10.458 14.8917C3.94164 22.4292 0 32.2543 0 43C0 53.759 3.95144 63.5952 10.4822 71.1364Z" />
+                      <path
+                        d="M71.1223 75.5299C66.8742 64.1242 55.8858 56 43 56C30.1142 56 19.1258 64.1242 14.8777 75.5299C22.417 82.0535 32.2476 86 43 86C53.7524 86 63.583 82.0535 71.1223 75.5299Z" />
+                      <path
+                        d="M75.5299 14.8777C64.1242 19.1258 56 30.1142 56 43C56 55.8858 64.1242 66.8742 75.5299 71.1223C82.0535 63.583 86 53.7524 86 43C86 32.2476 82.0535 22.417 75.5299 14.8777Z" />
+                    </svg>The Bankist
+                  </p>
+                  <img class="img-fluid rounded-2" src="/advanced-dom-and-events/the-bankist-landingpage.png" />
+                </div>
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/object-oriented-programming-with-javascript">
+                Object-Oriented Programming (OOP) With JavaScript
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/promises-async-await-and-ajax">
+                Asynchronous JavaScript: Promises, Async/Await, and AJAX
+              </a>
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="ti ti-circle-check-filled fs-2 me-1" style="color: var(--tblr-green-darken)"></i>
+              <a class="fs-3 link-primary link-underline-hover" href="/modules-tooling-and-functional">
+                Modern JavaScript Development: Modules, Tooling, and Functional
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <footer class="footer py-4">
-      <div class="container">
-        <div class="row text-center align-items-center flex-row-reverse">
-          <div class="col-sm-auto ms-sm-auto">
-            <a href="https://www.netlify.com">
-              <img
-                class="img-netlify"
-                src="https://www.netlify.com/v3/img/components/netlify-color-bg.svg"
-                alt="Deploys by Netlify"
-              />
-            </a>
-          </div>
-          <div class="col-12 col-sm-auto mt-3 mt-sm-0">
-            <ul class="list-inline list-inline-dots mb-0">
-              <li class="list-inline-item">
-                2024 ©
-                <a
-                  href="https://tungns.dev"
-                  class="link-muted"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >tungns.dev</a
-                >
-              </li>
-              <li class="list-inline-item">
-                Made with
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
-                  />
-                </svg>
-                in Vietnam
-              </li>
-            </ul>
-          </div>
+  <footer class="footer py-4">
+    <div class="container">
+      <div class="row text-center align-items-center flex-row-reverse">
+        <div class="col-sm-auto ms-sm-auto">
+          <a href="https://www.netlify.com">
+            <img class="img-netlify" src="https://www.netlify.com/v3/img/components/netlify-color-bg.svg"
+              alt="Deploys by Netlify" />
+          </a>
+        </div>
+        <div class="col-12 col-sm-auto mt-3 mt-sm-0">
+          <ul class="list-inline list-inline-dots mb-0">
+            <li class="list-inline-item">
+              2024 ©
+              <a href="https://tungns.dev" class="link-muted" target="_blank" rel="noopener noreferrer">tungns.dev</a>
+            </li>
+            <li class="list-inline-item">
+              Made with
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+              </svg>
+            </li>
+          </ul>
         </div>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+</body>
 </html>

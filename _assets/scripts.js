@@ -45,6 +45,13 @@ window.onload = function () {
     );
   });
 
+  const courseContent = document.querySelector('a[href="#course-content"]');
+  courseContent && courseContent.addEventListener('click', function (event) {
+    event.preventDefault();
+    const id = event.target.closest('a').getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth'});
+  });
+
   const links = document.querySelectorAll('a.token.url-link[href]');
 
   links.forEach(link => {
